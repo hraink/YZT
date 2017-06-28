@@ -1,0 +1,15 @@
+<% include ../common/header %>
+<title>优智投</title>
+</head>
+<body>
+<div class="main">
+    <div class="server_error">
+        <img src="/img/pic_not_find.png" alt="">
+        <p></p>
+        <h1><%= message %></h1>
+        <h2><%= error.status %></h2>
+        <pre><%= error.stack %></pre>
+    </div>
+</div>
+</body>
+</html>

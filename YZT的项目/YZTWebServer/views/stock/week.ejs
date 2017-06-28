@@ -1,0 +1,36 @@
+<% include ../common/header %>
+<title><%=title%></title>
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+    <% include ../common/leftMenu %>
+    <!--  右侧主内容区 -->
+    <div class="container container_bg">
+        <div class="switch switch_st">
+            <a href="/stock/day.html">每日热股</a>
+            <a href="/stock/week.html" class="on">每周牛股</a>
+        </div>
+        <!-- 每周牛股开始 -->
+        <div class="hot_week">
+            <!-- 本周 -->
+            <div class="first_week" id="first_week">
+                <% include ../tpl/stock_week_first%>
+            </div>
+            <!-- 历史周 -->
+            <div class="weekly" id="weekly">
+                <% include ../tpl/stock_week_weekly%>
+            </div>
+            <!-- 加载更多 -->
+            <%if(weekHistoryList && weekHistoryList.length >= 21){%>
+            <div class="load_more" id="load_more">加载更多</div>
+            <%}%>
+        </div>
+        <!-- 每周牛股结束 -->
+    </div>
+</div>
+<%-script('/js/ejs.js')%>
+<script src="/tpl-mix/stock_week_first.js"></script>
+<script src="/tpl-mix/stock_week_weekly.js"></script>
+<%-script('/js/stock-week.js')%>
+<% include ../common/footer %>

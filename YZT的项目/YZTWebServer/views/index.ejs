@@ -1,0 +1,277 @@
+<% include ./common/header %>
+<title><%=title%></title>
+<link rel="stylesheet" type="text/css" href="/css/index.css">
+<link rel="stylesheet" type="text/css" href="css/swiper-3.4.0.min.css">
+<link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css">
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+    <% include ./common/leftMenu %>
+    <!--  右侧主内容区 -->
+    <div class="container">
+        <div class="top_left">
+            <div class="title">
+                <p>大盘风向标</p>
+            </div>
+            <div class="market">
+                <!-- swiper开始 -->
+                <div class="swiper-container" id="swiper">
+                    <div class="swiper-wrapper">
+                        <%if(mainObj && mainObj.marketVaneData && mainObj.marketVaneData.length > 0){%>
+                            <%for(var i in mainObj.marketVaneData){var obj = mainObj.marketVaneData[i];%>
+                                <div class="swiper-slide swiper-no-swiping">
+                                    <!-- 第1屏 -->
+                                    <div class="symbol">
+                                        <div class="symbol_left">
+                                            <div class="strategy">
+                                                <p>三季策略</p>
+                                                <div class="icon_cont">
+                                                    <div class="list list1 <%if(obj.vane !== 1){%>dark<%}%>"></div>
+                                                    <div class="list list2 <%if(obj.vane !== 2){%>dark<%}%>"></div>
+                                                    <div class="list list3 <%if(obj.vane !== 3){%>dark<%}%>"></div>
+                                                </div>
+                                            </div>
+                                            <div class="probabi">
+                                                <p class="sub_title">涨跌概率</p>
+                                                <div class="chart_box">
+                                                    <div class="risk_chart" data-upprob="<%=parseFloat(obj.upprob * 100).toFixed(2)%>" id="risk_chart_<%=Number(i)+1%>"></div>
+                                                    <p>上涨概率<p>
+                                                </div>
+                                                <div class="progress_box progress_box_<%=Number(i)+1%>" data-stockCode="<%=obj.stockCode%>">
+                                                    <div class="info_box">
+                                                        <p class="left_price"><%=parseFloat(obj.flucFlor).toFixed(2)%></p>
+                                                        <p class="right_price"><%=parseFloat(obj.flucCeil).toFixed(2)%></p>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="low"></div>
+                                                        <div class="height"></div>
+                                                        <div class="pointer"><%=parseFloat(obj.flucPrice).toFixed(2)%></div>
+                                                    </div>
+                                                    <p class="sub_tit">波动区间</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="symbol_right">
+                                            <div class="expon">
+                                                <div class="expon_info hqObj hqObj-<%=obj.stockCode%> <%if(obj.zdf>0){%>height<%}else if(obj.zdf<0){%>low<%}else{%>middle<%}%>" data-code="<%=obj.stockCode%>" data-market="<%=obj.market%>">
+                                                    <p id="hq_name">上证指数</p>
+                                                    <span class="expon_num1" id="hq_price"><%=parseFloat(obj.price).toFixed(2)%></span>
+                                                    <span class="expon_num2" id="hq_zde"><%=parseFloat(obj.zd).toFixed(2)%></span>
+                                                    <span class="expon_num3" id="hq_zdf"><%=parseFloat(obj.zdf).toFixed(2)%>%</span>
+                                                </div>
+                                                <p class="tit">智能仓位</p>
+                                                <div class="position position_<%=Number(i)+1%>" data-advise-position="<%=obj.advisePosition%>">
+                                                    <p class="mark1">0</p>
+                                                    <p class="mark2">50</p>
+                                                    <p class="mark3">100</p>
+                                                    <p class="percent"><%=obj.advisePosition%><span>%</span></p>
+                                                    <div class="top_layer"></div>
+                                                    <div class="meter_box">
+                                                        <div class="gray"></div>
+                                                        <div class="gray_left"></div>
+                                                        <div class="gray_right"></div>
+                                                        <div class="gradient"></div>
+                                                    </div>
+                                                </div>
+                                                <p class="propose">投资策略<span><%=obj.advise%></span></p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            <%}%>
+                        <%}%>
+                    </div>
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            <!-- swiper结束 -->
+        </div>
+        <div class="top_right">
+            <div class="big_data" id="big_data">
+                <div class="title"><p>大数据诊股</p></div>
+                <search-bar @select="handleSelect"></search-bar>
+            </div>
+            <div class="pond">
+                <div class="title">
+                    <p>核心金股池</p>
+                    <a href="/strategy/strategy.html" class="btn_more">更多</a>
+                </div>
+                <%if(mainObj && mainObj.perfectStockData && mainObj.perfectStockData.length > 0){%>
+                <div class="list_main up">
+                        <div class="list_title">
+                            <p class="column1">代码</p>
+                            <p  class="column2">名称</p>
+                            <p class="column3">最高涨幅</p>
+                        </div>
+                        <%for(var i in mainObj.perfectStockData){var obj = mainObj.perfectStockData[i];obj.maxRise = obj.maxRise * 100;%>
+                            <div class="list">
+                                <p class="code"><%=obj.stockCode%></p>
+                                <a href="javascript:void(0);" class="name open_stock" data-stock-market="<%=obj.market%>" data-stock-code="<%=obj.stockCode%>"><%=obj.stockName%></a>
+                                <p class="drift"><%=parseFloat(obj.maxRise).toFixed(2)%>%</p>
+                                <a href="/strategy/strategy.html?type=<%=obj.stgyCategory%>&stgyCode=<%=obj.stgyCode%>" class="theme"><%=obj.stgyName%>%> ></a>
+                            </div>
+                        <%}%>
+                </div>
+                <%}else{%>
+                <!-- 暂无数据 -->
+                <div class="no_data" style="display: block;">
+                    <img src="/img/pic_not_find.png" alt="">
+                    <p>-暂无数据-</p>
+                </div>
+                <%}%>
+            </div>
+        </div>
+        <div class="bottom">
+            <div class="diging">
+                <div class="title">
+                    <p>舆情挖掘机</p>
+                    <a href="/market/news.html" class="btn_more">更多</a>
+                </div>
+                <%if((mainObj && mainObj.topLhbLDNewsData && mainObj.topLhbLDNewsData.length > 0) || (mainObj && mainObj.topLhbLKNewsData && mainObj.topLhbLKNewsData.length > 0)){%>
+                <div class="diging_main">
+                    <div class="diging_top">
+                    <%if(mainObj && mainObj.topLhbLDNewsData && mainObj.topLhbLDNewsData.length > 0){%>
+                        <%for(var i in mainObj.topLhbLDNewsData){var obj = mainObj.topLhbLDNewsData[i];%>
+                            <div class="list up">
+                                <div class="list_cont">
+                                    <div class="type">利多</div>
+                                    <div class="info_cont">
+                                        <p class="detail"><a href="http://www.upchina.com/article/<%=obj.topicId%>.html" target="_blank" class="detail"><%=obj.title%></a></p>
+                                        <%if(obj.stockList.value && obj.stockList.value.length > 0){var stock = obj.stockList.value[0];%>
+                                            <div class="info <%if(stock.zdf>0){%>height<%}else if(stock.zdf<0){%>low<%}else{%>middle<%}%> hqObj hqObj-<%=stock.code%>" data-code="<%=stock.code%>" data-market="<%=stock.market%>">
+                                                <span class="name open_stock" data-stock-market="<%=stock.market%>" data-stock-code="<%=stock.code%>"><%=stock.name%></span>
+                                                <span class="price" id="hq_xj"></span>
+                                                <span class="rate" id="hq_zdf"></span>
+                                            </div>
+                                        <%}%>
+                                    </div>
+                                </div>
+                            </div>
+                        <%}%>
+                    <%}%>
+                    </div>
+                    <div class="diging_bottom">
+                    <%if(mainObj && mainObj.topLhbLKNewsData && mainObj.topLhbLKNewsData.length > 0){%>
+                        <%for(var i in mainObj.topLhbLKNewsData){var obj = mainObj.topLhbLKNewsData[i];%>
+                            <div class="list up">
+                                <div class="list_cont">
+                                    <div class="type">利空</div>
+                                    <div class="info_cont">
+                                        <p class="detail"><a href="http://www.upchina.com/article/<%=obj.topicId%>.html" target="_blank" class="detail"><%=obj.title%></a></p>
+                                        <%if(obj.stockList.value && obj.stockList.value.length > 0){var stock = obj.stockList.value[0];%>
+                                            <div class="info <%if(stock.zdf>0){%>height<%}else if(stock.zdf<0){%>low<%}else{%>middle<%}%> hqObj hqObj-<%=stock.code%>" data-code="<%=stock.code%>" data-market="<%=stock.market%>">
+                                                <span class="name open_stock" data-stock-market="<%=stock.market%>" data-stock-code="<%=stock.code%>"><%=stock.name%></span>
+                                                <span class="price" id="hq_xj"></span>
+                                                <span class="rate" id="hq_zdf"></span>
+                                            </div>
+                                        <%}%>
+                                    </div>
+                                </div>
+                            </div>
+                        <%}%>
+                    <%}%>
+                    </div>
+                </div>
+                <%}else{%>
+                <!-- 暂无数据 -->
+                <div class="no_data" style="display: block;">
+                    <img src="/img/pic_not_find.png" alt="">
+                    <p>-暂无数据-</p>
+                </div>
+                <%}%>
+            </div>
+            <!-- 热点追踪 -->
+            <div class="hot_spot">
+                <div class="title">
+                    <p>热点追踪仪</p>
+                    <a href="/hot/theme/hot/ranking.html" class="btn_more">更多</a>
+                </div>
+                <%if(mainObj && mainObj.subJectsData && mainObj.subJectsData.length > 0){%>
+                <div class="hot_list">
+                    <%for(var i in mainObj.subJectsData){var obj = mainObj.subJectsData[i];%>
+                        <div class="list">
+                            <div class="list_cont">
+                                <a href="javascript:void(0);"  class="level open_stock"  data-stock-market="<%=obj.code%>" data-stock-code="<%=obj.code%>">
+                                    <p><%=obj.name%></p>
+                                    <span class="rate_bar">
+                                    <span class="rate-stars level<%if(0<=obj.hot && obj.hot<=1000){%>1<%}
+                                    else if(obj.hot>1000 && obj.hot<=3000){%>2<%}
+                                    else if(obj.hot>3000 && obj.hot<=5000){%>3<%}
+                                    else if(obj.hot>5000){%>4<%}%>"></span>
+                                    </span>
+                                </a>
+                                <div class="hot_info">
+                                    <p class="detail"><%=obj.title%></p>
+                                    <div class="info_box">
+                                        <%if(obj.stockList.value && obj.stockList.value.length > 0){%>
+                                            <%for(var s in obj.stockList.value.slice(0,2)){var stock = obj.stockList.value[s];%>
+                                                <p class="<%if(stock.zdf>0){%>height<%}else if(stock.zdf<0){%>low<%}else{%>middle<%}%> hqObj hqObj-<%=stock.stockCode%>" data-code="<%=stock.stockCode%>" data-market="<%=stock.market%>">
+                                                    <span class="open_stock" data-stock-market="<%=stock.market%>" data-stock-code="<%=stock.stockCode%>"><%=stock.stockName%></span>
+                                                    <span id="hq_xj"></span>
+                                                    <span id="hq_zdf"></span>
+                                                </p>
+                                            <%}%>
+                                        <%}%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <%}%>
+                </div>
+                <%}else {%>
+                <!-- 暂无数据 -->
+                <div class="no_data" style="display: block;">
+                    <img src="/img/pic_not_find.png" alt="">
+                    <p>-暂无数据-</p>
+                </div>
+                <%}%>
+            </div>
+            <!-- 精品策略库 -->
+            <div class="fine">
+                <div class="title">
+                    <p>精品策略库</p>
+                    <a href="/strategy/strategy.html" class="btn_more">更多</a>
+                </div>
+                <%if(mainObj && mainObj.topStgyInfoData && mainObj.topStgyInfoData.length > 0){%>
+                    <%for(var i in mainObj.topStgyInfoData){var obj = mainObj.topStgyInfoData[i];obj.maxRise = obj.maxRise * 100;obj.winRate = obj.winRate * 100;%>
+                        <div class="fine_list">
+                            <div class="list_cont">
+                                <div class="extent">
+                                    <p class="<%if(obj.maxRise>0){%>height<%}else if(obj.maxRise<0){%>low<%}else{%>middle<%}%>"><%=parseFloat(obj.maxRise).toFixed(2)%>%</p>
+                                    <p>平均涨幅</p>
+                                </div>
+                                <div class="right_info">
+                                    <a href="/strategy/strategy.html?type=<%=obj.stgyCategory%>&stgyCode=<%=obj.stgyCode%>" class="theme"><%=obj.stgyName%></a>
+                                    <div class="winning">胜率<span class="<%if(obj.winRate>0){%>height<%}else if(obj.winRate<0){%>low<%}else{%>middle<%}%>"><%=parseFloat(obj.winRate).toFixed(2)%>%</span></div>
+                                    <div class="type">
+                                        <%if(obj.stgyStyle && obj.stgyStyle.length > 0){var stgyStyleArray = obj.stgyStyle.split(',');%>
+                                            <%for(var s in stgyStyleArray){%>
+                                                <span><%=stgyStyleArray[s]%></span>
+                                            <%}%>
+                                        <%}%>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <%}%>
+                <%}else {%>
+                <!-- 暂无数据 -->
+                <div class="no_data" style="display: block;">
+                    <img src="/img/pic_not_find.png" alt="">
+                    <p>-暂无数据-</p>
+                </div>
+                <%}%>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="/js/echarts-all-3.js"></script>
+<script type="text/javascript" src="/js/jqueryToolPlugins.js"></script>
+<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="http://cdn.upchinapro.com/assert/swiper/3.4.0/swiper.jquery.min.js"></script>
+<script src="/js/vue.js"></script>
+<script src="/js/index.js"></script>
+<% include ./common/searchBar %>
+<% include ./common/footer %>

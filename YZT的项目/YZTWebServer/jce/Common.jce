@@ -1,0 +1,567 @@
+module HQSys
+{  
+    struct ClientInfo
+    {
+        0 optional vector<byte> vGuid; //客户端唯一标识
+        1 optional string sXua;   //客户端信息
+    }; 
+    
+    struct HeaderInfo
+    {
+        /**
+        * 请求的市场
+        * 【注意：非常重要】后台会按照市场进行拆分，此参数必须填写，如果不填写，默认查询沪深市场请求
+        * 
+        */
+        0 optional short shtMarket = -1; 
+        1 optional ClientInfo stClientInfo; 
+    };  
+  
+    //按照ACache中的枚举来定义的类型    
+    enum HISTORY_DATA_TYPE
+    { 
+        HDT_DAY_KLINE = 0,
+        HDT_MIN1_KLINE = 1,
+        HDT_MIN5_KLINE = 2,
+        HDT_MIN15_KLINE = 3,
+        HDT_MIN30_KLINE = 4,
+        HDT_MIN60_KLINE = 5,
+        HDT_RTMIN      = 6,
+        HDT_WEEK_KLINE = 7,
+        HDT_MONTH_KLINE = 8,
+        HDT_SEASON_KLINE = 9,
+        HDT_YEAR_KLINE = 10,
+        HDT_DAY_MONEYFLOW = 11,
+        HDT_TICK        =12,
+        HDT_WEEK_MONEYFLOW = 13,
+        HDT_MONTH_MONEYFLOW = 14,
+        HDT_SEASON_MONEYFLOW = 15,
+        HDT_YEAR_MONEYFLOW = 16,
+        HDT_FLOW_MIN1       =17,
+        HDT_FLOW_MIN5       =18,
+        HDT_FLOW_MIN15       =19,
+        HDT_FLOW_MIN30       =20,
+        HDT_FLOW_MIN60       =21,
+    };
+    
+    enum E_STOCK_TYPE_SUMMARAY
+    {
+        ESTS_ALL  = 0,
+        ESTS_STOCK  = 1,    //股票
+        ESTS_BLOCK  = 2,    //板块
+        ESTS_ZHISHU  = 3,   //指数
+    };
+    
+    enum E_BLOCK_TYPE
+    {
+        EBT_BK_ALL     = 0,        //全部
+        EBT_BK_HY      = 22,       // 行业
+        EBT_BK_DQ      = 23,       // 地区
+        EBT_BK_GN      = 24        // 概念
+    };  
+    
+    //证券类别枚举
+    enum E_STOCK_CATEGORY
+    {
+        STKC_SH_ZS = 1 ,      // 上海指数
+        STKC_SH_AG = 2 ,      // 上海Ａ股
+        STKC_SH_BG = 3 ,      // 上海Ｂ股
+        STKC_SH_ZQ = 4 ,      // 上海债券
+        STKC_SZ_ZS = 5 ,      // 深圳指数
+        STKC_SZ_AG = 6 ,      // 深圳Ａ股
+        STKC_SZ_BG = 7 ,      // 深圳Ｂ股
+        STKC_SZ_ZQ = 8 ,      // 深圳债券
+        STKC_SH_JJ = 9 ,      // 上海基金
+        STKC_SZ_JJ = 10,      // 深圳基金
+        STKC_SH_QZ = 11,      // 上海权证
+        STKC_SZ_QZ = 12,      // 深圳权证
+        STKC_SZ_SM = 13,      // 深圳中小企业板
+        STKC_NO_LO = 14,      // 开放式基金
+        STKC_SH_ZS_IM9 = 15,      // 上证系列指数(IMPORTANT INDEX)(999)
+        STKC_SH_ZS_IM6 = 16,      // 中证系列指数(IMPORTANT INDEX)(666)
+        STKC_SZ_ALL_AG = 17,      // 深证所有A股， 包括中小板和创业板
+        STKC_AH     = 20,      // A+H
+        STKC_SH_TS  = 18,      // 上海退市整理股票
+        STKC_SH_FX  = 19,      // 上海风险警示板
+        STKC_SZ_TS  = 21,      // 深圳退市整理股票
+        STKC_BK_HY  = 22,      // 行业板块
+        STKC_BK_DQ  = 23,      // 地区板块
+        STKC_BK_GN  = 24,      // 概念板块
+        STKC_QH     = 31,      // QH
+        STKC_FOREX  = 32,      // Forex
+        STKC_GWQH   = 33,      // Gwqh
+        STKC_ALL_AG = 40,      // 上证和深证所有A股
+        STKC_ALL_QZ = 41,      // 上证和深证所有权证
+        STKC_ALL_ZQ = 42,      // 上证和深证所有A股
+        STKC_SZ_CY  = 80,      // 创业板
+        STKC_SZ_SB  = 81,
+        STKC_UNKNOWN =  99,      // 错误类别
+        STKC_HK = 101,     // HK
+        STKC_QH_ZSQQ = 165,
+        STKC_QH_ZSQQ_C = 166,
+        STKC_QH_ZSQQ_P = 167,             // 指数期权
+        STKC_QH_GZQH = 168,             // 股指期货(stock index futures)
+        STKC_QH_TBQH = 169,             // 国债期货(treasury bond futures)
+        STKC_QH_ALL = 170,            // 中金所总类型
+        STKC_SH_ISP = 171,
+        STKC_SH_OPTION = 172,
+        STKC_SH_OPTION_C = 173,
+        STKC_SH_OPTION_P = 174,
+
+		//下面类别不支持GetList
+		STKC_M_OTHER   = 200,    //其它
+		STKC_M_FOREX   = 201,    //外汇
+		STKC_M_FUTURES = 202,    //期货
+		STKC_M_METAL   = 203,    //现货
+		STKC_M_INDEX   = 204,    //指数
+		STKC_M_FUND    = 205,    //基金
+		STKC_M_HK      = 206,    //港股
+		STKC_M_US      = 207,    //美股
+		STKC_M_XSB     = 208,    //新三板
+    };
+    
+    //证券市场代码
+    enum E_MARKET_CODE
+    {
+        E_MARKET_SZ = 0,    //深圳证券交易所
+        E_MARKET_SH = 1,    //上海证券交易所
+        E_MARKET_HK = 2,    //香港股票交易所
+        E_MARKET_SF = 3,    // 上海股指期货
+        E_MARKET_SC = 4,    // 上海商品
+        E_MARKET_DC = 5,    // 大连商品
+        E_MARKET_ZC = 6,    // 郑州商品
+        E_MARKET_BH = 7,    // 渤海
+        E_MARKET_SJ = 8,    //上海黄金交易所
+        E_MARKET_LDJ = 9,   //伦敦金（国际金）
+        E_MARKET_TJ = 10,   //天津贵金属
+        E_MARKET_DY = 11,   //江苏大圆银泰
+        E_MARKET_GJ = 12,   //广州贵金属
+        E_MARKET_NASDAQ = 13, //纳斯达克证券交易所
+        E_MARKET_NYSE = 14,   //纽约证券交易所
+        E_MARKET_AMEX = 15,   //美国证券交易所
+        E_MARKET_HSI = 16,    //港股指数
+        E_MARKET_USI = 17,    //美股指数
+        E_MARKET_NK225 = 18,  //日经指数
+        E_MARKET_KOSPI = 19,  //韩国综合指数
+        E_MARKET_TWII = 20,   //台湾加权指数
+        E_MARKET_STI = 21,    //海湾指数
+        E_MARKET_KLSE = 22,   //马来综合指数
+        E_MARKET_SETI = 23,   //泰国综合指数
+        E_MARKET_JKSE = 24,   //印尼综合指数
+        E_MARKET_AORD = 25,   //澳大利亚综合指数
+        E_MARKET_NZSE = 26,   //新西兰综合指数
+        E_MARKET_SENSEX = 27, //印度孟买指数
+        E_MARKET_GSPTSE = 28, //加拿大综合指数
+        E_MARKET_USD = 29,    //基本汇率
+        E_MARKET_CAC = 30,    //法国cac40指数
+        E_MARKET_DAX = 31,    //德国dax指数
+        E_MARKET_AEX = 32,    //荷兰aex指数
+        E_MARKET_OMX20 = 33,  //丹麦kfx指数
+        E_MARKET_BFX = 34,    //比利时指数
+        E_MARKET_SSMI = 35,   //瑞士指数
+        E_MARKET_IBOVESPA = 36, //巴西综合指数
+        E_MARKET_RTS = 37,      //俄罗斯rts指数
+        E_MARKET_MIB = 38,      //意大利mib指数
+        E_MARKET_FX = 39,       //交叉汇率
+        E_MARKET_FTSE = 40,     //英国富时指数
+        E_MARKET_COMEX = 41,    //纽约商品交易所
+        E_MARKET_LME = 42,      //伦敦金属交易所
+        E_MARKET_NYMEX = 43,    //纽约商业交易所
+        E_MARKET_CBOT = 44,     //芝加哥期货交易所
+        E_MARKET_IPE = 45,      //伦敦国际石油交易所
+        E_MARKET_FUND = 46,     //场外基金
+        E_MARKET_TB = 47,       //新三板
+        E_MARKET_CNY = 48,      //人民币外汇
+        E_MARKET_XS  = 49,      //湘商商品交易
+    };
+    
+    //上海期货类别枚举
+    enum E_SC_CATEGORY
+    {
+        E_SC_AU   = 1,        //上海期货AU--1
+        E_SC_AG   = 2,        //上海期货AG--2
+        E_SC_AL   = 3,        //上海期货AL--3
+        E_SC_BU   = 4,        //上海期货BU--4
+        E_SC_CU   = 5,        //上海期货CU--5
+        E_SC_FU   = 6,        //上海期货FU--6                   
+        E_SC_HC   = 7,        //上海期货HC--7          
+        E_SC_PB   = 8,        //上海期货PB--8           
+        E_SC_RB   = 9,        //上海期货RB--9
+        E_SC_RU   = 10,        //上海期货RU--10            
+        E_SC_WR   = 11,        //上海期货WR--11
+        E_SC_ZN   = 12,        //上海期货ZN--12     
+        E_SC_NI   = 13,        //上海期货NI--13
+        E_SC_SN   = 14,        //上海期货SN--14 
+      };
+    
+    //大连期货类别枚举
+    enum E_DC_CATEGORY
+    {
+        E_DC_BB   = 1,        //大连期货BB--1
+        E_DC_FB   = 2,        //大连期货FB--2          
+        E_DC_A    = 3,        //大连期货A--3
+        E_DC_B    = 4,        //大连期货B--4
+        E_DC_C    = 5,        //大连期货C--5
+        E_DC_I    = 6,        //大连期货I--6
+        E_DC_JD   = 7,        //大连期货JD--7
+        E_DC_JM   = 8,        //大连期货JM--8
+        E_DC_L    = 9,        //大连期货L--9
+        E_DC_M    = 10,        //大连期货M--10
+        E_DC_P    = 11,        //大连期货P--11
+        E_DC_PP   = 12,        //大连期货PP--12          
+        E_DC_V    = 13,        //大连期货V--13
+        E_DC_Y    = 14,        //大连期货Y--14
+        E_DC_J    = 17,        //大连期货J--17
+        E_DC_CS   = 18,        //大连期货CS--18
+    };
+    
+    //郑州期货类别枚举
+    enum E_ZC_CATEGORY
+    {
+        E_ZC_CF   = 2,       //郑州期货CF--2
+        E_ZC_FG   = 3,       //郑州期货FG--3
+        E_ZC_JR   = 4,       //郑州期货JR--4
+        E_ZC_LR   = 5,       //郑州期货LR--5
+        E_ZC_MA   = 6,       //郑州期货MA--6
+        E_ZC_OI   = 8,       //郑州期货OI--8
+        E_ZC_PM   = 9,       //郑州期货PM--9       
+        E_ZC_RI   = 10,       //郑州期货RI--10
+        E_ZC_RM   = 11,       //郑州期货RM--11
+        E_ZC_RS   = 12,       //郑州期货RS--12
+        E_ZC_SM   = 14,       //郑州期货SM--14
+        E_ZC_SF   = 13,       //郑州期货SF--13
+        E_ZC_SR   = 15,       //郑州期货SR--15
+        E_ZC_TA   = 16,       //郑州期货TA--16
+        E_ZC_TC   = 17,       //郑州期货TC--17
+        E_ZC_WH   = 18,       //郑州期货WH--18                            
+    };
+
+    //香港市场类别
+    enum E_HK_CATEGORY
+    {
+        E_HK_ZQ   = 66,    //港股债券66        
+        E_HK_NXZ  = 67,    //港股牛熊证67       
+        E_HK_JJ   = 70,    //港股基金70        
+        E_HK_CYB  = 71,    //港股创业板71
+        E_HK_ZB   = 77,    //港股主板77   
+        E_HK_QZ   = 87,    //港股权证87
+    };
+    
+    //新三板类别
+    enum E_TB_CATEGORY
+    {
+        E_TB_LW       = 1,        //两网及退市--1 
+        E_TB_XYZR_A   = 2,        //协议转让--2
+        E_TB_ZSZR_A   = 3,        //做市转让--3
+        E_TB_XYZR_B   = 4,        //协议转让--4
+        E_TB_ZSZR_B   = 5,        //做市转让--5 
+        E_TB_ZS     = 6,        //三板指数--6
+        E_TB_YZB    = 7,        //已转板--7
+        E_TB_DSC    = 8,        //待审查--8 
+        E_TB_DGP    = 9,        //待挂牌--9
+    };
+
+	//E_BUSS_TYPE=>多个E_STOCK_CATEGORY
+	enum E_BUSS_TYPE
+	{
+        //A_Type
+        EBT_A       = 6,       //上海Ａ股+深圳Ａ股+深圳中小企业板+创业板
+        EBT_B       = 7,       //上海Ｂ股+深圳Ｂ股
+        EBT_JJ      = 9,       //上海基金+深圳基金
+        EBT_SH_A    = 0,       //上海Ａ股
+        EBT_SH_B    = 1,       //上海Ｂ股
+        EBT_SH_ZQ   = 4,       //上海债券
+        EBT_SZ_A    = 2,       //深圳Ａ股+深圳中小企业板+创业板
+        EBT_SZ_B    = 3,       //深圳Ｂ股
+        EBT_SZ_CY   = 18,      //创业板
+        EBT_SZ_SM   = 12,      //深圳中小企业板
+        EBT_SZ_ZQ   = 5,       //深圳债券
+        EBT_ZQ      = 8,       //上海债券+深圳债券
+        EBT_BLK_HY   = 32,      //行业板块
+        EBT_BLK_DY   = 31,      //地区板块
+        EBT_BLK_GN   = 33,      //概念板块
+        EBT_BLK_ALL  = 30,      //行业板块+地区板块+概念板块
+        EBT_ZS_BK   = 11,      //上海指数+深圳指数+行业板块+地区板块+概念板块 
+        EBT_QZ      = 17,      //上海权证+深圳权证
+        EBT_ZJ      = 23,      //股指期货+国债期货
+        EBT_SH_JJ   = 9100,    //上海基金
+        EBT_SZ_JJ   = 9101,    //深圳基金
+        EBT_ZS      = 10422,   //上海指数+深圳指数
+        EBT_SH_ZS   = 10423,   //上海指数
+        EBT_SZ_ZS   = 10424,   //深圳指数
+        
+        
+        //M_Market
+        EBT_M_BH      = 19,    //渤海商品
+        EBT_M_TG      = 26,    //天津贵金属
+        EBT_M_SHJ     = 24,    //上海黄金
+        EBT_M_GJJ     = 25,    //国际黄金
+        EBT_M_DS      = 20,    //大连期货
+        EBT_M_ZS      = 21,    //郑州期货
+        EBT_M_SQ      = 22,    //上海期货
+        EBT_M_DY      = 34,    //大圆银泰
+        EBT_M_GJ      = 35,    //广东贵金属
+        EBT_M_HSI     = 49,    //港股指数
+        EBT_M_US      = 50,    //主要美股：纳斯达克+纽交所+美交所
+        EBT_M_NASDAQ  = 51,    //纳斯达克
+        EBT_M_NYSE    = 52,    //纽交所
+        EBT_M_AMEX    = 53,    //美交所
+        EBT_M_USI     = 54,    //美股指数
+        EBT_M_XS      = 10500,           //湘商商品
+        EBT_M_FUND    = 10350,           //场外基金
+        EBT_M_CBOT    = 10400,           //芝加哥交易所
+        EBT_M_COMEX   = 10401,           //纽约商品交易所
+        EBT_M_NYMEX   = 10402,           //纽约商业交易所
+        EBT_M_LME     = 10403,           //伦敦金属交易所
+        EBT_M_FX      = 10410,           //交叉汇率
+        EBT_M_CNY     = 10412,           //人民币外汇
+        
+        
+        //M_Type区间
+        EBT_T_HK      = 36,    //全部港股:港股主板77+港股创业板71
+        EBT_T_HK_ZB   = 37,    //港股主板77
+        EBT_T_HK_CYB  = 38,    //港股创业板71
+        EBT_T_HK_ZQ   = 39,    //港股债券66
+        EBT_T_HK_QZ   = 41,    //港股权证87
+        EBT_T_HK_NXZ  = 42,    //港股牛熊证67
+        EBT_T_HK_JJ   = 43,    //港股基金70
+        
+        EBT_T_SC_CU   = 10000,        //上海期货CU--5
+        EBT_T_SC_AL   = 10001,        //上海期货AL--3
+        EBT_T_SC_ZN   = 10002,        //上海期货ZN--12
+        EBT_T_SC_PB   = 10003,        //上海期货PB--8
+        EBT_T_SC_AU   = 10004,        //上海期货AU--1
+        EBT_T_SC_AG   = 10005,        //上海期货AG--2
+        EBT_T_SC_RB   = 10006,        //上海期货RB--9
+        EBT_T_SC_RU   = 10007,        //上海期货RU--10
+        EBT_T_SC_FU   = 10008,        //上海期货FU--6
+        EBT_T_SC_WR   = 10009,        //上海期货WR--11
+        EBT_T_SC_BU   = 10010,        //上海期货BU--4
+        EBT_T_SC_HC   = 10011,        //上海期货HC--7
+        EBT_T_SC_NI   = 10012,        //上海期货NI--13
+        EBT_T_SC_SN   = 10013,        //上海期货SN--14
+        
+        EBT_T_DC_A    = 10100,        //大连期货A--3
+        EBT_T_DC_M    = 10101,        //大连期货M--10
+        EBT_T_DC_Y    = 10102,        //大连期货Y--14
+        EBT_T_DC_P    = 10103,        //大连期货P--11
+        EBT_T_DC_C    = 10104,        //大连期货C--5
+        EBT_T_DC_I    = 10105,        //大连期货I--6
+        EBT_T_DC_JM   = 10106,        //大连期货JM--8
+        EBT_T_DC_J    = 10107,        //大连期货J--17
+        EBT_T_DC_L    = 10108,        //大连期货L--9
+        EBT_T_DC_V    = 10109,        //大连期货V--13
+        EBT_T_DC_B    = 10110,        //大连期货B--4
+        EBT_T_DC_JD   = 10111,        //大连期货JD--7
+        EBT_T_DC_FB   = 10112,        //大连期货FB--2
+        EBT_T_DC_BB   = 10113,        //大连期货BB--1
+        EBT_T_DC_PP   = 10114,        //大连期货PP--12
+        EBT_T_DC_CS   = 10115,        //大连期货CS--18
+        
+        EBT_T_ZC_WH   = 10200,       //郑州期货WH--18
+        EBT_T_ZC_OI   = 10201,       //郑州期货OI--8
+        EBT_T_ZC_CF   = 10202,       //郑州期货CF--2
+        EBT_T_ZC_SR   = 10203,       //郑州期货SR--15
+        EBT_T_ZC_RI   = 10204,       //郑州期货RI--10
+        EBT_T_ZC_TC   = 10205,       //郑州期货TC--17
+        EBT_T_ZC_TA   = 10206,       //郑州期货TA--16
+        EBT_T_ZC_FG   = 10207,       //郑州期货FG--3
+        EBT_T_ZC_MA   = 10208,       //郑州期货MA--6
+        EBT_T_ZC_RM   = 10209,       //郑州期货RM--11
+        EBT_T_ZC_RS   = 10210,       //郑州期货RS--12
+        EBT_T_ZC_PM   = 10211,       //郑州期货PM--9
+        EBT_T_ZC_JR   = 10212,       //郑州期货JR--4
+        EBT_T_ZC_LR   = 10213,       //郑州期货LR--5
+        EBT_T_ZC_SM   = 10214,       //郑州期货SM--14
+        EBT_T_ZC_SF   = 10215,       //郑州期货SF--13
+        
+        EBT_TB        = 10438,        //新三板股票--2+3+4+5
+        EBT_TB_ZS     = 10439,        //三板指数--6 
+        EBT_TB_ZSZR   = 10440,        //做市转让--3+5 
+        EBT_TB_XYZR   = 10441,        //协议转让--2+4 
+        EBT_TB_LW     = 10442,        //两网及退市--1 
+        EBT_TB_DSC    = 10443,        //待审查--8 
+        EBT_TB_DGP    = 10444,        //待挂牌--9
+        EBT_TB_YZB    = 10445,        //已转板--7
+	};
+
+	enum E_SORT_METHOD
+    {
+        E_SORT_DEFAULT = 0,    //不排序
+        E_SORT_ASCEND = 1,     //升序
+        E_SORT_DESCEN = 2      //降序
+    };
+
+    enum E_MF_RANK_DAY  //资金排名类型
+    {
+        EMR_DAY_1 = 1,
+        EMR_DAY_3 = 3,
+        EMR_DAY_5 = 5,
+        EMR_DAY_10 =10
+    };
+
+    enum E_MF_RANK_SORT_COLUMN   //资金排名排序列
+    {
+        EMRC_CODE = 1,
+        EMRC_NAME,
+        EMRC_NOWPRICE,    //最新价
+        EMRC_CHG,         //涨跌幅
+        EMRC_CHANGE,      //涨跌值
+
+        EMRC_DAY_ZLLR,       //当日主力资金净流入
+        EMRC_DAY_ZLZB,       //当日主力资金净占比
+        EMRC_DAY_SHLR,       //当日散户资金净流入
+        EMRC_DAY_SHZB,       //当日散户资金净占比
+        EMRC_DAY_CDDZJLR,    //当日超大单资金净流入
+        EMRC_DAY_CDDZJZB,    //当日超大单资金净占比
+        EMRC_DAY_DDZJLR,     //当日大单资金净流入
+        EMRC_DAY_DDZJZB,     //当日大单资金净占比
+        EMRC_DAY_ZDZJLR,     //当日中单资金净流入
+        EMRC_DAY_ZDZJZB,     //当日中单资金净占比
+        EMRC_DAY_XDZJLR,     //当日小单资金净流入
+        EMRC_DAY_XDZJZB,     //当日小单资金净占比
+
+        EMRC_3DAY_ZLLR,      //三日主力资金净流入
+        EMRC_3DAY_ZLZB,      //三日主力资金净占比
+        EMRC_3DAY_SHLR,      //三日散户资金净流入
+        EMRC_3DAY_SHZB,      //三日散户资金净占比
+        EMRC_3DAY_CDDZJLR,   //三日超大单资金净流入
+        EMRC_3DAY_CDDZJZB,   //三日超大单资金净占比
+        EMRC_3DAY_DDZJLR,    //三日大单资金净流入
+        EMRC_3DAY_DDZJZB,    //三日大单资金净占比
+        EMRC_3DAY_ZDZJLR,    //三日中单资金净流入
+        EMRC_3DAY_ZDZJZB,    //三日中单资金净占比
+        EMRC_3DAY_XDZJLR,    //三日小单资金净流入
+        EMRC_3DAY_XDZJZB,    //三日小单资金净占比
+        
+        
+        EMRC_5DAY_ZLLR,      //五日主力资金净流入
+        EMRC_5DAY_ZLZB,      //五日主力资金净占比
+        EMRC_5DAY_SHLR,      //五日散户资金净流入
+        EMRC_5DAY_SHZB,      //五日散户资金净占比
+        EMRC_5DAY_CDDZJLR,   //五日超大单资金净流入
+        EMRC_5DAY_CDDZJZB,   //五日超大单资金净占比
+        EMRC_5DAY_DDZJLR,    //五日大单资金净流入
+        EMRC_5DAY_DDZJZB,    //五日大单资金净占比
+        EMRC_5DAY_ZDZJLR,    //五日中单资金净流入
+        EMRC_5DAY_ZDZJZB,    //五日中单资金净占比
+        EMRC_5DAY_XDZJLR,    //五日小单资金净流入
+        EMRC_5DAY_XDZJZB,    //五日小单资金净占比
+
+        EMRC_10DAY_ZLLR,      //十日主力资金净流入
+        EMRC_10DAY_ZLZB,      //十日主力资金净占比
+        EMRC_10DAY_SHLR,      //十日散户资金净流入
+        EMRC_10DAY_SHZB,      //十日散户资金净占比
+        EMRC_10DAY_CDDZJLR,   //十日超大单资金净流入
+        EMRC_10DAY_CDDZJZB,   //十日超大单资金净占比
+        EMRC_10DAY_DDZJLR,    //十日大单资金净流入
+        EMRC_10DAY_DDZJZB,    //十日大单资金净占比
+        EMRC_10DAY_ZDZJLR,    //十日中单资金净流入
+        EMRC_10DAY_ZDZJZB,    //十日中单资金净占比
+        EMRC_10DAY_XDZJLR,    //十日小单资金净流入
+        EMRC_10DAY_XDZJZB,    //十日小单资金净占比
+    };
+
+    enum E_DDERANK_SORT_COLUMN    //DDE排名排序列
+    {
+        E_DDERANK_CODE = 1,
+        E_DDERANK_NAME,
+        E_DDERANK_NOWPRICE,       //最新价
+        E_DDERANK_CHG,            //涨跌幅
+        E_DDERANK_TURNOVERRATE,   //换手率
+
+        E_DDERANK_DDX,        //DDX
+        E_DDERANK_DDY,        //DDY
+        E_DDERANK_DDZ,        //DDZ
+        E_DDERANK_DDF,        //DDF
+
+        E_DDERANK_DDX5,       //5日DDX
+        E_DDERANK_DDY5,       //5日DDY
+
+        E_DDERANK_DDX60,      //60日DDX
+        E_DDERANK_DDY60       //60日DDY
+    };
+    
+    enum E_STOCK_ORDER_TYPE	//挂单类型
+    {
+    	E_STOCK_SUPER_BUY = 0,		//顶级买单
+    	E_STOCK_SUPER_SELL = 1,		//顶级卖单
+    	E_STOCK_UP_STOP = 2,			//封涨停板
+    	E_STOCK_DOWN_STOP = 3,		//封跌停板
+    	E_STOCK_OPEN_UP_STOP = 4,	//打开涨停板
+    	E_STOCK_OPEN_DOWN_STOP = 5,		//打开跌停板
+    	E_STOCK_POST_LARGE_BUY = 6,		//大买盘
+    	E_STOCK_POST_LARGE_SELL = 7,	//大卖盘
+    	E_STOCK_SUPER_LARGE_BUY = 8,	//超大买单
+    	E_STOCK_SUPER_LARGE_SELL = 9,	//超大卖单
+    	E_STOCK_LARGE_BUY_IN = 14,			//大笔买入
+    	E_STOCK_LAGRGE_SELL_OUT = 15,	//大笔卖出
+    	E_STOCK_BUY_FEN_DAN = 16,			//拖拉机买
+    	E_STOCK_SELL_FEN_DAN = 17,			//拖拉机卖
+    	E_STOCK_ROCKET_RUSH = 22,			//火箭发射
+    	E_STOCK_QUICK_BUCKUP = 23,	    //快速反弹
+    	E_STOCK_HIGH_DIVING = 24,		//高台跳水
+    	E_STOCK_QUICK_DOWN = 25,		//加速下跌
+    	E_STOCK_CANCEL_BUY = 26,		//大笔撤买
+    	E_STOCK_CANCEL_SELL =27,		//大笔撤卖
+    };
+
+	enum E_SZFY_ORDER_TYPE
+	{
+		E_SZFY_TIMES = 0,
+		E_SZFY_VOL = 1,
+		E_SZFY_AMT = 2,
+	};
+
+    enum E_HQ_SORT_COLUMN  //分类行情数据排序列
+    {
+        E_HQ_COLUMN_CODE = 1,          //股票代码
+        E_HQ_COLUMN_NAME,              //股票名称
+        E_HQ_COLUMN_YCLOSE,            //昨收盘价
+        E_HQ_COLUMN_OPEN,              //开盘价
+        E_HQ_COLUMN_HIGH,              //最高价
+        E_HQ_COLUMN_LOW,               //最低价
+        E_HQ_COLUMN_NOWPRICE,          //现价
+        E_HQ_COLUMN_BUY,               //买价
+        E_HQ_COLUMN_SELL,              //卖价
+        E_HQ_COLUMN_VOLUME,            //成交量
+        E_HQ_COLUMN_AMOUNT,            //成交额
+        E_HQ_COLUMN_CURVOL,            //现手
+        E_HQ_COLUMN_CHANGE,            //涨跌值         
+        E_HQ_COLUMN_CHG,               //涨跌幅
+        E_HQ_COLUMN_AMPLITUDE,         //振幅
+        E_HQ_COLUMN_AVGPRICE,          //均价
+        E_HQ_COLUMN_PREOPENINTEREST,   //昨日持仓量
+        E_HQ_COLUMN_PRESETTLEMENTPRICE,//昨日结算价
+        E_HQ_COLUMN_OPENINTEREST,      //持仓量
+        E_HQ_COLUMN_TURNOVERRATE,      //换手率
+		//条件选股新增项
+		E_HQ_COLUMN_PERATIO,           //市盈率
+        E_HQ_COLUMN_TOTALMARKETVALUE,  //总市值
+        E_HQ_COLUMN_LIANGBI,           //量比
+        E_HQ_COLUMN_WEIBI,             //委比
+    };
+
+    enum E_AH_SORT_COLUMN      //AH股排序列
+    {
+        E_AH_PREMIUMRATE = 1,        //溢价率
+        E_AH_ACODE,
+        E_AH_ANAME,
+        E_AH_ANOWPRICE,              //现价
+        E_AH_ACHG,                   //涨跌幅
+        E_AH_ACURMARKETVALUE,				//流通市值
+        E_AH_ATURNOVERRATE,          //换手率
+        E_AH_ATOTALHAND,             //总手
+        E_AH_AOWNINDUSTRY,           //所属行业
+
+        E_AH_HCODE,
+        E_AH_HNAME,
+        E_AH_HNOWPRICE,               //现价
+        E_AH_HCHG,                    //涨跌幅
+        E_AH_HCURMARKETVALUE, //流通市值
+        E_AH_HTURNOVERRATE,           //换手率
+        E_AH_HTOTALHAND,              //总手
+        E_AH_HOWNINDUSTRY             //所属行业
+    };
+
+};

@@ -1,0 +1,88 @@
+﻿<% include ../common/header.ejs %>
+  <link href="/js/need/laydate.css" rel="stylesheet" type="text/css">
+  <link href="/js/skins/default/laydate.css" rel="stylesheet" type="text/css">
+  <title>优智投</title>
+</head>
+<body>
+<div class="main">
+  <!--  右侧主内容区 -->
+  <% include ../common/leftMenu.ejs %>
+  <div class="container">
+    <div class="switch switch_st">
+      <a href="/kline/kline.html" class="<%= pageData.active=='kline.html'?'on':'' %>">K线趋势预测</a>
+      <a href="/kline/custom" class="<%= pageData.active=='custom'?'on':'' %>">K线模式匹配</a>
+    </div>
+    <div class="line_cont">
+      <div class="line_top clearfix">
+        <% include ./search.ejs %>
+      </div>
+      <!-- K线模式匹配 -->
+      <div class="shares_match_wrap">
+        <h1 class="matched_shares_name" id="rt_quotes">
+          <span class="code"><%=pageData.code%></span>
+          <a class="name open_stock" v-text="name" data-stock-market="<%=pageData.market%>" data-stock-code="<%=pageData.code%>" href="javascript:;"></a>
+          <span>最新价<span class="num" :class="price|calColor" v-text="price"></span></span>
+          <span>涨跌<span class="num" :class="grow|calColor" v-text="grow"></span></span>
+          <span>涨幅<span class="num" :class="range|calColor" v-text="rangeView"></span></span>
+        </h1>
+        <div id="top-chart">
+          <div class="summary_condition_wrap">
+            <p class="tip">该股票未来5天内有85%的概率最高收益大于-0.6%</p>
+            <p class="shares_info_line_wrap">
+              预测收益率<span :class="lastPredictData.profit|calColor">{{lastPredictData.profit|percent}}</span>
+              预测上限<span :class="lastPredictData.ceil|calColor">{{lastPredictData.ceil|percent}}</span>
+              预测下限<span :class="lastPredictData.flor|calColor">{{lastPredictData.flor|percent}}</span>
+            </p>
+          </div>
+          <div class="icon_select_graph">
+            <span class="js_show_candle" :class="{active: active == 0}" @click="showCandle">K线</span>
+            <span class="js_show_poly" :class="{active: active == 1}" @click="showPoly">折线</span>
+          </div>
+          <div class="match_graph_wrap"></div>
+        </div>
+        <div id="match-pattern"></div>
+        <div id="match_result"></div>
+      </div>
+      <div id="samples"></div>
+    </div>
+  </div>
+</div>
+<div class="income_tip2" style="display:none;">
+  <p class="data">{{item.date}}</p>
+  <template v-if="item">
+    <template v-if="item.open != 0">
+      <p><span>最高价：</span><span>{{item.high|fix}}</span></p>
+      <p><span>最低价：</span><span>{{item.low|fix}}</span></p>
+      <p><span>开盘价：</span><span>{{item.open|fix}}</span></p>
+      <p><span>收盘价：</span><span>{{item.close|fix}}</span></p>
+    </template>
+    <template v-else>
+      <p><span>预测高点：</span><span>{{item.ceil|percent}}</span></p>
+      <p><span>预测低点：</span><span>{{item.flor|percent}}</span></p>
+      <p><span>预测收益率：</span><span>{{item.profit|percent}}</span></p>
+    </template>
+  </template>
+</div>
+<script>
+  var pageData = <%-JSON.stringify(pageData)%>
+  var clone = function(obj) {
+    return $.extend(true, {}, obj)
+  }
+
+  pageData.singlePredict.sample.klineList1 = pageData.singlePredict.sample.klineList.map(function(item) {return clone(item)})
+  pageData.singlePredict.sample.klineList2 = pageData.singlePredict.sample.klineList.map(function(item) {return clone(item)})
+  pageData.singlePredict.sample.klineList3 = pageData.singlePredict.sample.klineList.map(function(item) {return clone(item)})
+</script>
+<%include sample.ejs%>
+<script src="/js/match/highcharts.js"></script>
+<script src="/js/laydate.js"></script>
+<script src="/js/vue.js"></script>
+<%include ../common/searchBar.ejs%>
+<%-script('/js/jquery.jscrollpane.min.js')%>
+<%-script('/js/jquery.mousewheel.js')%>
+<script src="/js/utils.js"></script>
+<script src="/js/match/d3.v4.min.js"></script>
+<script src="/js/match/SampleChart.js"></script>
+<script src="/js/match/PredictChartMobile.js"></script>
+<script src="/js/match/customMatch.js"></script>
+<% include ../common/footer.ejs %>

@@ -1,0 +1,751 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个股资金</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+     <div class="menu" id="menu">
+          <div class="top">
+               <h1>优智投</h1>
+               <p class="status">状态：<span>365天到期</span></p>
+               <p class="type">类型：<a href="javascript:viod(0)">去测评 ></a></p>
+          </div>
+          <div class="index">
+               <a href="javascript:viod(0);">首页</a>
+          </div>
+          <div class="list">
+               <h3>大数据视点</h3>
+               <div class="lists">
+                    <div class="list_tow">市场关注</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">新闻龙虎榜</a>
+                         <a href="javascript:viod(0);">事件跟踪</a>
+                    </div>
+               </div>
+               <div class="lists">
+                    <div class="list_tow">机会热点</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">题材风口</a>
+                         <a href="javascript:viod(0);">行业热图</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box active">
+                         <a href="javascript:viod(0);">资金流向</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">龙虎榜单</a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">舆情牛股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+          </div>
+          <div class="list list2">
+               <h3>智能化决策</h3>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能诊股</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能选股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能操盘<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能Ｋ线<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能监控</a>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <!--  右侧主内容区 -->
+    <div class="container_auto">
+          <div class="switch" id="subject_switch">
+               <a href="javascript:viod(0)">行业资金</a>
+               <a href="javascript:viod(0)">题材资金</a>
+               <a href="javascript:viod(0)" class="on">个股资金</a>
+          </div>
+          <div class="subject">
+               <div class="time" id="time">
+                    <div class="time_section">
+                         <p class="sectioned">实时</p>
+                         <p>三日连续</p>
+                         <p>五日连续</p>
+                         <p>十日连续</p>
+                         <p class="reform"><img src="img/icon_reform.png">刷新</p>
+                    </div>
+               </div>     
+               <div class="fund_data stocks_data">
+                    <div class="table_head table_fix" id="table_head">
+                        <table>
+                            <thead id="EBT_A_HEAD">
+                            <tr>
+                                 <th><span>序号</th>
+                                 <th><span>股票代码</span></th>
+                                 <th><span>股票名称</span></th>
+                                 <!-- sorting降序 -->
+                                 <th class="sorting"><span>最新价</span></th>
+                                 <th><span>涨跌幅</span></th>
+                                 <!-- riseting升序 -->
+                                 <th class="riseting"><span>主力净流入</span></th>
+                                 <th><span>主力净占比</span></th>
+                                 <th class="riseting"><span>超大单净流入</span></th>
+                                 <th class="riseting"><span>超大单净占比</span></th>
+                                 <th><span>大单净流入</span></th>
+                                 <th><span>大单净占比</span></th>
+                                 <th><span>中单净流入</span></th>
+                                 <th><span>中单净占比</span></th>
+                                 <th><span>小单净流入</span></th>
+                                 <th><span>小单净占比</span></th>
+                            </tr>
+                          </thead>
+                        </table>
+                    </div>
+                    <table class="table2_mian table2_fix" id="EBT_A_BODY">
+                          <tbody>  
+                            <tr class="content_tr">
+                                 <td class="rank">121</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td class="flash_height1 low">89</td>
+                                 <td class="inflow flash_height2 low">-9999.99亿</td>
+                                 <td class="flash_height3">89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle flash_low2">9999.32 </td>
+                                 <td class="narrow height flash_low3">-10.00%</td>
+                                 <td class="inflow low flash_low1">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿元</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle flash_middle1">9999.32 </td>
+                                 <td class="narrow height flash_middle2">-10.00%</td>
+                                 <td class="inflow low flash_middle3">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿元</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿元</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿元</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿元</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿元</td>
+                                 <td>89</td>
+                            </tr>
+                            <tr class="content_tr">
+                                 <td class="rank">1</td>
+                                 <td class="t_code narrow">300466</td>
+                                 <td class="t_name narrow"><a href="javascript:viod(0)">广信材料</a></td>
+                                 <td class="narrow middle">9999.32 </td>
+                                 <td class="narrow height">-10.00%</td>
+                                 <td class="inflow low">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow middle">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                                 <td class="inflow">-9999.99亿</td>
+                                 <td>89</td>
+                            </tr>
+                         </tbody>
+                    </table>
+                    <div class="turn_page">
+                        <div class="btn_prev">上一页</div>
+                        <div class="pageindex active">1</div>
+                        <div class="pageindex">2</div>
+                        <div class="pageindex">3</div>
+                        <div class="pageindex">...</div>
+                        <div class="pageindex">99</div>
+                        <div class="btn_next">下一页</div>
+                    </div>
+               </div>
+          </div>
+        
+    </div>
+</div>     
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+    // $(".container").height($(window).height());
+    
+    //刷新转圈圈
+    $(".reform").click(function(){
+            $(this).addClass("reformed");
+    });
+
+    // var table = document.querySelector('table'),
+    //         thead = document.querySelector('thead');
+    //     var scrollEvent = function(){
+    //         var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+    //         if(table.offsetTop - scrollTop <= 0)
+    //         {
+    //           thead.style.position = 'fixed';
+    //           thead.style.top = '0';
+    //           if(table.offsetTop + parseInt(getComputedStyle(table).height) - scrollTop <= 0)
+    //           {
+    //             thead.style.position = 'absolute';
+    //           }
+    //         }
+    //         else{
+    //             thead.style.position = 'static';
+    //         }  
+    //     }
+    //     window.onscroll = scrollEvent;
+    
+    window.onscroll=function(){ 
+        var menu=document.getElementById("menu");
+        menu.style.top=document.body.scrollTop +'px';
+        var oDiv1=document.getElementsByClassName("switch")[0];
+        var oDiv2=document.getElementsByClassName("time")[0];
+        var oDiv3=document.getElementsByClassName("table_head")[0]; 
+        oDiv1.style.top=document.body.scrollTop +'px';
+        oDiv2.style.top=document.body.scrollTop + 24 +'px';  
+        oDiv3.style.top=document.body.scrollTop - 41 +'px';  
+    } 
+
+     // 菜单展开
+     $(".list_tow").click(function(){
+          $(this).toggleClass("open");
+          $(this).parent().find(".list_box").slideToggle();
+     });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<% include ../common/header %>
+<title><%=title%></title>
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+    <% include ../common/leftMenu %>
+    <!--  右侧测评试题 -->
+    <div class="content_test">
+        <div class="test_header">
+            <h3>投资风险测试</h3>
+            <p>亲爱的用户：</p>
+            <p>风险偏好和风险承受能力是影响投资的重要因素之一。不同的投资者由于多种原因的影响，其风险偏好和风险承受能力各不相同</p>
+            <p>为此，我们为您设计了一套科学的评估问卷，并对您的回答进行评分，从而对您的投资风格进行归类，并推荐与之匹配的智能投资组合。</p>
+        </div>
+        <div class="test_main">
+            <div class="list" attr-numRadio="<%=riskInfo.risk1%>">
+                <h3>1、请问您的年龄处于： </h3>
+                <div class="choice">
+                    <div class="length">
+                        <input type="radio" id="" name="risk1" value="2">
+                        <label name="" for="">30岁以下</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk1" value="6">
+                        <label name="" for="">31-40岁</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk1" value="7">
+                        <label name="" for="">41-50岁</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk1" value="4">
+                        <label name="" for="">51-60岁</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk1" value="1">
+                        <label name="" for="">61岁以上</label>
+                    </div>
+                </div>
+            </div>
+            <div class="list"  attr-numRadio="<%=riskInfo.risk2%>">
+                <h3>2、您的受教育程度：</h3>
+                <div class="choice">
+                    <div class="length">
+                        <input type="radio" id="" name="risk2" value="1">
+                        <label name="" for="">初中及以下</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk2" value="2">
+                        <label name="" for="">高中/中专</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk2" value="4">
+                        <label name="" for="">大专/本科</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk2" value="6">
+                        <label name="" for="">硕士及以上</label><br>
+                    </div>
+                </div>
+            </div>
+            <div class="list" attr-numRadio="<%=riskInfo.risk3%>">
+                <h3>3、您的年收入大概是： </h3>
+                <div class="choice">
+                    <div class="length">
+                        <input type="radio" id="" name="risk3" value="1">
+                        <label name="" for="">3万（含）以下</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk3" value="2">
+                        <label name="" for="">3万-8万（含）</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk3" value="4">
+                        <label name="" for="">8万-15万（含）</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk3" value="5">
+                        <label name="" for="">15万-30万（含）</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk3" value="6">
+                        <label name="" for="">30万以上</label>
+                    </div>
+                </div>
+            </div>
+            <div class="list" attr-numRadio="<%=riskInfo.risk4%>">
+                <h3>4、您用于股票投资的全部金额大概是：</h3>
+                <div class="choice">
+                    <div class="length">
+                        <input type="radio" id="" name="risk4" value="1">
+                        <label name="" for="">10万（含）以下</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk4" value="3">
+                        <label name="" for="">10万—50万（含）</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk4" value="5">
+                        <label name="" for="">50万-100万（含）</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk4" value="7">
+                        <label name="" for="">100万以上</label><br>
+                    </div>
+                </div>
+            </div>
+            <div class="list" attr-numRadio="<%=riskInfo.risk5%>">
+                <h3>5、您的投资经验可以概况为：</h3>
+                <div class="choice">
+                    <div class="line_feed">
+                        <input type="radio" id="" name="risk5" value="1">
+                        <label name="" for="">有限 ：除银行活期账户和定存款外，基本没有其他投资</label><br>
+                    </div>
+                    <div class="line_feed">
+                        <input type="radio" id="" name="risk5" value="2">
+                        <label name="" for="">一般 ：除活期账户和定存款外，我购买过基金、 保险等理财产品， 但还需要进一步的指导</label><br>
+                    </div>
+                    <div class="line_feed">
+                        <input type="radio" id="" name="risk5" value="4">
+                        <label name="" for="">丰富 ：我是一位有经验的投资者， 参与过股票、基金等产品的交易，并且倾向于自己做出投资决策</label><br>
+                    </div>
+                    <div class="line_feed">
+                        <input type="radio" id="" name="risk5" value="6">
+                        <label name="" for="">非常丰富 ：我是一位非常有经验的投资者，参与过权证、 期货或创业板等高风险产品的交易</label><br>
+                    </div>
+                </div>
+            </div>
+            <div class="list" attr-numRadio="<%=riskInfo.risk6%>">
+                <h3>6、您投资最主要用于什么目的：</h3>
+                <div class="choice">
+                    <div class="length">
+                        <input type="radio" id="" name="risk6" value="1">
+                        <label name="" for="">养老</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk6" value="2">
+                        <label name="" for="">子女教育</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk6" value="4">
+                        <label name="" for="">大额消费计划 </label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk6" value="5">
+                        <label name="" for="">资产保值</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk6" value="6">
+                        <label name="" for="">资产增值，即钱生钱</label><br>
+                    </div>
+                </div>
+            </div>
+            <div class="list" attr-numRadio="<%=riskInfo.risk7%>">
+                <h3>7、假如您前期用25元购入一只股票，该股现在升到30元，而根据预测该股近期有一半机会升到35元，另一半机会跌到25元，您现在会： </h3>
+                <div class="choice">
+                    <div class="length">
+                        <input type="radio" id="" name="risk7" value="1">
+                        <label name="" for="">立刻卖出</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk7" value="3">
+                        <label name="" for="">部分卖出</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk7" value="5">
+                        <label name="" for="">继续持有</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk7" value="7">
+                        <label name="" for="">继续买入</label><br>
+                    </div>
+                </div>
+            </div>
+            <div class="list" attr-numRadio="<%=riskInfo.risk8%>">
+                <h3>8、同上题情况，该股现在已经跌到20元，而您估计该股近期有一半机会升回25元，另一半机会继续下跌到15元，您现在会：</h3>
+                <div class="choice">
+                    <div class="length">
+                        <input type="radio" id="" name="risk8 " value="1">
+                        <label name="" for="">立刻卖出</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk8 " value="3">
+                        <label name="" for="">部分卖出</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk8 " value="5">
+                        <label name="" for="">继续持有</label><br>
+                    </div>
+                    <div class="length">
+                        <input type="radio" id="" name="risk8 " value="7">
+                        <label name="" for="">继续买入</label><br>
+                    </div>
+                </div>
+            </div>
+            <button id="sub_btn" class="sub_btn sub_btned">提交</button>
+        </div>
+        <!-- 网络错误提示框 -->
+        <div class="cover" id="errorInfo">
+            <div class="pop_err">
+                <div class="btn_colse"></div>
+                <p>因网络传输原因，评测未成功！</p>
+                <button>重新测评</button>
+            </div>
+        </div>
+    </div>
+</div>
+<%-script('/js/risk-index.js')%>
+<% include ../common/footer %>

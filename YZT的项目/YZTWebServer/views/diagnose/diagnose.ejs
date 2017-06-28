@@ -1,0 +1,233 @@
+<% include ../common/header.ejs %>
+  <title>优智投</title>
+</head>
+<body>
+<div class="main">
+  <!-- 左侧菜单 -->
+  <% include ../common/leftMenu.ejs %>
+  <!--  右侧主内容区 -->
+  <div class="container">
+    <div class="clinic_cont clinic_auto">
+      <!--  搜索区 -->
+      <div class="search_top clear" id="searchWrap">
+        <search-bar search-btn-text="一键诊股" @select="handleSelect"></search-bar>
+        <form action="/diagnose/stock" method="get">
+          <input type="hidden" name="code" :value="code">
+          <input type="hidden" name="market" :value="market">
+        </form>
+      </div>
+      <!-- 投顾股票信息 -->
+      <div class="stock_info">
+        <div class="left">
+          <div class="name">
+            <span><%=stockDiagnosis.name%></span>
+            <span><%=stockDiagnosis.code%></span>
+          </div>
+          <p>
+            <span class="condition_item">最新价</span>
+            <span class="condition_num <%=calColor(stockDiagnosis.price)%>"><%=stockDiagnosis.price%></span>
+          </p>
+          <p>
+            <span class="condition_item">涨跌</span>
+            <span class="condition_num <%=calColor(stockDiagnosis.zd)%>"><%=stockDiagnosis.zd%></span>
+          </p>
+          <p>
+            <span class="condition_item">涨幅</span>
+            <span class="condition_num <%=calColor(stockDiagnosis.zdf)%>"><%=stockDiagnosis.zdf%>%</span>
+          </p>
+          <div class="level">
+            <p>综合评级</p>
+            <span class="rate_bar">
+              <span class="rate-stars level<%=stockDiagnosis.starLevel%>"></span>
+            </span>
+          </div>
+        </div>
+        <div class="right">
+          <% if (isStop) {%>
+          <p class="suspension">*该股票已停牌，诊断结果有较大不确定性。 </p>
+          <% } %>
+          <p>短线建议：<%=stockDiagnosis.shortRec%></p>
+          <p>中长线建议：<%=stockDiagnosis.midLongRec%></p>
+        </div>
+      </div>
+      <!--  上涨概率 -->
+      <div class="result_type">
+        <div class="title">
+          <p>上涨概率</p>
+        </div>
+        <% if (isStop) {%>
+        <div class="result_none"><p>-暂无数据-</p></div>
+        <%} else {%>
+        <div class="result_cont">
+          <p class="result_info">1日上涨概率为<%=percent(stockDiagnosis.stockPredict.upprob)%>，5日上涨概率为<%=percent(stockDiagnosis.stockPredict.upprob5)%>，其中1日波动高点为<%=stockDiagnosis.stockPredict.flucCeil.toFixed(2)%>，波动低点位<%=stockDiagnosis.stockPredict.flucFlor.toFixed(2)%>，5日波动高点为<%=stockDiagnosis.stockPredict.flucCeil5.toFixed(2)%>，波动低点为<%=stockDiagnosis.stockPredict.flucFlor5.toFixed(2)%>。</p>
+          <div class="details">
+            <div class="rise_box">
+              <p>上涨概率</p>
+              <div class="rise_chart" style="background: transparent;"></div>
+            </div>
+            <div class="progress_box">
+              <p class="sub_tit">波动区间</p>
+              <div class="info_box">
+                <p class="left_price"><%=stockDiagnosis.stockPredict.flucFlor.toFixed(2)%></p>
+                <p class="right_price"><%=stockDiagnosis.stockPredict.flucCeil.toFixed(2)%></p>
+              </div>
+              <div class="progress">
+                <div class="low" id="js_low_block"></div>
+                <div class="height"></div>
+                <div class="pointer" id="js_wave_pointer"><%=stockDiagnosis.stockPredict.flucPrice.toFixed(2)%></div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <%}%>
+      </div>
+      <!--价格趋势-->
+      <div class="result_type">
+        <div class="title">
+          <p>量价趋势</p>
+        </div>
+        <% if (isStop) {%>
+        <div class="result_none"><p>-暂无数据-</p></div>
+        <%} else {%>
+        <div class="result_cont">
+          <p class="result_info"><%=stockDiagnosis.priceMacFac%></p>
+          <div class="details">
+            <div class="imgafter">
+              <img src="/img/pic_meter.png" alt="">
+              <div class="arror"></div>
+              <p>压力位<span><%=stockDiagnosis.highPrice.toFixed(2)%></span>，支撑位<span><%=stockDiagnosis.lowPrice.toFixed(2)%></span></p>
+            </div>
+          </div>
+        </div>
+        <%}%>
+      </div>
+      <!--资金流向分析-->
+      <div class="result_type funds_type">
+        <div class="title">
+          <p>资金流向</p>
+        </div>
+        <% if (isStop) {%>
+        <div class="result_none"><p>-暂无数据-</p></div>
+        <% } else { %>
+        <div class="result_cont">
+          <p class="result_info"><%=stockDiagnosis.amountMacFac%></p>
+          <div class="details">
+            <div class="top_chart">
+              <div class="left">
+                <p>主力</p>
+                <div class="main_chart" style="background-color: transparent"></div>
+              </div>
+              <div class="right">
+                <p>散户</p>
+                <div class="retail_chart" style="background-color: transparent"></div>
+              </div>
+            </div>
+            <div class="bottom_data">
+              <div class="buy_plate">
+                <span>买盘</span>
+                <span><span class="legend height"></span><strong><%=formatMoney(stockDiagnosis.zlBuy)%></strong></span>
+                <span><span class="legend height"></span><strong><%=formatMoney(stockDiagnosis.shBuy)%></strong></span>
+              </div>
+              <div>
+                <span>卖盘</span>
+                <span><span class="legend low"></span><strong><%=formatMoney(stockDiagnosis.zlSell)%></strong></span>
+                <span><span class="legend low"></span><strong><%=formatMoney(stockDiagnosis.shSell)%></strong></span>
+              </div>
+              <div class="sell_plate">
+                <span>净买</span>
+                <span><strong class="<%=calColor(stockDiagnosis.zlNavBuy)%>"><%=formatMoney(stockDiagnosis.zlNavBuy)%></strong></span>
+                <span><strong class="<%=calColor(stockDiagnosis.shNavBuy)%>"><%=formatMoney(stockDiagnosis.shNavBuy)%></strong></span>
+              </div>
+              <div>
+                <span>占比</span>
+                <span><strong><%=percent(stockDiagnosis.zlPer)%></strong></span>
+                <span><strong><%=percent(stockDiagnosis.shPer)%></strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <% } %>
+      </div>
+      <!--财务状况-->
+      <div class="result_type ability_type">
+        <div class="title">
+          <p>财务状况</p>
+        </div>
+        <div class="result_cont">
+          <p class="result_info"><%=stockDiagnosis.financeMacFac%></p>
+          <div class="details">
+            <div class="ability lever<%=stockDiagnosis.starLevel%>"></div>
+          </div>
+        </div>
+      </div>
+      <!--价值评估-->
+      <div class="result_type assess_type">
+        <div class="title">
+          <p>价值评估</p>
+        </div>
+        <div class="result_cont">
+          <p class="result_info"><%=stockDiagnosis.valueMacFac%></p>
+          <div class="details">
+            <p class="sub_tit">近3个月评级</p>
+            <div class="grade_box">
+              <img src="/img/pic_line.png">
+              <div class="tag lever<%=stockDiagnosis.ss%>"></div>
+            </div>
+            <div class="assess_chart" style="background: transparent;"></div>
+          </div>
+        </div>
+      </div>
+      <!--交易人气-->
+      <div class="result_type market_type">
+        <div class="title">
+          <p>交易人气</p>
+        </div>
+        <div class="result_cont">
+          <p class="result_info"><%=stockDiagnosis.dealMacFac%></p>
+          <div class="details">
+            <div class="scale_box">
+              <div class="scale_cover"></div>
+              <div class="scale_bg_top"></div>
+              <div class="scale_bg_middle">
+                <div class="scale_bg"></div>
+              </div>
+              <div class="scale_bg_bottom"></div>
+            </div>
+            <div class="scale_info">
+              <div class="legend">
+                <p>
+                  <span class="height"></span>
+                  <span>交易狂热</span>
+                </p>
+                <p>
+                  <span class="low"></span>
+                  <span>逐步活跃</span>
+                </p>
+                <p>
+                  <span class="middle"></span>
+                  <span>人气低迷</span>
+                </p>
+              </div>
+              <div class="info_box">
+                <p>昨日人气<span><%=stockDiagnosis.yesterdayHot.toFixed(2)%></span></p>
+                <p>今日人气<span><%=stockDiagnosis.todayHot.toFixed(2)%></span></p>
+                <%
+                var statusTexts = {1: '低迷', 2: '常态', 3: '狂热'}
+                %>
+                <p>交易状态<span class="height"><%=statusTexts[stockDiagnosis.dealStatus]%></span></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="/js/match/d3.v4.min.js"></script>
+<script src="/js/vue.js"></script>
+<% include ../common/searchBar.ejs %>
+<script type="text/javascript">
+  var stockDiagnosis = <%-JSON.stringify(stockDiagnosis)%>;
+</script>
+<script src="/js/diagnose/diagnose.js"></script>
+<% include ../common/footer.ejs %>

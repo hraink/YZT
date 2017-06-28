@@ -1,0 +1,254 @@
+module Strategy
+{
+      //策略分类
+      enum StgyCategory
+      {
+            Recommend = 1,      //推荐策略
+            LimitUp = 2,        //涨停宝
+            Leading = 3,        //龙头战法
+            FundCode = 4,       //资金密码
+            Trends=5            //舆情动向
+      };
+
+      //策略基本信息
+      struct StgyInfo
+      {
+          0  require  string stgyCode;      //策略代码
+          1  require  string stgyName;      //策略名称
+          2  optional string stgyStyle;     //策略风格
+          3  optional string instruction;   //策略说明   --优智投项目中不使用此说明
+          4  optional string creator;       //策略提供者
+          5  optional double winLine;       //策略止盈线
+          6  optional double lossLine;      //策略止损线
+          7  optional string stgyVane;      //策略风向  强势，震荡 弱势
+          8  optional double maxRise;       //策略最高涨幅（平均涨幅）
+          9  optional double maxRiseWinRate;//策略最高涨幅的胜率
+          10 optional int    maxRiseHolder; //策略最高涨幅的持股天数
+          11 optional double winRate;       //策略最高胜率（胜率）
+          12 optional double winRateMaxRise;//策略最高胜率的涨幅
+          13 optional int    winRateHolder; //策略最高胜率的只顾天数
+          14 optional string beginCalcDate; //策略起始评测日期
+          15 optional string endCalcDate;   //策略截止评测日期
+          16 optional string newChooseDate; //策略最新选股日期
+          17 optional int    newChooseNum;  //策略最新选股数量
+          18 optional double loopBack;      //策略回撤线
+          19 optional string reviewDesc;    //策略评测说明
+          20 optional string pic;           //策略缩略图
+          21 optional string instruction_new; //策略说明   优智投项目使用说明
+          22 optional StgyCategory stgyCategory;//策略分类
+      };
+
+      //策略选股信息
+      struct ChooseStock
+      {
+         0 require string stockCode;//股票代码
+         1 require string stockName;//股票名称
+         2 require int    market;   //股票所属市场   0=深圳 1=上海
+         3 optional double price;    //入选价格
+         4 optional double maxRise;  //最高涨幅
+         5 optional double dayRise;  //当日涨幅
+      };
+
+      //策略近期战绩信息
+      struct TopStock
+      {
+         0 require string stockCode;//股票代码
+         1 require string stockName;//股票名称
+         2 require int    market;      //股票所属市场   0=深圳 1=上海
+         3 optional string chooseDate;//入选日期
+         4 optional double maxRise;  //最高涨幅
+         5 optional double nextDayRise;  //次日涨幅
+         6 optional string stgyCode;//策略代码
+         7 optional string stgyName;//策略名称
+         8 optional StgyCategory stgyCategory;//策略分类
+      };
+
+      //最优策略战绩（策略点金）
+      struct OptiStock
+      {
+          0 require string stockCode;//股票代码
+          1 require string stockName;//股票名称
+          2 require int    market;      //股票所属市场   0=深圳 1=上海
+          3 optional string chooseDate;//入选日期
+          4 optional int flag;        //入选模块  1=黄金B点 2=共赢共振 3=明星策略
+          5 optional double highIncrease; //最高涨幅
+          6 optional double nextIncrease;//次日涨幅
+          7 optional double fiveDayIncrease;//5日涨幅
+          8 optional double tenDayIncrease;//10日涨幅
+      };
+
+      //策略列表查询响应结果
+      struct StgyInfoRsp
+      {
+          0 require int iRet;     //响应状态    0：正常   otherwise: 错误
+          1 optional string iMsg; //错误消息
+          2 optional vector<StgyInfo> stgyInfoList; //策略列表
+      };
+
+      //策略入选股票请求参数
+      struct ChooseStockReq
+      {
+          0 require string stgyCode;      //策略代码
+          1 require string chooseDate;    //入选日期   yyyymmdd  eg： 20170108
+      };
+
+      //策略入选股票响应结果
+      struct ChooseStockRsp
+      {
+          0 require int iRet;     //响应状态    0：正常   otherwise: 错误
+          1 optional string iMsg; //错误消息
+          2 optional vector<ChooseStock> chooseStockList; //策略入选股列表
+      };
+
+       //策略近期战绩响应结果
+       struct TopStockRsp
+       {
+          0 require int iRet;     //响应状态    0：正常   otherwise: 错误
+          1 optional string iMsg; //错误消息
+          2 optional vector<TopStock> topStockList; //战绩股票列表
+       };
+
+       //策略近期战绩响应结果
+       struct OptiStockRsp
+       {
+          0 require int iRet;     //响应状态    0：正常   otherwise: 错误
+          1 optional string iMsg; //错误消息
+          2 optional vector<OptiStock> optiStockList; //最优策略战绩股票列表
+       };
+
+
+      //明星股 潜力股
+      struct StockStar
+      {
+          0 require string code;  //股票代码
+          1 require string name;  //股票名称
+          2 require int market;   //股票所属市场   0=深圳 1=上海
+          3 optional double price; //现价
+          4 optional double zdf; //涨跌幅
+          5 optional int starLevel; //综合评分（透视结果）
+          6 optional string industry;//所属行业名
+      };
+
+      struct StockStarReq
+      {
+          0 require int type;    // 0:全部（明星股+潜力股）   1：明星股  2：潜力股
+      };
+
+      //明星股 潜力股响应结果
+      struct StockStarRsp
+      {
+          0 require int iRet;     //响应状态    0：正常   otherwise: 错误
+          1 optional string iMsg; //错误消息
+          2 optional vector<StockStar> stockStarList; //明星股 潜力股列表
+      };
+
+      struct StockPredict
+      {
+         0 optional double upprob;    //上涨概率
+         1 optional double flucFlor;  //预测低点
+         2 optional double flucCeil;  //预测高点
+         3 optional double flucPrice; //预期价
+
+         4 optional double upprob5;    //5日上涨概率
+         5 optional double flucFlor5;  //5日预测低点
+         6 optional double flucCeil5;  //5日预测高点
+         7 optional double flucPrice5; //5日预期价
+
+         8 optional double upprob10;    //10日上涨概率
+         9 optional double flucFlor10;  //10日预测低点
+         10 optional double flucCeil10;  //10日预测高点
+         11 optional double flucPrice10; //10日预期价
+
+         12 optional double upprob20;    //20日上涨概率
+         13 optional double flucFlor20;  //20日预测低点
+         14 optional double flucCeil20;  //20日预测高点
+         15 optional double flucPrice20; //20日预期价
+      };
+
+      struct StockDiagnosis
+      {
+         0 require string code;  //股票代码
+         1 require string name;  //股票名称
+         2 require int market;   //股票所属市场   0=深圳 1=上海
+         3 optional double price; //现价
+         4 optional double zd;//涨跌
+         5 optional double zdf;//涨跌幅
+         6 optional int starLevel;//综合评级
+         7 optional string shortRec;//短线建议
+         8 optional string midLongRec;//中长线建议
+
+         9 optional string priceDisFac;//价量趋势描述语
+         10 optional string priceMacFac;//价量趋势机器语
+         11 optional string amountDisFac;//资金流向描述语
+         12 optional string amountMacFac;//资金流向机器语
+         13 optional string financeDisFac;//财务状况描述语
+         14 optional string financeMacFac;//财务状况机器语
+         15 optional string valueDisFac;//价值评估描述语
+         16 optional string valueMacFac;//价值评估机器语
+         17 optional string dealDisFac;//交易人气描述语
+         18 optional string dealMacFac;//交易人气机器语
+
+         19 optional StockPredict stockPredict;//股价预测
+
+
+         20 optional int level;  //财务状况等级    1:优质级  2:稳健级 3:风险级 4:倒闭级
+
+         21 optional double todayHot;//今日人气 买卖人气
+         22 optional double yesterdayHot;//昨日人气
+         23 optional int dealStatus;    //交易状态    1:低迷 2:常态 3:狂热
+
+         24 optional double ss; //近三月机构评级系数
+         25 optional int bon;//买入研报数
+         26 optional int ion;//增持研报数
+         27 optional int non;//中性研报数
+         28 optional int ron;//减持研报数
+         29 optional int son;//卖出研报数
+         30 optional int on;//合计研报数
+
+         31 optional double  zlBuy; //主力买盘 = 超大单入+大宗入
+         32 optional double  zlSell; //主力卖盘 = 超大单出+大宗出
+         33 optional double  zlNavBuy;//主力净买 = 主力买盘-主力卖盘
+         34 optional double  zlPer; //主力占比 = 主力净买/（主力买盘+主力卖盘+散户卖盘+散户买盘）
+         35 optional double  shBuy;//散户买盘 = 中单入+小单入
+         36 optional double  shSell;//散户卖盘 = 中单单出+小单出
+         37 optional double  shNavBuy;//散户净买 = 散户买盘-散户卖盘
+         38 optional double  shPer;//散户占比 = 散户净买/（主力买盘+主力卖盘+散户卖盘+散户买盘）
+
+         39 optional double lowPrice;  //支撑位
+         40 optional double highPrice; //压力位
+         41 optional double trend;  //趋势强弱
+      };
+
+      struct StockDiagnosisReq
+      {
+         0 require string code; //股票代码
+         1 require int market;  //股票所属市场   0=深圳 1=上海
+      };
+
+      struct StockDiagnosisRsp
+      {
+         0 require  int iRet;     //响应状态    0：正常   otherwise: 错误
+         1 optional string iMsg; //错误消息
+         2 optional StockDiagnosis stockDiagnosis; //诊股数据
+      };
+
+      interface StrategyInterf
+      {
+        //核心金股池
+        int getPerfectStock(out TopStockRsp topStockRsp);
+        //精品策略
+        int getTopStgyInfoList(out StgyInfoRsp stgyInfoRsp);
+        //查询策略分类列表
+        int getStgyInfoList(StgyCategory stgyCategory,out StgyInfoRsp stgyInfoRsp);
+        //查询策略每日入选股票
+        int getChooseStock(ChooseStockReq chooseStockReq,out ChooseStockRsp chooseStockRsp);
+        //查询策略近期战绩（近三月牛股）
+        int getTopStock(string stgyCode,out TopStockRsp topStockRsp);
+        //查询智能操盘（最优策略战绩）
+        int getOptiStock(out OptiStockRsp optiStockRsp);
+        //查询明星股 潜力股
+        int getStockStar(StockStarReq stReq,out StockStarRsp stRsp);
+        //诊股详细数据
+        int getStockDiagnosis(StockDiagnosisReq stReq,out StockDiagnosisRsp stRsp);
+      };
+};

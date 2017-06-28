@@ -1,0 +1,13 @@
+# Created by .ignore support plugin (hsz.mobi)
+
+.DS_Store
+
+#idea
+/.idea
+*.iml
+.idea
+#node_modules
+/node_modules
+#vscode
+.vscode
+/jce/app_risk.js

@@ -1,0 +1,2064 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<transformation>
+  <info>
+    <name>stgy_ktr_19</name>
+    <description/>
+    <extended_description/>
+    <trans_version/>
+    <trans_type>Normal</trans_type>
+    <trans_status>0</trans_status>
+    <directory>&#x2f;</directory>
+    <parameters>
+    </parameters>
+    <log>
+<trans-log-table><connection/>
+<schema/>
+<table/>
+<size_limit_lines/>
+<interval/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STATUS</id><enabled>Y</enabled><name>STATUS</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name><subject/></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name><subject/></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name><subject/></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name><subject/></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name><subject/></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name><subject/></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>STARTDATE</id><enabled>Y</enabled><name>STARTDATE</name></field><field><id>ENDDATE</id><enabled>Y</enabled><name>ENDDATE</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>DEPDATE</id><enabled>Y</enabled><name>DEPDATE</name></field><field><id>REPLAYDATE</id><enabled>Y</enabled><name>REPLAYDATE</name></field><field><id>LOG_FIELD</id><enabled>Y</enabled><name>LOG_FIELD</name></field><field><id>EXECUTING_SERVER</id><enabled>N</enabled><name>EXECUTING_SERVER</name></field><field><id>EXECUTING_USER</id><enabled>N</enabled><name>EXECUTING_USER</name></field><field><id>CLIENT</id><enabled>N</enabled><name>CLIENT</name></field></trans-log-table>
+<perf-log-table><connection/>
+<schema/>
+<table/>
+<interval/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>SEQ_NR</id><enabled>Y</enabled><name>SEQ_NR</name></field><field><id>LOGDATE</id><enabled>Y</enabled><name>LOGDATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>INPUT_BUFFER_ROWS</id><enabled>Y</enabled><name>INPUT_BUFFER_ROWS</name></field><field><id>OUTPUT_BUFFER_ROWS</id><enabled>Y</enabled><name>OUTPUT_BUFFER_ROWS</name></field></perf-log-table>
+<channel-log-table><connection/>
+<schema/>
+<table/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>LOGGING_OBJECT_TYPE</id><enabled>Y</enabled><name>LOGGING_OBJECT_TYPE</name></field><field><id>OBJECT_NAME</id><enabled>Y</enabled><name>OBJECT_NAME</name></field><field><id>OBJECT_COPY</id><enabled>Y</enabled><name>OBJECT_COPY</name></field><field><id>REPOSITORY_DIRECTORY</id><enabled>Y</enabled><name>REPOSITORY_DIRECTORY</name></field><field><id>FILENAME</id><enabled>Y</enabled><name>FILENAME</name></field><field><id>OBJECT_ID</id><enabled>Y</enabled><name>OBJECT_ID</name></field><field><id>OBJECT_REVISION</id><enabled>Y</enabled><name>OBJECT_REVISION</name></field><field><id>PARENT_CHANNEL_ID</id><enabled>Y</enabled><name>PARENT_CHANNEL_ID</name></field><field><id>ROOT_CHANNEL_ID</id><enabled>Y</enabled><name>ROOT_CHANNEL_ID</name></field></channel-log-table>
+<step-log-table><connection/>
+<schema/>
+<table/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>TRANSNAME</id><enabled>Y</enabled><name>TRANSNAME</name></field><field><id>STEPNAME</id><enabled>Y</enabled><name>STEPNAME</name></field><field><id>STEP_COPY</id><enabled>Y</enabled><name>STEP_COPY</name></field><field><id>LINES_READ</id><enabled>Y</enabled><name>LINES_READ</name></field><field><id>LINES_WRITTEN</id><enabled>Y</enabled><name>LINES_WRITTEN</name></field><field><id>LINES_UPDATED</id><enabled>Y</enabled><name>LINES_UPDATED</name></field><field><id>LINES_INPUT</id><enabled>Y</enabled><name>LINES_INPUT</name></field><field><id>LINES_OUTPUT</id><enabled>Y</enabled><name>LINES_OUTPUT</name></field><field><id>LINES_REJECTED</id><enabled>Y</enabled><name>LINES_REJECTED</name></field><field><id>ERRORS</id><enabled>Y</enabled><name>ERRORS</name></field><field><id>LOG_FIELD</id><enabled>N</enabled><name>LOG_FIELD</name></field></step-log-table>
+<metrics-log-table><connection/>
+<schema/>
+<table/>
+<timeout_days/>
+<field><id>ID_BATCH</id><enabled>Y</enabled><name>ID_BATCH</name></field><field><id>CHANNEL_ID</id><enabled>Y</enabled><name>CHANNEL_ID</name></field><field><id>LOG_DATE</id><enabled>Y</enabled><name>LOG_DATE</name></field><field><id>METRICS_DATE</id><enabled>Y</enabled><name>METRICS_DATE</name></field><field><id>METRICS_CODE</id><enabled>Y</enabled><name>METRICS_CODE</name></field><field><id>METRICS_DESCRIPTION</id><enabled>Y</enabled><name>METRICS_DESCRIPTION</name></field><field><id>METRICS_SUBJECT</id><enabled>Y</enabled><name>METRICS_SUBJECT</name></field><field><id>METRICS_TYPE</id><enabled>Y</enabled><name>METRICS_TYPE</name></field><field><id>METRICS_VALUE</id><enabled>Y</enabled><name>METRICS_VALUE</name></field></metrics-log-table>
+    </log>
+    <maxdate>
+      <connection/>
+      <table/>
+      <field/>
+      <offset>0.0</offset>
+      <maxdiff>0.0</maxdiff>
+    </maxdate>
+    <size_rowset>10000</size_rowset>
+    <sleep_time_empty>50</sleep_time_empty>
+    <sleep_time_full>50</sleep_time_full>
+    <unique_connections>N</unique_connections>
+    <feedback_shown>Y</feedback_shown>
+    <feedback_size>50000</feedback_size>
+    <using_thread_priorities>Y</using_thread_priorities>
+    <shared_objects_file/>
+    <capture_step_performance>N</capture_step_performance>
+    <step_performance_capturing_delay>1000</step_performance_capturing_delay>
+    <step_performance_capturing_size_limit>100</step_performance_capturing_size_limit>
+    <dependencies>
+    </dependencies>
+    <partitionschemas>
+    </partitionschemas>
+    <slaveservers>
+    </slaveservers>
+    <clusterschemas>
+    </clusterschemas>
+  <created_user>-</created_user>
+  <created_date>2016&#x2f;07&#x2f;09 09&#x3a;34&#x3a;40.611</created_date>
+  <modified_user>-</modified_user>
+  <modified_date>2016&#x2f;07&#x2f;09 09&#x3a;34&#x3a;40.611</modified_date>
+    <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA&#x3d;</key_for_session_key>
+    <is_key_private>N</is_key_private>
+  </info>
+  <notepads>
+    <notepad>
+      <note>&#x7b56;&#x7565;&#x57fa;&#x672c;&#x4fe1;&#x606f;  &#x65e5;&#x66f4; 18&#x3a;00-19&#x3a;00 &#x6267;&#x884c;</note>
+      <xloc>1073</xloc>
+      <yloc>28</yloc>
+      <width>213</width>
+      <heigth>26</heigth>
+      <fontname>&#x5fae;&#x8f6f;&#x96c5;&#x9ed1;</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x7b56;&#x7565;&#x5165;&#x9009;&#x80a1; &#x6bcf;&#x65e5;&#x76d8;&#x540e;&#x66f4;&#x65b0;  18&#x3a;00-19&#x3a;00 &#x6267;&#x884c;</note>
+      <xloc>98</xloc>
+      <yloc>20</yloc>
+      <width>249</width>
+      <heigth>26</heigth>
+      <fontname>&#x5fae;&#x8f6f;&#x96c5;&#x9ed1;</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x6700;&#x4f18;&#x7b56;&#x7565; &#x7b56;&#x7565;&#x70b9;&#x91d1;  &#x6bcf;&#x65e5;&#x76d8;&#x540e;&#x66f4;&#x65b0; &#x65e5;&#x66f4; 18&#x3a;00-19&#x3a;00 &#x6267;&#x884c;</note>
+      <xloc>610</xloc>
+      <yloc>15</yloc>
+      <width>317</width>
+      <heigth>26</heigth>
+      <fontname>&#x5fae;&#x8f6f;&#x96c5;&#x9ed1;</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x5927;&#x76d8;&#x98ce;&#x5411; &#x4ed3;&#x4f4d;&#x6570;&#x636e; &#x6bcf;&#x65e5;&#x76d8;&#x540e;&#x66f4;&#x65b0;  &#x65e5;&#x66f4; 18&#x3a;00-19&#x3a;00 &#x6267;&#x884c;</note>
+      <xloc>43</xloc>
+      <yloc>255</yloc>
+      <width>317</width>
+      <heigth>26</heigth>
+      <fontname>&#x5fae;&#x8f6f;&#x96c5;&#x9ed1;</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x6bcf;&#x65e5;&#x4e2a;&#x80a1;&#x70ed;&#x5ea6;&#x8868;&#x53d6;&#x8fd1;20&#x65e5; &#x6bcf;&#x65e5;&#x76d8;&#x540e;&#x66f4;&#x65b0; &#x65e5;&#x66f4; 18&#xff1a;00-19&#xff1a;00&#x6267;&#x884c;</note>
+      <xloc>576</xloc>
+      <yloc>492</yloc>
+      <width>361</width>
+      <heigth>26</heigth>
+      <fontname>&#x5fae;&#x8f6f;&#x96c5;&#x9ed1;</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x667a;&#x80fd;&#x8bca;&#x80a1; &#x8bca;&#x80a1;&#x8be6;&#x7ec6;&#x9875; &#x4e2a;&#x80a1;&#x8fd1;&#x4e09;&#x4e2a;&#x6708;&#x673a;&#x6784;&#x8bc4;&#x7ea7; &#x65e5;&#x66f4; 18&#xff1a;00-19&#xff1a;00&#x6267;&#x884c;</note>
+      <xloc>52</xloc>
+      <yloc>496</yloc>
+      <width>387</width>
+      <heigth>26</heigth>
+      <fontname>&#x5fae;&#x8f6f;&#x96c5;&#x9ed1;</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+    <notepad>
+      <note>&#x667a;&#x80fd;&#x8bca;&#x80a1; &#x4e5d;&#x5bab;&#x56fe;&#x6570;&#x636e;&#xd;&#xa;&#x65e5;&#x66f4;&#xd;&#xa;&#x8d8b;&#x52bf;&#x5b89;&#x5168;_&#x652f;&#x6491;&#x538b;&#x529b;  &#x8d44;&#x91d1;&#x6d41;&#x5411;  &#x8d22;&#x52a1;&#x8bc4;&#x5206;_&#x4e5d;&#x5bab;&#x56fe; &#x4e70;&#x5356;&#x4eba;&#x6c14;_&#x4e5d;&#x5bab;&#x56fe; 18&#x3a;00-19&#x3a;00 &#x6267;&#x884c;</note>
+      <xloc>551</xloc>
+      <yloc>267</yloc>
+      <width>456</width>
+      <heigth>58</heigth>
+      <fontname>&#x5fae;&#x8f6f;&#x96c5;&#x9ed1;</fontname>
+      <fontsize>9</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
+  </notepads>
+  <connection>
+    <name>mysql-conn</name>
+    <server>&#x24;&#x7b;ipm&#x7d;</server>
+    <type>MYSQL</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;sidm&#x7d;</database>
+    <port>&#x24;&#x7b;portm&#x7d;</port>
+    <username>&#x24;&#x7b;unm&#x7d;</username>
+    <password>&#x24;&#x7b;pwm&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>EXTRA_OPTION_MYSQL.defaultFetchSize</code><attribute>500</attribute></attribute>
+      <attribute><code>EXTRA_OPTION_MYSQL.useCursorFetch</code><attribute>true</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;portm&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>STREAM_RESULTS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <connection>
+    <name>oracle-conn</name>
+    <server>&#x24;&#x7b;ipo&#x7d;</server>
+    <type>ORACLE</type>
+    <access>Native</access>
+    <database>&#x24;&#x7b;sido&#x7d;</database>
+    <port>&#x24;&#x7b;porto&#x7d;</port>
+    <username>&#x24;&#x7b;uno&#x7d;</username>
+    <password>&#x24;&#x7b;pwo&#x7d;</password>
+    <servername/>
+    <data_tablespace/>
+    <index_tablespace/>
+    <attributes>
+      <attribute><code>FORCE_IDENTIFIERS_TO_LOWERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>FORCE_IDENTIFIERS_TO_UPPERCASE</code><attribute>N</attribute></attribute>
+      <attribute><code>IS_CLUSTERED</code><attribute>N</attribute></attribute>
+      <attribute><code>PORT_NUMBER</code><attribute>&#x24;&#x7b;porto&#x7d;</attribute></attribute>
+      <attribute><code>PRESERVE_RESERVED_WORD_CASE</code><attribute>N</attribute></attribute>
+      <attribute><code>QUOTE_ALL_FIELDS</code><attribute>N</attribute></attribute>
+      <attribute><code>SUPPORTS_BOOLEAN_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>SUPPORTS_TIMESTAMP_DATA_TYPE</code><attribute>Y</attribute></attribute>
+      <attribute><code>USE_POOLING</code><attribute>N</attribute></attribute>
+    </attributes>
+  </connection>
+  <order>
+  <hop> <from>MongoDB StrategyInfo</from><to>Mysql strategyinfo</to><enabled>Y</enabled> </hop>
+  <hop> <from>MongoDB L1_StrategyData &#x5168;&#x91cf;</from><to>MySQL strategystock &#x5168;&#x91cf;</to><enabled>Y</enabled> </hop>
+  <hop> <from>MongoDB L1_StrategyData &#x589e;&#x91cf;</from><to>MySql strategystock &#x589e;&#x91cf;</to><enabled>N</enabled> </hop>
+  <hop> <from>MongoDB optimumIndex_new_stock &#x5168;&#x91cf;</from><to>MySQL optimumstock &#x5168;&#x91cf;</to><enabled>Y</enabled> </hop>
+  <hop> <from>MongoDB optimumIndex_new_stock &#x589e;&#x91cf;</from><to>MySql optimumstock &#x589e;&#x91cf;</to><enabled>N</enabled> </hop>
+  <hop> <from>MongoDB calcgsdata</from><to>Mysql marketvane</to><enabled>Y</enabled> </hop>
+  <hop> <from>ORACLE-STK_HOT_INDEX</from><to>MySQL stockhot_history</to><enabled>Y</enabled> </hop>
+  <hop> <from>ORACLE-RES_STK_ATTEN_STAT</from><to>MySQL stockrating</to><enabled>Y</enabled> </hop>
+  <hop> <from>MongoDB calcgsdataflash_once &#x5168;&#x91cf;</from><to>MySQL stockcalcdata</to><enabled>Y</enabled> </hop>
+  </order>
+  <step>
+    <name>MongoDB L1_StrategyData &#x5168;&#x91cf;</name>
+    <type>MongoDbInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <hostname>&#x24;&#x7b;ipmon&#x7d;</hostname>
+    <port>&#x24;&#x7b;portmon&#x7d;</port>
+    <use_all_replica_members>N</use_all_replica_members>
+    <db_name>&#x24;&#x7b;sidmon&#x7d;</db_name>
+    <fields_name/>
+    <collection>L1_StrategyData</collection>
+    <json_field_name>json</json_field_name>
+    <json_query>&#x7b;&#x22;&#x24;query&#x22;&#x3a;&#x7b;&#x22;DayNum&#x22;&#x3a;0,&#x27;gscode&#x27;&#x3a;&#x7b;&#x27;&#x24;ne&#x27;&#x3a;&#x27;All&#x27;&#x7d;&#x7d;&#x7d;</json_query>
+    <auth_user/>
+    <auth_password>Encrypted </auth_password>
+    <auth_kerberos>N</auth_kerberos>
+    <connect_timeout/>
+    <socket_timeout/>
+    <read_preference>primary</read_preference>
+    <output_json>N</output_json>
+    <query_is_pipeline>N</query_is_pipeline>
+    <execute_for_each_row>N</execute_for_each_row>
+
+    <mongo_fields>
+      <mongo_field>
+        <field_name>Price</field_name>
+
+        <field_path>&#x24;.Price</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Rise_FiveDays</field_name>
+
+        <field_path>&#x24;.Rise_FiveDays</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gpcode</field_name>
+
+        <field_path>&#x24;.gpcode</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gpName</field_name>
+
+        <field_path>&#x24;.gpName</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Rise_SignalDate</field_name>
+
+        <field_path>&#x24;.Rise_SignalDate</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gscode</field_name>
+
+        <field_path>&#x24;.gscode</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Date</field_name>
+
+        <field_path>&#x24;.Date</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Rise_NextDay</field_name>
+
+        <field_path>&#x24;.Rise_NextDay</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Rise_TenDays</field_name>
+
+        <field_path>&#x24;.Rise_TenDays</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>MaxRise</field_name>
+
+        <field_path>&#x24;.MaxRise</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+    </mongo_fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>115</xloc>
+      <yloc>77</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>MongoDB L1_StrategyData &#x589e;&#x91cf;</name>
+    <type>MongoDbInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <hostname>&#x24;&#x7b;ipmon&#x7d;</hostname>
+    <port>&#x24;&#x7b;portmon&#x7d;</port>
+    <use_all_replica_members>N</use_all_replica_members>
+    <db_name>&#x24;&#x7b;sidmon&#x7d;</db_name>
+    <fields_name/>
+    <collection>L1_StrategyData</collection>
+    <json_field_name>json</json_field_name>
+    <json_query>&#x7b;&#x22;&#x24;query&#x22;&#x3a;&#x7b;&#x22;DayNum&#x22;&#x3a;0,&#x27;gscode&#x27;&#x3a;&#x7b;&#x27;&#x24;ne&#x27;&#x3a;&#x27;All&#x27;&#x7d;,&#x27;Date&#x27;&#x3a;&#x7b;&#x27;&#x24;gt&#x27;&#x3a;&#x24;&#x7b;ppsj&#x7d;&#x7d;&#x7d;&#x7d;</json_query>
+    <auth_user/>
+    <auth_password>Encrypted </auth_password>
+    <auth_kerberos>N</auth_kerberos>
+    <connect_timeout/>
+    <socket_timeout/>
+    <read_preference>primary</read_preference>
+    <output_json>N</output_json>
+    <query_is_pipeline>N</query_is_pipeline>
+    <execute_for_each_row>N</execute_for_each_row>
+
+    <mongo_fields>
+      <mongo_field>
+        <field_name>Price</field_name>
+
+        <field_path>&#x24;.Price</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Rise_FiveDays</field_name>
+
+        <field_path>&#x24;.Rise_FiveDays</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gpcode</field_name>
+
+        <field_path>&#x24;.gpcode</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gpName</field_name>
+
+        <field_path>&#x24;.gpName</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Rise_SignalDate</field_name>
+
+        <field_path>&#x24;.Rise_SignalDate</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gscode</field_name>
+
+        <field_path>&#x24;.gscode</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Date</field_name>
+
+        <field_path>&#x24;.Date</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Rise_NextDay</field_name>
+
+        <field_path>&#x24;.Rise_NextDay</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Rise_TenDays</field_name>
+
+        <field_path>&#x24;.Rise_TenDays</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>MaxRise</field_name>
+
+        <field_path>&#x24;.MaxRise</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+    </mongo_fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>112</xloc>
+      <yloc>163</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>MongoDB StrategyInfo</name>
+    <type>MongoDbInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <hostname>&#x24;&#x7b;ipmon&#x7d;</hostname>
+    <port>&#x24;&#x7b;portmon&#x7d;</port>
+    <use_all_replica_members>N</use_all_replica_members>
+    <db_name>&#x24;&#x7b;sidmon&#x7d;</db_name>
+    <fields_name/>
+    <collection>StrategyInfo</collection>
+    <json_field_name>json</json_field_name>
+    <json_query/>
+    <auth_user/>
+    <auth_password>Encrypted </auth_password>
+    <auth_kerberos>N</auth_kerberos>
+    <connect_timeout/>
+    <socket_timeout/>
+    <read_preference>primary</read_preference>
+    <output_json>N</output_json>
+    <query_is_pipeline>N</query_is_pipeline>
+    <execute_for_each_row>N</execute_for_each_row>
+
+    <mongo_fields>
+      <mongo_field>
+        <field_name>DayNum_gsMaxRise</field_name>
+
+        <field_path>&#x24;.DayNum_gsMaxRise</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Date_StopCalc</field_name>
+
+        <field_path>&#x24;.Date_StopCalc</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gsCreator</field_name>
+
+        <field_path>&#x24;.gsCreator</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gsMarket</field_name>
+
+        <field_path>&#x24;.gsMarket</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>NewDate</field_name>
+
+        <field_path>&#x24;.NewDate</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gsMaxWinRate</field_name>
+
+        <field_path>&#x24;.gsMaxWinRate</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>WinRate_gsMaxRise</field_name>
+
+        <field_path>&#x24;.WinRate_gsMaxRise</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gsPicture_yzt</field_name>
+
+        <field_path>&#x24;.gsPicture_yzt</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gsInstruction_yzt</field_name>
+
+        <field_path>&#x24;.gsInstruction_yzt</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Sort</field_name>
+
+        <field_path>&#x24;.Sort</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>DayNum_gsMaxWinRate</field_name>
+
+        <field_path>&#x24;.DayNum_gsMaxWinRate</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gsType</field_name>
+
+        <field_path>&#x24;.gsType</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gsName_Phone</field_name>
+
+        <field_path>&#x24;.gsName_Phone</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>CutRate</field_name>
+
+        <field_path>&#x24;.CutRate</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>StopLossLine</field_name>
+
+        <field_path>&#x24;.StopLossLine</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gsInstruction</field_name>
+
+        <field_path>&#x24;.gsInstruction</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gsMaxRise</field_name>
+
+        <field_path>&#x24;.gsMaxRise</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gsName</field_name>
+
+        <field_path>&#x24;.gsName</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Date_BeginCalc</field_name>
+
+        <field_path>&#x24;.Date_BeginCalc</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gpNum_NewDate</field_name>
+
+        <field_path>&#x24;.gpNum_NewDate</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gsStyle</field_name>
+
+        <field_path>&#x24;.gsStyle</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gsName_yzt</field_name>
+
+        <field_path>&#x24;.gsName_yzt</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>status</field_name>
+
+        <field_path>&#x24;.status</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gscode</field_name>
+
+        <field_path>&#x24;.gscode</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Rise_gsMaxWinRate</field_name>
+
+        <field_path>&#x24;.Rise_gsMaxWinRate</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>StopWinLine</field_name>
+
+        <field_path>&#x24;.StopWinLine</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Interval_HoldDayNum</field_name>
+
+        <field_path>&#x24;.Interval_HoldDayNum</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>OS</field_name>
+
+        <field_path>&#x24;.OS</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+    </mongo_fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1118</xloc>
+      <yloc>96</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>MongoDB calcgsdata</name>
+    <type>MongoDbInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <hostname>&#x24;&#x7b;ipmon&#x7d;</hostname>
+    <port>&#x24;&#x7b;portmon&#x7d;</port>
+    <use_all_replica_members>N</use_all_replica_members>
+    <db_name>&#x24;&#x7b;sidmon1&#x7d;</db_name>
+    <fields_name/>
+    <collection>calcgsdata_once</collection>
+    <json_field_name>json</json_field_name>
+    <json_query>&#x7b;&#x22;&#x24;query&#x22;&#x3a;&#x7b;&#x22;gscode&#x22;&#x3a;&#x22;&#x5927;&#x76d8;&#x98ce;&#x5411;&#x22;,&#x27;gpcode&#x27;&#x3a;&#x7b;&#x24;in&#x3a;&#x5b;&#x27;SH000001&#x27;,&#x27;SZ399001&#x27;,&#x27;SZ399005&#x27;,&#x27;SZ399006&#x27;&#x5d;&#x7d;&#x7d;&#x7d;</json_query>
+    <auth_user/>
+    <auth_password>Encrypted </auth_password>
+    <auth_kerberos>N</auth_kerberos>
+    <connect_timeout/>
+    <socket_timeout/>
+    <read_preference>primary</read_preference>
+    <output_json>N</output_json>
+    <query_is_pipeline>N</query_is_pipeline>
+    <execute_for_each_row>N</execute_for_each_row>
+
+    <mongo_fields>
+      <mongo_field>
+        <field_name>f1</field_name>
+
+        <field_path>&#x24;.f1</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gpcode</field_name>
+
+        <field_path>&#x24;.gpcode</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f3</field_name>
+
+        <field_path>&#x24;.f3</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f2</field_name>
+
+        <field_path>&#x24;.f2</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f5</field_name>
+
+        <field_path>&#x24;.f5</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f4</field_name>
+
+        <field_path>&#x24;.f4</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f7</field_name>
+
+        <field_path>&#x24;.f7</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f10</field_name>
+
+        <field_path>&#x24;.f10</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f6</field_name>
+
+        <field_path>&#x24;.f6</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gscode</field_name>
+
+        <field_path>&#x24;.gscode</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f9</field_name>
+
+        <field_path>&#x24;.f9</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f12</field_name>
+
+        <field_path>&#x24;.f12</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f8</field_name>
+
+        <field_path>&#x24;.f8</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f11</field_name>
+
+        <field_path>&#x24;.f11</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f14</field_name>
+
+        <field_path>&#x24;.f14</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f13</field_name>
+
+        <field_path>&#x24;.f13</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f16</field_name>
+
+        <field_path>&#x24;.f16</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f15</field_name>
+
+        <field_path>&#x24;.f15</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>ymd</field_name>
+
+        <field_path>&#x24;.ymd</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>hms</field_name>
+
+        <field_path>&#x24;.hms</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>DayNum</field_name>
+
+        <field_path>&#x24;.DayNum</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+    </mongo_fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>78</xloc>
+      <yloc>330</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>MongoDB calcgsdataflash_once &#x5168;&#x91cf;</name>
+    <type>MongoDbInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <hostname>&#x24;&#x7b;ipmon&#x7d;</hostname>
+    <port>&#x24;&#x7b;portmon&#x7d;</port>
+    <use_all_replica_members>N</use_all_replica_members>
+    <db_name>SS_tick</db_name>
+    <fields_name/>
+    <collection>calcgsdataflash_once</collection>
+    <json_field_name>json</json_field_name>
+    <json_query>&#x7b;&#x22;&#x24;query&#x22;&#x3a;&#x7b;&#x27;gscode&#x27;&#x3a;&#x7b;&#x24;in&#x3a;&#x5b;&#x27;&#x8d8b;&#x52bf;&#x5b89;&#x5168;-&#x652f;&#x6491;&#x538b;&#x529b;&#x27;,&#x27;&#x8d44;&#x91d1;&#x6d41;&#x5411;&#x27;,&#x27;&#x8d22;&#x52a1;&#x8bc4;&#x4f30;_&#x4e5d;&#x5bab;&#x56fe;&#x27;,&#x27;&#x4e70;&#x5356;&#x4eba;&#x6c14;_&#x4e5d;&#x5bab;&#x56fe;&#x27;,&#x27;&#x8d8b;&#x52bf;&#x52a8;&#x5411;_&#x4e5d;&#x5bab;&#x56fe;&#x27;&#x5d;&#x7d;&#x7d;&#x7d;</json_query>
+    <auth_user/>
+    <auth_password>Encrypted </auth_password>
+    <auth_kerberos>N</auth_kerberos>
+    <connect_timeout/>
+    <socket_timeout/>
+    <read_preference>primary</read_preference>
+    <output_json>N</output_json>
+    <query_is_pipeline>N</query_is_pipeline>
+    <execute_for_each_row>N</execute_for_each_row>
+
+    <mongo_fields>
+      <mongo_field>
+        <field_name>f1</field_name>
+
+        <field_path>&#x24;.f1</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gpcode</field_name>
+
+        <field_path>&#x24;.gpcode</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f3</field_name>
+
+        <field_path>&#x24;.f3</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f2</field_name>
+
+        <field_path>&#x24;.f2</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f5</field_name>
+
+        <field_path>&#x24;.f5</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f4</field_name>
+
+        <field_path>&#x24;.f4</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f7</field_name>
+
+        <field_path>&#x24;.f7</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f10</field_name>
+
+        <field_path>&#x24;.f10</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f6</field_name>
+
+        <field_path>&#x24;.f6</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gsset</field_name>
+
+        <field_path>&#x24;.gsset</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gscode</field_name>
+
+        <field_path>&#x24;.gscode</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f9</field_name>
+
+        <field_path>&#x24;.f9</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f12</field_name>
+
+        <field_path>&#x24;.f12</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f8</field_name>
+
+        <field_path>&#x24;.f8</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f11</field_name>
+
+        <field_path>&#x24;.f11</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f14</field_name>
+
+        <field_path>&#x24;.f14</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f13</field_name>
+
+        <field_path>&#x24;.f13</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f16</field_name>
+
+        <field_path>&#x24;.f16</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>f15</field_name>
+
+        <field_path>&#x24;.f15</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>ymd</field_name>
+
+        <field_path>&#x24;.ymd</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>hms</field_name>
+
+        <field_path>&#x24;.hms</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+    </mongo_fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>636</xloc>
+      <yloc>366</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>MongoDB optimumIndex_new_stock &#x5168;&#x91cf;</name>
+    <type>MongoDbInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <hostname>&#x24;&#x7b;ipmon&#x7d;</hostname>
+    <port>&#x24;&#x7b;portmon&#x7d;</port>
+    <use_all_replica_members>N</use_all_replica_members>
+    <db_name>&#x24;&#x7b;sidmon&#x7d;</db_name>
+    <fields_name/>
+    <collection>optimumIndex_new_stock</collection>
+    <json_field_name>json</json_field_name>
+    <json_query/>
+    <auth_user/>
+    <auth_password>Encrypted </auth_password>
+    <auth_kerberos>N</auth_kerberos>
+    <connect_timeout/>
+    <socket_timeout/>
+    <read_preference>primary</read_preference>
+    <output_json>N</output_json>
+    <query_is_pipeline>N</query_is_pipeline>
+    <execute_for_each_row>N</execute_for_each_row>
+
+    <mongo_fields>
+      <mongo_field>
+        <field_name>Next_Increase</field_name>
+
+        <field_path>&#x24;.Next_Increase</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Ten_Day_Highest_Increase</field_name>
+
+        <field_path>&#x24;.Ten_Day_Highest_Increase</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gpcode</field_name>
+
+        <field_path>&#x24;.gpcode</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Five_Day_Highest_Increase</field_name>
+
+        <field_path>&#x24;.Five_Day_Highest_Increase</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Highest_Increase</field_name>
+
+        <field_path>&#x24;.Highest_Increase</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gscode</field_name>
+
+        <field_path>&#x24;.gscode</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Buy_Date</field_name>
+
+        <field_path>&#x24;.Buy_Date</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Flag</field_name>
+
+        <field_path>&#x24;.Flag</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>name</field_name>
+
+        <field_path>&#x24;.name</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+    </mongo_fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>636</xloc>
+      <yloc>73</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>MongoDB optimumIndex_new_stock &#x589e;&#x91cf;</name>
+    <type>MongoDbInput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <hostname>&#x24;&#x7b;ipmon&#x7d;</hostname>
+    <port>&#x24;&#x7b;portmon&#x7d;</port>
+    <use_all_replica_members>N</use_all_replica_members>
+    <db_name>&#x24;&#x7b;sidmon&#x7d;</db_name>
+    <fields_name/>
+    <collection>optimumIndex_new_stock</collection>
+    <json_field_name>json</json_field_name>
+    <json_query>&#x7b;&#x22;&#x24;query&#x22;&#x3a;&#x7b;&#x27;Buy_Date&#x27;&#x3a;&#x7b;&#x27;&#x24;gt&#x27;&#x3a;&#x24;&#x7b;ppsj&#x7d;&#x7d;&#x7d;&#x7d;</json_query>
+    <auth_user/>
+    <auth_password>Encrypted </auth_password>
+    <auth_kerberos>N</auth_kerberos>
+    <connect_timeout/>
+    <socket_timeout/>
+    <read_preference>primary</read_preference>
+    <output_json>N</output_json>
+    <query_is_pipeline>N</query_is_pipeline>
+    <execute_for_each_row>N</execute_for_each_row>
+
+    <mongo_fields>
+      <mongo_field>
+        <field_name>Next_Increase</field_name>
+
+        <field_path>&#x24;.Next_Increase</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Ten_Day_Highest_Increase</field_name>
+
+        <field_path>&#x24;.Ten_Day_Highest_Increase</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gpcode</field_name>
+
+        <field_path>&#x24;.gpcode</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Five_Day_Highest_Increase</field_name>
+
+        <field_path>&#x24;.Five_Day_Highest_Increase</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Highest_Increase</field_name>
+
+        <field_path>&#x24;.Highest_Increase</field_path>
+
+        <field_type>Number</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>gscode</field_name>
+
+        <field_path>&#x24;.gscode</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Buy_Date</field_name>
+
+        <field_path>&#x24;.Buy_Date</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>Flag</field_name>
+
+        <field_path>&#x24;.Flag</field_path>
+
+        <field_type>Integer</field_type>
+
+      </mongo_field>
+      <mongo_field>
+        <field_name>name</field_name>
+
+        <field_path>&#x24;.name</field_path>
+
+        <field_type>String</field_type>
+
+      </mongo_field>
+    </mongo_fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>634</xloc>
+      <yloc>161</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>MySQL optimumstock &#x5168;&#x91cf;</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>mysql-conn</connection>
+    <schema/>
+    <table>optimumstock</table>
+    <commit>1000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>N</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>851</xloc>
+      <yloc>73</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>MySQL stockcalcdata</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>mysql-conn</connection>
+    <schema/>
+    <table>stockcalcdata</table>
+    <commit>1000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>N</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>856</xloc>
+      <yloc>363</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>MySQL stockhot_history</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>mysql-conn</connection>
+    <schema/>
+    <table>stockhot_history</table>
+    <commit>1000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>N</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>855</xloc>
+      <yloc>578</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>MySQL stockrating</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>mysql-conn</connection>
+    <schema/>
+    <table>stockrating</table>
+    <commit>1000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>N</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>318</xloc>
+      <yloc>568</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>MySQL strategystock &#x5168;&#x91cf;</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>mysql-conn</connection>
+    <schema/>
+    <table>strategystock</table>
+    <commit>1000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>N</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>291</xloc>
+      <yloc>77</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>MySql optimumstock &#x589e;&#x91cf;</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>mysql-conn</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema/>
+      <table>optimumstock</table>
+      <key>
+        <name>gpcode</name>
+        <field>gpcode</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>gscode</name>
+        <field>gscode</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>Buy_Date</name>
+        <field>Buy_Date</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>Flag</name>
+        <field>Flag</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>Next_Increase</name>
+        <rename>Next_Increase</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Ten_Day_Highest_Increase</name>
+        <rename>Ten_Day_Highest_Increase</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gpcode</name>
+        <rename>gpcode</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Five_Day_Highest_Increase</name>
+        <rename>Five_Day_Highest_Increase</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Highest_Increase</name>
+        <rename>Highest_Increase</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gscode</name>
+        <rename>gscode</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Buy_Date</name>
+        <rename>Buy_Date</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Flag</name>
+        <rename>Flag</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>name</name>
+        <rename>name</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>853</xloc>
+      <yloc>161</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>MySql strategystock &#x589e;&#x91cf;</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>mysql-conn</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema/>
+      <table>strategystock</table>
+      <key>
+        <name>gpcode</name>
+        <field>gpcode</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>gscode</name>
+        <field>gscode</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <key>
+        <name>Date</name>
+        <field>Date</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>Price</name>
+        <rename>Price</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Rise_FiveDays</name>
+        <rename>Rise_FiveDays</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gpcode</name>
+        <rename>gpcode</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gpName</name>
+        <rename>gpName</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Rise_SignalDate</name>
+        <rename>Rise_SignalDate</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gscode</name>
+        <rename>gscode</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Date</name>
+        <rename>Date</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Rise_NextDay</name>
+        <rename>Rise_NextDay</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Rise_TenDays</name>
+        <rename>Rise_TenDays</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>MaxRise</name>
+        <rename>MaxRise</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>286</xloc>
+      <yloc>163</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Mysql marketvane</name>
+    <type>TableOutput</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>mysql-conn</connection>
+    <schema/>
+    <table>marketvane</table>
+    <commit>1000</commit>
+    <truncate>Y</truncate>
+    <ignore_errors>N</ignore_errors>
+    <use_batch>Y</use_batch>
+    <specify_fields>N</specify_fields>
+    <partitioning_enabled>N</partitioning_enabled>
+    <partitioning_field/>
+    <partitioning_daily>N</partitioning_daily>
+    <partitioning_monthly>Y</partitioning_monthly>
+    <tablename_in_field>N</tablename_in_field>
+    <tablename_field/>
+    <tablename_in_table>Y</tablename_in_table>
+    <return_keys>N</return_keys>
+    <return_field/>
+    <fields>
+    </fields>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>234</xloc>
+      <yloc>330</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>Mysql strategyinfo</name>
+    <type>InsertUpdate</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>mysql-conn</connection>
+    <commit>100</commit>
+    <update_bypassed>N</update_bypassed>
+    <lookup>
+      <schema/>
+      <table>strategyinfo</table>
+      <key>
+        <name>gscode</name>
+        <field>gscode</field>
+        <condition>&#x3d;</condition>
+        <name2/>
+      </key>
+      <value>
+        <name>DayNum_gsMaxRise</name>
+        <rename>DayNum_gsMaxRise</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Date_StopCalc</name>
+        <rename>Date_StopCalc</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gsCreator</name>
+        <rename>gsCreator</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gsMarket</name>
+        <rename>gsMarket</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>NewDate</name>
+        <rename>NewDate</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gsMaxWinRate</name>
+        <rename>gsMaxWinRate</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>WinRate_gsMaxRise</name>
+        <rename>WinRate_gsMaxRise</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Sort</name>
+        <rename>Sort</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>DayNum_gsMaxWinRate</name>
+        <rename>DayNum_gsMaxWinRate</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gsType</name>
+        <rename>gsType</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gsName_Phone</name>
+        <rename>gsName_Phone</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>CutRate</name>
+        <rename>CutRate</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>StopLossLine</name>
+        <rename>StopLossLine</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gsInstruction</name>
+        <rename>gsInstruction</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gsMaxRise</name>
+        <rename>gsMaxRise</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gsName</name>
+        <rename>gsName</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Date_BeginCalc</name>
+        <rename>Date_BeginCalc</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gpNum_NewDate</name>
+        <rename>gpNum_NewDate</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gsStyle</name>
+        <rename>gsStyle</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>status</name>
+        <rename>status</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gscode</name>
+        <rename>gscode</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Rise_gsMaxWinRate</name>
+        <rename>Rise_gsMaxWinRate</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>StopWinLine</name>
+        <rename>StopWinLine</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>Interval_HoldDayNum</name>
+        <rename>Interval_HoldDayNum</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>OS</name>
+        <rename>OS</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gsPicture_yzt</name>
+        <rename>gsPicture_yzt</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gsInstruction_yzt</name>
+        <rename>gsInstruction_yzt</rename>
+        <update>Y</update>
+      </value>
+      <value>
+        <name>gsName_yzt</name>
+        <rename>gsName_yzt</rename>
+        <update>Y</update>
+      </value>
+    </lookup>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>1257</xloc>
+      <yloc>95</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>ORACLE-RES_STK_ATTEN_STAT</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>oracle-conn</connection>
+    <sql>SELECT &#x2f;&#x2a;&#x2b;parallel&#x28;4&#x29;&#x2a;&#x2f; &#xd;&#xa;CASE MKT_TYPE_PAR&#xd;&#xa;         WHEN 1 THEN&#xd;&#xa;          &#x27;00&#x27;&#xd;&#xa;         WHEN 2 THEN&#xd;&#xa;          &#x27;01&#x27;&#xd;&#xa;       END &#x7c;&#x7c; SEC_CODE AS SEC_CODE, &#xd;&#xa;       SYN_RATE_PAR, &#xd;&#xa;       SYN_SCORE, &#xd;&#xa;       STAT_RANGE_PAR, &#xd;&#xa;       BUY_ORG_NUM,&#xd;&#xa;       INCRE_ORG_NUM, &#xd;&#xa;       NEUTER_ORG_NUM,&#xd;&#xa;       REDEM_ORG_NUM, &#xd;&#xa;       SELL_ORG_NUM, &#xd;&#xa;       ORG_NUM FROM&#x28;&#xd;&#xa;SELECT B.SEC_CODE,&#xd;&#xa;       B.MKT_TYPE_PAR,&#xd;&#xa;       A.SYN_RATE_PAR, &#xd;&#xa;       A.SYN_SCORE, &#xd;&#xa;       A.STAT_RANGE_PAR, &#xd;&#xa;       A.BUY_ORG_NUM,&#xd;&#xa;       A.INCRE_ORG_NUM, &#xd;&#xa;       A.NEUTER_ORG_NUM,&#xd;&#xa;       A.REDEM_ORG_NUM, &#xd;&#xa;       A.SELL_ORG_NUM, &#xd;&#xa;       A.ORG_NUM &#xd;&#xa;  FROM UPAPP.RES_STK_ATTEN_STAT A&#xd;&#xa;  JOIN UPAPP.PUB_SEC_CODE B&#xd;&#xa;    ON A.STK_UNI_CODE &#x3d; B.SEC_UNI_CODE&#xd;&#xa;   AND B.SEC_SMALL_TYPE_PAR &#x3d; 101&#xd;&#xa;   AND B.ISVALID &#x3d; 1&#xd;&#xa; WHERE &#x28;A.STK_UNI_CODE, A.STAT_RANGE_PAR, A.END_DATE&#x29; IN&#xd;&#xa;       &#x28;SELECT STK_UNI_CODE, STAT_RANGE_PAR, MAX&#x28;END_DATE&#x29;&#xd;&#xa;          FROM UPAPP.RES_STK_ATTEN_STAT&#xd;&#xa;          WHERE END_DATE&#x3e;SYSDATE-7&#xd;&#xa;         GROUP BY STK_UNI_CODE, STAT_RANGE_PAR&#x29;&#xd;&#xa;   AND A.STAT_RANGE_PAR &#x3d;2 &#xd;&#xa;   AND A.ISVALID&#x3d;1&#xd;&#xa; UNION ALL&#xd;&#xa;  SELECT B.SEC_CODE,&#xd;&#xa;       B.MKT_TYPE_PAR,&#xd;&#xa;       A.SYN_RATE_PAR, &#xd;&#xa;       A.SYN_SCORE, &#xd;&#xa;       A.STAT_RANGE_PAR, &#xd;&#xa;       A.BUY_ORG_NUM,&#xd;&#xa;       A.INCRE_ORG_NUM, &#xd;&#xa;       A.NEUTER_ORG_NUM,&#xd;&#xa;       A.REDEM_ORG_NUM, &#xd;&#xa;       A.SELL_ORG_NUM, &#xd;&#xa;       A.ORG_NUM &#xd;&#xa;  FROM UPAPP.RES_STK_ATTEN_STAT A&#xd;&#xa;  JOIN UPAPP.PUB_SEC_CODE B&#xd;&#xa;    ON A.STK_UNI_CODE &#x3d; B.SEC_UNI_CODE&#xd;&#xa;   AND B.SEC_SMALL_TYPE_PAR &#x3d; 101&#xd;&#xa;   AND B.ISVALID &#x3d; 1&#xd;&#xa; WHERE &#x28;A.STK_UNI_CODE, A.STAT_RANGE_PAR, A.END_DATE&#x29; IN&#xd;&#xa;       &#x28;SELECT STK_UNI_CODE, STAT_RANGE_PAR, MAX&#x28;END_DATE&#x29;&#xd;&#xa;          FROM UPAPP.RES_STK_ATTEN_STAT&#xd;&#xa;          WHERE END_DATE&#x3e;ADD_MONTHS&#x28;SYSDATE, -1&#x29;&#xd;&#xa;         GROUP BY STK_UNI_CODE, STAT_RANGE_PAR&#x29;&#xd;&#xa;   AND A.STAT_RANGE_PAR &#x3d;3&#xd;&#xa;   AND A.ISVALID&#x3d;1&#xd;&#xa;  UNION ALL&#xd;&#xa;  SELECT B.SEC_CODE,&#xd;&#xa;       B.MKT_TYPE_PAR,&#xd;&#xa;       A.SYN_RATE_PAR, &#xd;&#xa;       A.SYN_SCORE, &#xd;&#xa;       A.STAT_RANGE_PAR, &#xd;&#xa;       A.BUY_ORG_NUM,&#xd;&#xa;       A.INCRE_ORG_NUM, &#xd;&#xa;       A.NEUTER_ORG_NUM,&#xd;&#xa;       A.REDEM_ORG_NUM, &#xd;&#xa;       A.SELL_ORG_NUM, &#xd;&#xa;       A.ORG_NUM &#xd;&#xa;  FROM UPAPP.RES_STK_ATTEN_STAT A&#xd;&#xa;  JOIN UPAPP.PUB_SEC_CODE B&#xd;&#xa;    ON A.STK_UNI_CODE &#x3d; B.SEC_UNI_CODE&#xd;&#xa;   AND B.SEC_SMALL_TYPE_PAR &#x3d; 101&#xd;&#xa;   AND B.ISVALID &#x3d; 1&#xd;&#xa; WHERE &#x28;A.STK_UNI_CODE, A.STAT_RANGE_PAR, A.END_DATE&#x29; IN&#xd;&#xa;       &#x28;SELECT STK_UNI_CODE, STAT_RANGE_PAR, MAX&#x28;END_DATE&#x29;&#xd;&#xa;          FROM UPAPP.RES_STK_ATTEN_STAT&#xd;&#xa;          WHERE END_DATE&#x3e;ADD_MONTHS&#x28;SYSDATE, -3&#x29;&#xd;&#xa;         GROUP BY STK_UNI_CODE, STAT_RANGE_PAR&#x29;&#xd;&#xa;   AND A.STAT_RANGE_PAR &#x3d;4 &#xd;&#xa;   AND A.ISVALID&#x3d;1&#xd;&#xa;     UNION ALL&#xd;&#xa;  SELECT B.SEC_CODE,&#xd;&#xa;       B.MKT_TYPE_PAR,&#xd;&#xa;       A.SYN_RATE_PAR, &#xd;&#xa;       A.SYN_SCORE, &#xd;&#xa;       A.STAT_RANGE_PAR, &#xd;&#xa;       A.BUY_ORG_NUM,&#xd;&#xa;       A.INCRE_ORG_NUM, &#xd;&#xa;       A.NEUTER_ORG_NUM,&#xd;&#xa;       A.REDEM_ORG_NUM, &#xd;&#xa;       A.SELL_ORG_NUM, &#xd;&#xa;       A.ORG_NUM &#xd;&#xa;  FROM UPAPP.RES_STK_ATTEN_STAT A&#xd;&#xa;  JOIN UPAPP.PUB_SEC_CODE B&#xd;&#xa;    ON A.STK_UNI_CODE &#x3d; B.SEC_UNI_CODE&#xd;&#xa;   AND B.SEC_SMALL_TYPE_PAR &#x3d; 101&#xd;&#xa;   AND B.ISVALID &#x3d; 1&#xd;&#xa; WHERE &#x28;A.STK_UNI_CODE, A.STAT_RANGE_PAR, A.END_DATE&#x29; IN&#xd;&#xa;       &#x28;SELECT STK_UNI_CODE, STAT_RANGE_PAR, MAX&#x28;END_DATE&#x29;&#xd;&#xa;          FROM UPAPP.RES_STK_ATTEN_STAT&#xd;&#xa;          WHERE END_DATE&#x3e;ADD_MONTHS&#x28;SYSDATE, -6&#x29;&#xd;&#xa;         GROUP BY STK_UNI_CODE, STAT_RANGE_PAR&#x29;&#xd;&#xa;   AND A.STAT_RANGE_PAR &#x3d;5 &#xd;&#xa;   AND A.ISVALID&#x3d;1&#xd;&#xa;  UNION ALL&#xd;&#xa;  SELECT B.SEC_CODE,&#xd;&#xa;       B.MKT_TYPE_PAR,&#xd;&#xa;       A.SYN_RATE_PAR, &#xd;&#xa;       A.SYN_SCORE, &#xd;&#xa;       A.STAT_RANGE_PAR, &#xd;&#xa;       A.BUY_ORG_NUM,&#xd;&#xa;       A.INCRE_ORG_NUM, &#xd;&#xa;       A.NEUTER_ORG_NUM,&#xd;&#xa;       A.REDEM_ORG_NUM, &#xd;&#xa;       A.SELL_ORG_NUM, &#xd;&#xa;       A.ORG_NUM &#xd;&#xa;  FROM UPAPP.RES_STK_ATTEN_STAT A&#xd;&#xa;  JOIN UPAPP.PUB_SEC_CODE B&#xd;&#xa;    ON A.STK_UNI_CODE &#x3d; B.SEC_UNI_CODE&#xd;&#xa;   AND B.SEC_SMALL_TYPE_PAR &#x3d; 101&#xd;&#xa;   AND B.ISVALID &#x3d; 1&#xd;&#xa; WHERE &#x28;A.STK_UNI_CODE, A.STAT_RANGE_PAR, A.END_DATE&#x29; IN&#xd;&#xa;       &#x28;SELECT STK_UNI_CODE, STAT_RANGE_PAR, MAX&#x28;END_DATE&#x29;&#xd;&#xa;          FROM UPAPP.RES_STK_ATTEN_STAT&#xd;&#xa;          WHERE END_DATE&#x3e;&#x3d;ADD_MONTHS&#x28;SYSDATE, -12&#x29;&#xd;&#xa;         GROUP BY STK_UNI_CODE, STAT_RANGE_PAR&#x29;&#xd;&#xa;   AND A.STAT_RANGE_PAR &#x3d;6 &#xd;&#xa;   AND A.ISVALID&#x3d;1 &#x29;</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>133</xloc>
+      <yloc>568</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>ORACLE-STK_HOT_INDEX</name>
+    <type>TableInput</type>
+    <description/>
+    <distribute>N</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <connection>oracle-conn</connection>
+    <sql>select &#x2a; from &#x28;select CASE SEC_MAR_PAR&#xd;&#xa;         WHEN 1 THEN&#xd;&#xa;          &#x27;00&#x27;&#xd;&#xa;         WHEN 2 THEN&#xd;&#xa;          &#x27;01&#x27;&#xd;&#xa;       END &#x7c;&#x7c; LPAD&#x28;STK_CODE, 8, &#x27;0&#x27;&#x29; AS STK_CODE,stk_short_name, count_date&#xff0c;STK_HOT_INDEX  from&#xd;&#xa;&#x28;select &#x2a; from upapp.stk_basic_info where isvalid&#x3d;1 and stk_type_par&#x3d;1 and sec_mar_par in &#x28;1,2&#x29; and list_sta_par&#x3c;&#x3e;3&#x29; t1&#xd;&#xa;left join&#xd;&#xa;&#x28;select &#x2a; from upapp.stk_MQHOT_INDEX_DAY where isvalid&#x3d;1&#x29; t2&#xd;&#xa;on t1.stk_uni_code&#x3d;t2.stk_uni_code&#x29; where  count_date&#x3e;&#x3d;SYSDATE-20 order by count_date desc</sql>
+    <limit>0</limit>
+    <lookup/>
+    <execute_each_row>N</execute_each_row>
+    <variables_active>N</variables_active>
+    <lazy_conversion_active>N</lazy_conversion_active>
+     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>655</xloc>
+      <yloc>578</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step_error_handling>
+  </step_error_handling>
+   <slave-step-copy-partition-distribution>
+</slave-step-copy-partition-distribution>
+   <slave_transformation>N</slave_transformation>
+
+</transformation>

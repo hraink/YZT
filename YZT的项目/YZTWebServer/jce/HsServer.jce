@@ -1,0 +1,395 @@
+#include "BasicData.jce"
+#include "Common.jce"
+
+module HQSys
+{
+
+    struct VStockSimHq
+    {
+        1 optional double fNowPrice;             //现价
+        2 optional double fOpen;                 //开盘价
+        3 optional double fHigh;                 //最高价
+        4 optional double fLow;                  //最低价
+        5 optional double fClose;                //昨日收盘价
+        6 optional long lVolume;       			 //成交量：股数
+        7 optional double fAmount;               //成交额
+        8 optional double fChgValue;             //涨跌金额 = (最新价－昨收价)
+        9 optional double fChgRatio;             //涨跌幅 = (最新价－昨收价) / 昨收价 * 100.f
+        10 optional double fZhenfu;              //振幅 = (最高价－最低价) / 昨收价 * 100.f
+    };
+
+    //期货市场和现货市场独有数据
+    struct VStockQhHq
+    {
+        1 optional double dSettlementPrice;     //结算价
+        2 optional double dPreSettlementPrice;  //昨日结算价
+        3 optional double dOpenInterest;        //持仓量
+        4 optional double dPreOpenInterest;     //昨持仓量
+        5 optional int iEveryHand;              //每手
+        6 optional double dDayIncrease;         //日增
+    };
+
+    struct VStockExHq
+    {
+        //全市场公有字段
+        3 optional long  lNowVol;                //现手
+        4 optional long  lInside;                //内盘
+        5 optional long  lOutside;               //外盘
+        7 optional vector<double> vBuyp;         //叫买价
+        8 optional vector<long> vBuyv;           //叫买盘：股数
+        9 optional vector<double> vSellp;        //叫卖价
+        10 optional vector<long> vSellv;         //叫卖盘：股数
+        11 optional double fAveragePrice;        //均价
+        12 optional double fZTPrice;             //涨停价
+        13 optional double fDTPrice;             //跌停价
+        14 optional double fTurnoverRate;        //换手率 * 100.f
+        15 optional int iTradeMin;               //交易时间，凌晨到现在的分钟数
+        16 optional int iTradeDate;              //交易日YYYYMMDD
+        17 optional int iTradeTime;              //交易时间HHMMSS
+
+        //深沪市场独有数据
+        18 optional int iUpNum;                  //上涨家数
+        19 optional int iDownNum;                //下跌家数
+        20 optional byte bZDMark;                //涨跌停标志：1正常交易 2涨停 3跌停
+        21 optional byte bTransactionStatus;     //交易状态标志：‘O’表示其它状态‘P’停牌‘C’集合竞价‘H’暂停交易‘T’连续交易‘B’午休‘E’闭市
+
+        //板块类股票相关信息
+        22 optional string sHeadName;            //领涨股名称
+        23 optional double fHeadNow;             //领涨股现价
+        24 optional double fHeadClose;           //领涨股前收
+        25 optional unsigned int uiBlockNum;     //股票个数
+        26 optional unsigned int uiBlockRise;    //上涨个数
+        27 optional unsigned int uiBlockFall;    //下跌个数
+
+        31 optional double dLiangBi;             //量比 = 成交量 / (五日均量 * 开盘分钟数)
+
+        33 optional short sHeadMarket;           //领涨股市场
+        34 optional string sHeadCode;			 //领涨股code
+
+        35 optional double dUpSpeed;			 //涨速
+        36 optional long lTradeNum;              //成交笔数
+    };
+
+    //分时，日，多日资金流，Srv-Cli数据交互结构
+    struct VTolMoneyFlow
+    {
+        1 optional int iTime;				    //时间
+        2 optional short shtsetcode;               //市场代码
+        3 optional string sCode;                 //股票代码
+        4 optional double fSuperIn;				// 超大宗入  >50万股或者100万元
+        5 optional double fSuperOut;				// 超大宗出
+        6 optional double fBigIn;				// 大宗入		>10万股或者20万元
+        7 optional double fBigOut;				// 大宗出
+        8 optional double fMidIn;				// 中单入		>2万股或者4万元
+        9 optional double fMidOut;				// 中单出
+        10 optional double fSmallIn;				// 小单入		其他
+        11 optional double fSmallOut;			// 小单出
+        12 optional double dPrevClose;		//昨收，如果是前3日则对应前3日昨收
+
+    };
+
+    struct VDDERank  //DDE排名数据
+    {
+    		1 optional short shtSetcode;
+    		2 optional string sCode;
+    		3 optional string sName;
+    		4 optional double fNowPrice;     //最新价
+    		5 optional double fChg;          //涨跌幅
+    		6 optional double fTurnoverRate; //换手率
+
+    		7 optional double fDDX;        //DDX
+    		8 optional double fDDY;        //DDY
+    		9 optional double fDDZ;        //DDZ
+    		10 optional double fDDF;       //DDF
+
+    		11 optional double fDDX5;       //5日DDX
+    		12 optional double fDDY5;       //5日DDY
+
+    		13 optional double fDDX60;      //60日DDX
+    		14 optional double fDDY60;      //60日DDY
+    };
+
+    struct VStockHq   //股票行情动态数据
+    {
+    		0 optional unsigned short shtPrecise;   //精度
+    		1 optional short shtSetcode;            //股票市场
+    		2 optional string sCode;                //股票代码
+    		3 optional string sName;                //股票名称
+
+    		4 optional VStockSimHq  stSimHq;        //股票精简行情
+    		5 optional VStockExHq   stExHq;         //股票扩展行情
+    		6 optional VStockQhHq   stQhHq;			//期货精简行情
+    		7 optional VTolMoneyFlow stMF;			//资金流
+    		8 optional VDDERank stDDE;				//DDE数据
+    };
+
+
+    //获取股票的行情信息-请求
+    struct StockHqReq
+    {
+        0 require vector<HStockUnique> vStock;      //股票信息
+    };
+
+    //获取股票的行情信息-回包
+    struct StockHqRsp
+    {
+        0 require int iRet;      //响应状态    0：正常   otherwise: 错误
+        1 optional string iMsg;  //错误消息
+        2 optional vector<VStockHq> vStockHq;
+    };
+
+    //热门行业，概念-请求
+    struct StockSimpleReq
+    {
+        0 require E_BUSS_TYPE eBussType; //一个业务类型可能对于多个内部类型
+        1 optional E_HQ_SORT_COLUMN eColumn;
+        2 optional E_SORT_METHOD eSort;
+        3 optional E_STOCK_HQ_DATA eHqData;      //本次返回哪些行情数据，默认不返回
+        4 optional int iWantNum = -1;            //请求个数,默认-1为全部返回.
+    };
+
+    //行业，概念-回包
+    struct StockSimpleRsp
+    {
+        0 require int iRet;      //响应状态    0：正常   otherwise: 错误
+        1 optional string iMsg;  //错误消息
+    	2 optional vector<VStockHq> vStock;
+    };
+
+
+     //短线精灵请求
+     struct DxjlReq
+     {
+       0 optional vector<HStockUnique> vStock; //股票信息为空时，查询列表
+       1 optional unsigned int iNum;//0：取所有数据；其它值,对应数据
+       2 optional bool blnFromHead = true;//是否从头开始取
+     };
+
+     //短线精灵回包
+     struct DxjlRsp
+     {
+        0 require int iRet;      //响应状态    0：正常   otherwise: 错误
+        1 optional string iMsg;  //错误消息
+        2 optional vector<HDxjl> vDxjl;
+     };
+
+    struct L2MonitReq
+    {
+        0 optional vector<HStockUnique> vStock; //股票信息为空时，查询列表
+    	1 optional short shtStartxh=0;//开始的位置
+        2 optional short shtWantNum=100;//取的个数
+        3 optional E_STOCK_ORDER_TYPE  eColumn;//短线精灵排序的列
+        4 optional E_SORT_METHOD eSort;//升降序
+    };
+
+
+    struct L2MonitRsp
+    {
+        0 require int iRet;      //响应状态    0：正常   otherwise: 错误
+        1 optional string iMsg;  //错误消息
+        2 optional vector<HL2Monit> vMonit;
+    };
+
+    struct HType2StockRsp
+	{
+	   1 optional vector<VStockHq> vStock;
+	};
+
+
+    //根据板块查询股票 -请求
+	struct Block2StockReq
+	{
+		//注意：blockCode可能是6位，可能是10位
+		0 require vector<string> vBlockCode;
+		1 optional E_HQ_SORT_COLUMN eColumn;
+		2 optional E_SORT_METHOD eSort;
+        3 optional E_STOCK_HQ_DATA eHqData;      //本次返回哪些行情数据，默认不返回
+	};
+	//根据板块查询股票 -回包
+	struct Block2StockRsp
+    {
+         0 require int iRet;      //响应状态    0：正常   otherwise: 错误
+         1 optional string iMsg;  //错误消息
+    	 //key是板块代码，value是股票列表
+    	 2 optional map<string, HType2StockRsp> mStockList;
+    };
+
+    //获取深沪市场的资金流排名数据,请求结构
+    struct MFlowRankReq
+    {
+      0 require E_BUSS_TYPE eBussType; //一个业务类型可能对于多个内部类型
+      1 optional short shtStartxh=0;
+      2 optional short shtWantNum=100;
+      3 optional vector<HStockUnique> vStock;//填code，表示查个股资金；不填表示查资金排行
+      4 optional E_MF_RANK_SORT_COLUMN  eColumn;
+      5 optional E_SORT_METHOD eSort;
+    };
+    //获取深沪市场的资金流排名数据,回包结构
+    struct MFlowRankRsp
+    {
+      0 require int iRet;      //响应状态    0：正常   otherwise: 错误
+      1 optional string iMsg;  //错误消息
+      2 optional vector<HMFlowRank> vMFlowRank;
+      3 optional int iTotalSize; //总记录数
+    };
+
+    struct TickDataReq
+    {
+
+      0 require string sCode;
+      1 require int market;
+      2 optional short shtStartxh = 0;
+      3 optional short shtWantNum = 100;
+    };
+
+    struct TickDataRsp
+    {
+        0 require int iRet;      //响应状态    0：正常   otherwise: 错误
+        1 optional string iMsg;  //错误消息
+        2 optional byte cPrecise;               //小数精度
+        3 optional vector<HTickData> vTickData; //对期货市场需要进行性质分类计算
+    };
+
+    struct KLineDataReq
+    {
+        0 require string sCode;
+        1 require int market;
+        2 require HISTORY_DATA_TYPE eLineType;       //请求k线数据类型
+        3 optional short shtStartxh = 0;             //起始位置
+        4 optional short shtWantNum = 100;           //请求个数
+        5 optional bool bXRXDFlag = false;           //除权除息标识
+    };
+
+    struct KLineDataRsp
+    {
+        0 require int iRet;      //响应状态    0：正常   otherwise: 错误
+        1 optional string iMsg;  //错误消息
+        2 optional vector<HAnalyData> vAnalyData;   //根据请求进行除权除息计算
+    };
+
+    struct KLineDataByPeriodReq
+    {
+        0 require vector<HStockDatePeriod> vStockDatePeriod;      //股票信息
+        1 require HISTORY_DATA_TYPE eLineType;       //请求k线数据类型,暂时只支持历史日k数据 HDT_DAY_KLINE
+        2 optional bool bXRXDFlag =  false;          //除权除息标识
+    };
+
+    //新增k线接口，获取多只股票从起始时间到结束时间的除权除息K线数据, 回包结构
+    struct KLineDataByPeriodRsp
+    {
+        0 require int iRet;      //响应状态    0：正常   otherwise: 错误
+        1 optional string iMsg;  //错误消息
+        2 optional vector<HStockAnalyData> vStockAnalyData;   //根据请求进行除权除息计算
+    };
+
+    struct StockMFlowReq
+    {
+        0 require int market;                  //股票市场
+        1 require string sCode;                //股票代码
+    };
+
+
+    //获取个股实时资金流数据,回包结构
+    struct StockMFlowRsp
+    {
+        0 require int iRet;      //响应状态    0：正常   otherwise: 错误
+        1 optional string iMsg;  //错误消息
+        2 optional HTolMoneyFlow sttStockMFlow;
+    };
+
+    //根据股票查询所属行业
+    struct Stock2IndustryReq
+    {
+        0 require vector<HStockUnique> vStock;      //股票信息
+    };
+
+    struct Stock2IndustryRsp
+	{
+	    0 require int iRet;      //响应状态    0：正常   otherwise: 错误
+        1 optional string iMsg;  //错误消息
+		2 optional vector<HStockIndustry> vStockIndustry;//一只股票属于多个板块，所以返回是列表
+	};
+
+
+   //获取个股当日分时数据
+    struct RTMinDataReq
+    {
+        0 require string sCode; //证券代码
+        1 require int market;   //市场
+    };
+
+    //获取个股当日分时数据
+    struct RTMinDataRsp
+    {
+        0 require int iRet;      //响应状态    0：正常   otherwise: 错误
+        1 optional string iMsg;  //错误消息
+        2 optional vector<HRTMinData> vRTMinData;
+        3 optional double dClose;  //昨收，分时需要确定坐标系
+    };
+
+    interface BasicHq{
+       // 功能简介：获取股票的行情
+       int stockHq(StockHqReq stReq, out StockHqRsp stRsp);
+       //行业 板块
+       int stockSimple(StockSimpleReq stReq,out StockSimpleRsp stRsp);
+       //功能简介：深沪短线精灵数据列表
+       int dxjl(DxjlReq stReq, out DxjlRsp stRsp);
+
+       /*
+        ** 功能简介：LV2监控，短线精灵
+        **可拉取个股或列表LV2监控数据，根据参数里填的code确定，没有code则拉取列表；有则取个股，可批量查个股，但不排序
+        **拉取列表时可根据参数确定排序的列，并且支持升降序
+        */
+       int l2Monit(L2MonitReq stReq, out L2MonitRsp stRsp);
+
+       /*
+		* 板块成分股
+		* 模式1：普通code（6位）,例如880001（农林牧渔），包含603336、600438等   [ 原Ads协议代码：5022 ]
+		* 模式2：blockId（10位），例如5004230002（港股通），包含中国铝业等 [ 原Ads协议代码：5029 ]
+		*
+		*/
+		int block2Stock(Block2StockReq stReq, out Block2StockRsp stRsp);
+
+		/**
+         **功能简介：获取深沪市场的资金流排名数据
+         **资金排名分当日，3日，5日，10日，可根据主力，散户，超大，大，中，小资金流向等指标排序，支持升降序
+         **支持查个股或列表，限沪深，传入code为空时，查的是列表
+         */
+		int mfRank(MFlowRankReq stReq, out MFlowRankRsp stRsp);
+
+		/*
+         ** 功能简介：获取个股的tick数据
+         */
+        int tickData(TickDataReq stReq, out TickDataRsp stRsp);
+
+        /*
+        ** 功能简介：获取个股当日分时走势图数据；获取个股买卖力道数据
+        ** 原协议代码：4205
+        */
+        int rtMinData(RTMinDataReq stReq, out RTMinDataRsp stRsp);
+
+        /*
+        ** 功能简介：获取个股的K线数据
+        */
+        int kLineData(KLineDataReq stReq, out KLineDataRsp stRsp);
+        /*
+          ** 功能简介：新增k线接口，获取多只股票从起始时间到结束时间的除权除息K线数据
+          ** 原协议代码：
+        */
+        int kLineDataByPeriod(KLineDataByPeriodReq stReq, out KLineDataByPeriodRsp stRsp);
+
+
+        /*
+          ** 功能简介：获取个股实时资金流数据
+        */
+        int stockMFlow(StockMFlowReq stReq, out StockMFlowRsp stRsp);
+
+        /**
+         * 查询深沪市场多只股票所属的简单行情+所属行业板块
+         */
+        int stock2Industry(Stock2IndustryReq stReq, out Stock2IndustryRsp stRsp);
+
+
+    };
+
+};

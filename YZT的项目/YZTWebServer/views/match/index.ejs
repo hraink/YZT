@@ -1,0 +1,198 @@
+<% include ../common/header.ejs %>
+<link rel="stylesheet" href="/css/swiper-3.4.0.min.css">
+<style>[v-cloak]{display:none;}</style>
+<title>优智投</title>
+</head>
+<body>
+<div class="main">
+  <% include ../common/leftMenu.ejs %>
+  <div class="container">
+    <div class="switch switch_st">
+      <a href="/kline/kline.html" class="<%= pageData.active=='kline.html'?'on':'' %>">K线趋势预测</a>
+      <a href="/kline/custom" class="<%= pageData.active=='custom'?'on':'' %>">K线模式匹配</a>
+    </div>
+    <div class="line_cont">
+      <div class="line_top clearfix">
+        <% include ./search.ejs %>
+        <div class="forecast_cycle">
+          <label>预测周期：</label>
+          <a class="<%=pageData.cycle == 1 ? 'active' : ''%>" href="/kline/kline.html?cycle=1">1天</a>
+          <a class="<%=pageData.cycle == 5 ? 'active' : ''%>" href="/kline/kline.html?cycle=5">5天</a>
+          <a class="<%=pageData.cycle == 10 ? 'active' : ''%>" href="/kline/kline.html?cycle=10">10天</a>
+          <a class="<%=pageData.cycle == 20 ? 'active' : ''%>" href="/kline/kline.html?cycle=20">20天</a>
+        </div>
+      </div>
+      <!-- 大盘预测开始 -->
+      <div class="forecast_wrap" id="market" v-cloak>
+        <div class="box_header">
+          <h3>大盘预测</h3>
+        </div>
+        <ul class="forecast_list">
+          <li v-for="item in marketData">
+            <h4><a href="javascript:;" :data-stock-market="item.market" :data-stock-code="item.code" class="open_stock">{{item.name}}</a></h4>
+            <div class="condition_wrap">
+              <p>
+                <span class="condition_num" :class="item.flor|calColor">{{item.flor|percent}}</span>
+                <span class="condition_item">预测下限</span>
+              </p>
+              <p>
+                <span class="condition_num" :class="item.ceil|calColor">{{item.ceil|percent}}</span>
+                <span class="condition_item">预测上限</span>
+              </p>
+              <p>
+                <span class="condition_num" :class="item.profit|calColor">{{item.profit|percent}}</span>
+                <span class="condition_item">预测收益率</span>
+              </p>
+            </div>
+            <a :href="'/kline/custom?market=' + item.market + '&code=' + item.code"><div class="forecast_graph_wrap"></div></a>
+          </li>
+        </ul>
+      </div>
+      <!-- 大盘预测结束 -->
+      <div class="hot_wrapper">
+        <div class="sliderbox">
+          <!-- 股市热点 -->
+          <div class="hot_shares hot_box" id="hot_stocks" v-cloak>
+            <h3 class="box_header">热点股票<span class="icon_tip"><span class="tip_wrap">回顾市场过去三天涨幅最大的一组股票,并在其中找出预测收益最大的标的。</span></span></h3>
+            <div class="shares_wrap">
+              <h2 class="shares_name">
+                <span class="stock_code">{{currStock.code}}</span>
+                <a href="javascript:;" class="stock_name open_stock" :data-stock-market="currStock.market" :data-stock-code="currStock.code">{{currStock.name}}</a>
+              </h2>
+              <div class="condition_wrap">
+                <p>
+                  <span class="condition_num" :class="currStock.profit|calColor">{{currStock.profit|percent}}</span>
+                  <span class="condition_item">预测收益率</span>
+                </p>
+                <p>
+                  <span class="condition_num" :class="currStock.ceil|calColor">{{currStock.ceil|percent}}</span>
+                  <span class="condition_item">预测上限</span>
+                </p>
+                <p>
+                  <span class="condition_num" :class="currStock.flor|calColor">{{currStock.flor|percent}}</span>
+                  <span class="condition_item">预测下限</span>
+                </p>
+              </div>
+            </div>
+            <!--轮播图 -->
+            <div class="shares_chart">
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <a class="swiper-slide" v-for="item in stockData" :href="'/kline/custom?market=' + item.market + '&code=' + item.code"></a>
+                </div>
+              </div>
+              <div class="swiper-button-next" id="prev1"></div>
+              <div class="swiper-button-prev" id="next1"></div>
+              <div class="swiper-pagination" id="pagination1"></div>
+            </div>
+          </div>
+          <!-- 指数热点 -->
+          <div class="hot_index hot_box" id="hot_market_index" v-cloak>
+            <h3 class="box_header">热点指数<span class="icon_tip"><span class="tip_wrap">回顾市场过去三天涨幅最大的一组股票,并在其中找出预测收益最大的标的。</span></span></h3>
+            <div class="shares_wrap" id="slider_tit2">
+              <h2 class="shares_name">
+                <span class="stock_code">{{currStock.code}}</span>
+                <a href="javascript:;" class="stock_name open_stock" :data-stock-market="currStock.market" :data-stock-code="currStock.code">{{currStock.name}}</a>
+              </h2>
+              <div class="condition_wrap">
+                <p>
+                  <span class="condition_num" :class="currStock.profit|calColor">{{currStock.profit|percent}}</span>
+                  <span class="condition_item">预测收益率</span>
+                </p>
+                <p>
+                  <span class="condition_num" :class="currStock.ceil|calColor">{{currStock.ceil|percent}}</span>
+                  <span class="condition_item">预测上限</span>
+                </p>
+                <p>
+                  <span class="condition_num" :class="currStock.flor|calColor">{{currStock.flor|percent}}</span>
+                  <span class="condition_item">预测下限</span>
+                </p>
+              </div>
+            </div>
+            <!--轮播图 -->
+            <div class="shares_chart hot_box">
+              <div class="swiper-container">
+                <div class="swiper-wrapper">
+                  <a class="swiper-slide" v-for="item in stockData" :href="'/kline/custom?market=' + item.market + '&code=' + item.code"></a>
+                </div>
+              </div>
+              <div class="swiper-button-next" id="prev2"></div>
+              <div class="swiper-button-prev" id="next2"></div>
+              <div class="swiper-pagination" id="pagination2"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="k_list clear">
+        <div class="k_list_main list_left" id="chance_list" v-cloak>
+          <div class="box_header">
+            <h3 class="float_left">K线机会榜<span class="icon_tip"><span class="tip_wrap">根据最新的价格趋势，找出预测收益最大和最小的10只股票。</span></span></h3>
+          </div>
+          <div class="t_head">
+            <span class="code_col">代码</span>
+            <span class="name_col">名称</span>
+            <span class="profit_col">预测收益率</span>
+            <span class="online_col">预测上限</span>
+            <span class="lower_limit_col">预测下限</span>
+          </div>
+          <ul class="t_body">
+            <li v-for="(item, i) in list" :class="item.open ? 'slide_up' : 'slide_down'">
+              <div class="shares_row_info" @click="toggle(i)">
+                <span class="row_num">{{i + 1}}</span>
+                <span class="code_col">{{item.code}}</span>
+                <a class="name_col open_stock" :data-stock-market="item.market" :data-stock-code="item.code" href="javascript:;">{{item.name}}</a>
+                <span :class="['profit_col', {height:item.profit>0,low:item.profit<0,middle:item.profit==0}]">{{item.profit|percent}}</span>
+                <span :class="['online_col', {height:item.ceil>0,low:item.ceil<0,middle:item.ceil==0}]">{{item.ceil|percent}}</span>
+                <span :class="['lower_limit_col', {height:item.flor>0,low:item.flor<0,middle:item.flor==0}]">{{item.flor|percent}}</span>
+                <span class="icon_toggle other"></span>
+              </div>
+              <a class="graph_wrap" :href="'/kline/custom?market=' + item.market + '&code=' + item.code">
+                <div class="shares_graph_info"></div>
+              </a>
+            </li>
+          </ul>
+        </div>
+        <div class="k_list_main list_right" id="risk_list" v-cloak>
+          <div class="box_header">
+            <h3 class="float_left">K线风险榜<span class="icon_tip"><span class="tip_wrap">根据最新的价格趋势，找出预测收益最大和最小的10只股票。</span></span></h3>
+          </div>
+          <div class="t_head">
+            <span class="code_col">代码</span>
+            <span class="name_col">名称</span>
+            <span class="profit_col">预测收益率</span>
+            <span class="online_col">预测上限</span>
+            <span class="lower_limit_col">预测下限</span>
+          </div>
+          <ul class="t_body">
+            <li v-for="(item, i) in list" :class="item.open ? 'slide_up' : 'slide_down'">
+              <div class="shares_row_info" @click="toggle(i)">
+                <span class="row_num">{{i + 1}}</span>
+                <span class="code_col">{{item.code}}</span>
+                <a class="name_col open_stock" :data-stock-market="item.market" :data-stock-code="item.code" href="javascript:;">{{item.name}}</a>
+                <span :class="['profit_col', {height:item.profit>0,low:item.profit<0,middle:item.profit==0}]">{{item.profit|percent}}</span>
+                <span :class="['online_col', {height:item.ceil>0,low:item.ceil<0,middle:item.ceil==0}]">{{item.ceil|percent}}</span>
+                <span :class="['lower_limit_col', {height:item.flor>0,low:item.flor<0,middle:item.flor==0}]">{{item.flor|percent}}</span>
+                <span class="icon_toggle other"></span>
+              </div>
+              <a class="graph_wrap" :href="'/kline/custom?market=' + item.market + '&code=' + item.code">
+                <div class="shares_graph_info"></div>
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var pageData = <%-JSON.stringify(pageData)%>;
+</script>
+<script src="/js/swiper.min.js"></script>
+<script src="/js/vue.js"></script>
+<script src="/js/utils.js"></script>
+<script src="/js/match/raphael.min.js"></script>
+<script src="/js/match/d3.v4.min.js"></script>
+<script src="/js/match/PredictChartMobile.js"></script>
+<% include ../common/searchBar.ejs %>
+<script src="/js/match/match.js"></script>
+<% include ../common/footer.ejs %>

@@ -1,0 +1,688 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>优智投</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+     <link rel="stylesheet" type="text/css" href="css/swiper-3.4.0.min.css">
+     <link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css">
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+     <div class="menu" id="menu">
+          <div class="top">
+               <h1>优智投</h1>
+               <p class="status">状态：<a href="javascript:void(0)">365天到期</a></p>
+               <p class="type">类型：<a href="javascript:void(0)">去测评 ></a></p>
+          </div>
+          <div class="index active">
+               <a href="javascript:void(0);">首页</a>
+          </div>
+          <div class="list">
+               <h3>大数据视点</h3>
+               <div class="lists list1" >
+                    <div class="list_tow" id="ttt">市场关注</div>
+                    <div class="list_box">
+                         <a href="javascript:void(0);">新闻龙虎榜</a>
+                         <a href="javascript:void(0);">事件跟踪</a>             
+                    </div>
+               </div>
+               <div class="lists">
+                    <div class="list_tow">机会热点</div>
+                    <div class="list_box">
+                         <a href="javascript:void(0);">题材风口</a>
+                         <a href="javascript:void(0);">行业热图</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:void(0);">资金流向</a>
+                    </div>
+               </div>
+               <!-- <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:void(0);">龙虎榜单</a>
+                    </div>
+               </div> -->
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:void(0);">舆情牛股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+          </div>
+          <div class="list list2">
+               <h3>智能化决策</h3>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:void(0);">智能诊股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:void(0);">智能选股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:void(0);">智能操盘<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:void(0);">智能Ｋ线</a>
+                    </div>
+               </div>
+               <!-- <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:void(0);">智能监控</a>
+                    </div>
+               </div> -->
+          </div>
+     </div>
+     <!--  右侧主内容区 -->
+	<div class="container index_container">
+		<div class="top_left">
+               <div class="title">
+                    <p>大盘风向标</p>
+               </div>
+               <div class="market">
+               <!-- swiper开始 -->
+                  <div class="swiper-container" id="swiper">
+                      <div class="swiper-wrapper">
+                          <div class="swiper-slide swiper-no-swiping">
+                              <!-- 第1屏 -->
+                                <div class="symbol">
+                                     <div class="symbol_left">
+                                          <div class="strategy">
+                                                  <p>三季策略</p>
+                                                  <div class="icon_cont">
+                                                       <div class="list list1"></div>
+                                                       <div class="list list2 dark"></div>
+                                                       <div class="list list3 dark"></div>
+                                                  </div>
+                                          </div>
+                                          <div class="probabi">
+                                               <p class="sub_title">涨跌概率</p>
+                                                  <div class="chart_box">
+                                                       <div class="risk_chart" id="risk_chart"></div>
+                                                       <p>上涨概率<p>
+                                                  </div>
+                                                  <div class="progress_box">
+                                                       <div class="info_box">
+                                                            <p class="left_price">1000.00</p>
+                                                            <p class="right_price">3056.49</p>
+                                                       </div>
+                                                       <div class="progress">
+                                                            <div class="low"></div>
+                                                            <div class="height"></div>
+                                                            <div class="pointer">2000.16</div>
+                                                       </div>
+                                                       <p class="sub_tit">波动区间</p>
+                                                  </div>
+                                          </div>
+                                        </div>
+                                        <div class="symbol_right">
+                                             <div class="expon">
+                                                  <div class="expon_info up">
+                                                       <p>上证指数</p>
+                                                       <span class="expon_num1">31350.92</span>       
+                                                       <span class="expon_num2">+132.28</span>
+                                                       <span class="expon_num3">10.04%</span>
+                                                  </div>
+                                                  <p class="tit">智能仓位</p>
+                                                  <div class="position">
+                                                      <p class="mark1">0</p>
+                                                      <p class="mark2">50</p>
+                                                      <p class="mark3">100</p>
+                                                      <p class="percent">68<span>%</span></p>
+                                                      <div class="top_layer"></div>
+                                                      <div class="meter_box">
+                                                            <div class="gray"></div>
+                                                            <div class="gray_left"></div>
+                                                            <div class="gray_right"></div>
+                                                            <div class="gradient"></div>
+                                                      </div>
+                                                  </div>
+                                                  <p class="propose">投资策略<span>建议轻仓，短线操作</span></p>
+                                             </div>                         
+                                        </div>
+                                   </div>
+                          </div>
+                          <div class="swiper-slide swiper-no-swiping">
+                              <!-- 第二屏 -->
+                               <div class="symbol">
+                                     <div class="symbol_left">
+                                          <div class="strategy">
+                                               <p>三季策略</p>
+                                                  <div class="icon_cont">
+                                                       <div class="list list1"></div>
+                                                       <div class="list list2 dark"></div>
+                                                       <div class="list list3 dark"></div>
+                                                  </div>
+                                          </div>
+                                          <div class="probabi">
+                                               <p class="sub_title">涨跌概率</p>
+                                                  <div class="chart_box">
+                                                       <div class="risk_chart" id="risk_chart"></div>
+                                                       <p>上涨概率<p>
+                                                  </div>
+                                                  <div class="progress_box">
+                                                       <div class="info_box">
+                                                            <p class="left_price">1000.00</p>
+                                                            <p class="right_price">3056.49</p>
+                                                       </div>
+                                                       <div class="progress">
+                                                            <div class="low"></div>
+                                                            <div class="height"></div>
+                                                            <div class="pointer">2000.16</div>
+                                                       </div>
+                                                       <p class="sub_tit">波动区间</p>
+                                                  </div>
+                                          </div>
+                                        </div>
+                                        <div class="symbol_right">
+                                             <div class="expon">
+                                                  <div class="expon_info up">
+                                                       <p>上证指数</p>
+                                                       <span class="expon_num1">3135.92</span>       
+                                                       <span class="expon_num2">+32.28</span>
+                                                       <span class="expon_num3">1.04%</span>
+                                                  </div>
+                                                  <p class="tit">智能仓位</p>
+                                                  <div class="position">
+                                                      <p class="mark1">0</p>
+                                                      <p class="mark2">50</p>
+                                                      <p class="mark3">100</p>
+                                                      <p class="percent">70<span>%</span></p>
+                                                      <div class="top_layer"></div>
+                                                      <div class="meter_box">
+                                                              <div class="gray"></div>
+                                                              <div class="gray_left"></div>
+                                                              <div class="gray_right"></div>
+                                                              <div class="gradient"></div>
+                                                        </div>
+                                                  </div>
+                                                  <p class="propose">投资策略<span>建议轻仓，短线操作</span></p>
+                                                  
+                                             </div>                         
+                                        </div>
+                                   </div>
+                          </div>
+                          <div class="swiper-slide swiper-no-swiping">
+                              <!-- 第三屏 -->
+                               <div class="symbol">
+                                     <div class="symbol_left">
+                                          <div class="strategy">
+                                               <p>三季策略</p>
+                                                  <div class="icon_cont">
+                                                       <div class="list list1"></div>
+                                                       <div class="list list2 dark"></div>
+                                                       <div class="list list3 dark"></div>
+                                                  </div>
+                                          </div>
+                                          <div class="probabi">
+                                               <p class="sub_title">涨跌概率</p>
+                                                  <div class="chart_box">
+                                                       <div class="risk_chart" id="risk_chart"></div>
+                                                       <p>上涨概率<p>
+                                                  </div>
+                                                  <div class="progress_box">
+                                                       <div class="info_box">
+                                                            <p class="left_price">1000.00</p>
+                                                            <p class="right_price">3056.49</p>
+                                                       </div>
+                                                       <div class="progress">
+                                                            <div class="low"></div>
+                                                            <div class="height"></div>
+                                                            <div class="pointer">2000.16</div>
+                                                       </div>
+                                                       <p class="sub_tit">波动区间</p>
+                                                  </div>
+                                          </div>
+                                        </div>
+                                        <div class="symbol_right">
+                                             <div class="expon">
+                                                  <div class="expon_info up">
+                                                       <p>上证指数</p>
+                                                       <span class="expon_num1">3135.92</span>       
+                                                       <span class="expon_num2">+32.28</span>
+                                                       <span class="expon_num3">1.04%</span>
+                                                  </div>
+                                                  <p class="tit">智能仓位</p>
+                                                  <div class="position">
+                                                      <p class="mark1">0</p>
+                                                      <p class="mark2">50</p>
+                                                      <p class="mark3">100</p>
+                                                      <p class="percent">70<span>%</span></p>
+                                                      <div class="top_layer"></div>
+                                                      <div class="meter_box">
+                                                            <div class="gray"></div>
+                                                            <div class="gray_left"></div>
+                                                            <div class="gray_right"></div>
+                                                            <div class="gradient"></div>
+                                                      </div>
+                                                  </div>
+                                                  <p class="propose">投资策略<span>建议轻仓，短线操作</span></p>
+                                                  
+                                             </div>                         
+                                        </div>
+                                   </div>
+                          </div>
+                      </div> 
+                  </div>
+                  <div class="swiper-pagination"></div>
+              </div>
+               <!-- swiper结束 -->
+          </div>
+          <div class="top_right">
+               <div class="big_data">
+                    <div class="title"><p>大数据诊股</p></div>
+                    <div class="searchBox">
+                         <input type="text" placeholder="请输入代码/简称/简拼" onfocus="this.placeholder=''" onblur="this.placeholder='请输入代码/简称/简拼'">
+                         <button>一键诊股</button>
+                         <ul class="searchUl"> <!-- 无数据时添加.search_none -->
+                             <!-- 无数据li -->
+                             <!--  <li>
+                               <div class="searchLi">您输入的股票不存在</div>
+                             </li> -->
+                             <li>
+                               <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                             </li>
+                             <li>
+                               <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                             </li>
+                             <li>
+                               <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                             </li>
+                             <li>
+                               <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                             </li>
+                             <li>
+                               <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                             </li>
+                             <li>
+                               <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                             </li>
+                             <li>
+                               <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                             </li>
+                             <li>
+                               <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                             </li>
+                             <li>
+                               <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                             </li>
+                      </ul>
+                    </div>
+               </div>
+               <div class="pond">
+                    <div class="title">
+                         <p>核心金股池</p>
+                         <a href="javascript:void(0)" class="btn_more">更多</a>
+                    </div>
+                    <!-- 暂无数据 -->
+                    <div class="no_data">
+                        <img src="img/pic_not_find.png" alt="">
+                        <p>-暂无数据-</p>
+                    </div>
+                    <div class="list_main up">
+                         <div class="list_title">
+                              <p class="column1">代码</p>
+                              <p  class="column2">名称</p>
+                              <p class="column3">最高涨幅</p>
+                         </div>
+                         <div class="list">
+                              <p class="code">603319</p>
+                              <a href="javascript:void(0);" class="name">中装建设</a>
+                              <p class="drift">121.65%</p>
+                              <a href="javascript:void(0);" class="theme">主题掘金 ></a>
+                         </div>
+                         <div class="list">
+                              <p class="code">603319</p>
+                              <a href="javascript:void(0);" class="name">中装建设</a>
+                              <p class="drift">121.65%</p>
+                              <a href="javascript:void(0);" class="theme">主题掘金 ></a>
+                         </div>
+                         <div class="list">
+                              <p class="code">603319</p>
+                              <a href="javascript:void(0);" class="name">中装建设</a>
+                              <p class="drift">121.65%</p>
+                              <a href="javascript:void(0);" class="theme">主题掘金 ></a>
+                         </div>
+                         <div class="list">
+                              <p class="code">603319</p>
+                              <a href="javascript:void(0);" class="name">中装建设</a>
+                              <p class="drift">121.65%</p>
+                              <a href="javascript:void(0);" class="theme">主题掘金 ></a>
+                         </div>
+                         <div class="list">
+                              <p class="code">603319</p>
+                              <a href="javascript:void(0);" class="name">中装建设</a>
+                              <p class="drift">121.65%</p>
+                              <a href="javascript:void(0);" class="theme">主题掘金 ></a>
+                         </div>
+                    </div>
+               </div>
+          </div>
+          <div class="bottom">
+               <div class="diging">
+                    <div class="title">
+                         <p>舆情挖掘机</p>
+                         <a href="javascript:void(0)" class="btn_more">更多</a>
+                    </div>
+                    <!-- 暂无数据 -->
+                    <div class="no_data">
+                        <img src="img/pic_not_find.png" alt="">
+                        <p>-暂无数据-</p>
+                    </div>
+                    <div class="diging_main">
+                          <div class="diging_top">
+                               <div class="list up">
+                                    <div class="list_cont">
+                                        <div class="type">利多</div>
+                                        <div class="info_cont">
+                                             <a href="javascript:void(0)" class="detail">复合材料复合材料与材料工程国际会议今日召开概念今日召开概念今日召开概念</a>
+                                             <div class="info">
+                                                  <span class="name">中超股份</span>
+                                                  <span class="price">12.18</span>
+                                                  <span class="rate">9.98%</span>
+                                             </div>
+                                        </div>
+                                    </div>    
+                               </div>
+                               <div class="list up">
+                                    <div class="list_cont">
+                                        <div class="type">利多</div>
+                                        <div class="info_cont">
+                                              <a href="javascript:void(0)" class="detail">复合材料复合材料与材料工程国际会议今日召开概念今日召开概念今日召开概念</a>
+                                             <div class="info">
+                                                  <span class="name">中超股份</span>
+                                                  <span class="price">12.18</span>
+                                                  <span class="rate">9.98%</span>
+                                             </div>
+                                        </div>
+                                    </div>      
+                               </div>
+                               <div class="list up">
+                                    <div class="list_cont">
+                                        <div class="type">利多</div>
+                                        <div class="info_cont">
+                                              <a href="javascript:void(0)" class="detail">复合材料复合材料与材料工程国际会议今日召开概念今日召开概念今日召开概念</a>
+                                             <div class="info">
+                                                  <span class="name">中超股份</span>
+                                                  <span class="price">12.18</span>
+                                                  <span class="rate">9.98%</span>
+                                             </div>
+                                        </div>
+                                    </div>    
+                               </div>
+                         </div> 
+                         <div class="diging_bottom">
+                               <div class="list up">
+                                    <div class="list_cont">
+                                        <div class="type">利多</div>
+                                        <div class="info_cont">
+                                              <a href="javascript:void(0)" class="detail">复合材料复合材料与材料工程国际会议今日召开概念今日召开概念今日召开概念</a>
+                                             <div class="info">
+                                                  <span class="name">中超股份</span>
+                                                  <span class="price">12.18</span>
+                                                  <span class="rate">9.98%</span>
+                                             </div>
+                                        </div>
+                                    </div>    
+                               </div>
+                               <div class="list up">
+                                    <div class="list_cont">
+                                        <div class="type">利多</div>
+                                        <div class="info_cont">
+                                              <a href="javascript:void(0)" class="detail">复合材料复合材料与材料工程国际会议今日召开概念今日召开概念今日召开概念</a>
+                                             <div class="info">
+                                                  <span class="name">中超股份</span>
+                                                  <span class="price">12.18</span>
+                                                  <span class="rate">9.98%</span>
+                                             </div>
+                                        </div>
+                                    </div>    
+                               </div>
+                               <div class="list up">
+                                    <div class="list_cont">
+                                        <div class="type">利多</div>
+                                        <div class="info_cont">
+                                              <a href="javascript:void(0)" class="detail">复合材料复合材料与材料工程国际会议今日召开概念今日召开概念今日召开概念</a>
+                                             <div class="info">
+                                                  <span class="name">中超股份</span>
+                                                  <span class="price">12.18</span>
+                                                  <span class="rate">9.98%</span>
+                                             </div>
+                                        </div>
+                                     </div>   
+                               </div>
+                          </div>     
+                    </div>
+               </div>
+               <!-- 热点追踪 -->
+               <div class="hot_spot">
+                    <div class="title">
+                         <p>热点追踪仪</p>
+                         <a href="javascript:void(0)" class="btn_more">更多</a>
+                    </div>
+                    <!-- 暂无数据 -->
+                    <div class="no_data">
+                        <img src="img/pic_not_find.png" alt="">
+                        <p>-暂无数据-</p>
+                    </div>
+                    <div class="hot_list">
+                         <div class="list">
+                              <div class="list_cont">
+                                  <a href="javascript:void(0);"  class="level">
+                                       <p>人工智能</p>
+                                       <span class="rate_bar">
+                                            <span class="rate-stars level1"></span>
+                                       </span>
+                                  </a>
+                                  <div class="hot_info">
+                                       <p class="detail">国家电网积极发展混合所有制 旗下上市平台</p>
+                                       <div class="info_box">
+                                            <p class="height"><span>国中水务</span><span>12.64</span><span>8.71%</span></p>
+                                            <p class="low"><span>国中水务</span><span>12.64</span><span>8.71%</span></p>
+                                       </div>
+                                  </div>     
+                              </div>
+                         </div>
+                         <div class="list">
+                              <div class="list_cont"> 
+                                  <a href="javascript:void(0);"  class="level">
+                                       <p>人工智能</p>
+                                       <span class="rate_bar">
+                                            <span class="rate-stars level1"></span>
+                                       </span>
+                                  </a>
+                                  <div class="hot_info">
+                                       <p class="detail">国家电网积极发展混合所有制 旗下上市平台</p>
+                                       <div class="info_box">
+                                            <p class="height"><span>国中水务</span><span>12.64</span><span>8.71%</span></p>
+                                            <p class="low"><span>国中水务</span><span>12.64</span><span>8.71%</span></p>
+                                       </div>
+                                  </div>
+                              </div>    
+                         </div>
+                         <div class="list">
+                              <div class="list_cont"> 
+                                  <a href="javascript:void(0);"  class="level">
+                                       <p>人工智能</p>
+                                       <span class="rate_bar">
+                                            <span class="rate-stars level2"></span>
+                                       </span>
+                                  </a>
+                                  <div class="hot_info">
+                                       <p class="detail">国家电网积极发展混合所有制 旗下上市平台</p>
+                                       <div class="info_box">
+                                            <p class="height"><span>国中水务</span><span>12.64</span><span>8.71%</span></p>
+                                            <p class="low"><span>国中水务</span><span>12.64</span><span>8.71%</span></p>
+                                       </div>
+                                  </div>
+                              </div>    
+                         </div>
+                         <div class="list">
+                              <div class="list_cont">  
+                                  <a href="javascript:void(0);"  class="level">
+                                       <p>人工智能</p>
+                                       <span class="rate_bar">
+                                            <span class="rate-stars level3"></span>
+                                       </span>
+                                  </a>
+                                  <div class="hot_info">
+                                       <p class="detail">国家电网积极发展混合所有制 旗下上市平台</p>
+                                       <div class="info_box">
+                                            <p class="height"><span>国中水务</span><span>12.64</span><span>8.71%</span></p>
+                                            <p class="low"><span>国中水务</span><span>12.64</span><span>8.71%</span></p>
+                                       </div>
+                                  </div>
+                              </div>    
+                         </div>
+                    </div>
+               </div>
+               <!-- 精品策略库 -->
+               <div class="fine">
+                    <div class="title">
+                         <p>精品策略库</p>
+                         <a href="javascript:void(0)" class="btn_more">更多</a>
+                    </div>
+                    <!-- 暂无数据 -->
+                    <div class="no_data">
+                        <img src="img/pic_not_find.png" alt="">
+                        <p>-暂无数据-</p>
+                    </div>
+                    <div class="fine_list">
+                        <div class="list_cont"> 
+                             <div class="extent">
+                                  <p class="height">51.72%</p>
+                                  <p>平均涨幅</p>
+                             </div>
+                             <div class="right_info">
+                                  <a href="javascript:void(0)" class="theme">主题掘金</a>
+                                  <div class="winning">胜率<span class="height">72.43%</span></div>
+                                  <div class="type">
+                                       <span>弱势</span>
+                                       <span>长线</span>
+                                       <span>稳健</span>
+                                       <span>短线趋势</span>
+                                  </div>
+                             </div>
+                          </div>   
+                    </div>
+                    <div class="fine_list">
+                         <div class="list_cont"> 
+                             <div class="extent">
+                                  <p class="height">51.72%</p>
+                                  <p>平均涨幅</p>
+                             </div>
+                             <div class="right_info">
+                                  <a href="javascript:void(0)" class="theme">主题掘金</a>
+                                  <div class="winning">胜率<span class="height">72.43%</span></div>
+                                  <div class="type">
+                                       <span>弱势</span>
+                                       <span>长线</span>
+                                       <span>稳健</span>
+                                       <span>短线趋势</span>
+                                  </div>
+                             </div>
+                          </div>   
+                    </div>
+                    <div class="fine_list">
+                         <div class="list_cont">
+                             <div class="extent">
+                                  <p class="height">51.72%</p>
+                                  <p>平均涨幅</p>
+                             </div>
+                             <div class="right_info">
+                                  <a href="javascript:void(0)" class="theme">主题掘金</a>
+                                  <div class="winning">胜率<span class="height">72.43%</span></div>
+                                  <div class="type">
+                                       <span>弱势</span>
+                                       <span>长线</span>
+                                       <span>稳健</span>
+                                       <span>短线趋势</span>
+                                  </div>
+                             </div>
+                         </div>    
+                    </div>
+               </div>
+          </div>
+			
+	</div>
+</div>     
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="http://cdn.upchinapro.com/assert/swiper/3.4.0/swiper.jquery.min.js"></script>
+<script type="text/javascript">
+    window.onscroll=function(){ 
+        var menu=document.getElementById("menu");
+        menu.style.top=document.body.scrollTop +'px';
+    } 
+     //轮播
+    var swiper = new Swiper('.swiper-container', {
+        pagination: '.swiper-pagination',
+        paginationClickable: '.swiper-pagination',
+        // autoplayDisableOnInteraction: false,
+        // noSwiping:false;
+        // autoplay:3000,
+        // loop: true,
+        speed:500,
+    });
+     //滚动条
+     $(function() {
+      $('.searchUl').jScrollPane();
+    });
+     //进度条
+   $(function() {
+      var grade = 1;  //grade  1-30
+      var degree = 0;
+      if(grade > 15){
+        $(".meter_box").css("opacity","1");
+        $(".gray_left").css("display","none");
+        $(".gray_right").css("display","none");
+        degree = (grade -15)*6;
+        $(".gray").css("transform",`rotate(${degree}deg)`);
+      }else if(grade <= 15){
+        $(".meter_box").css("opacity","1");
+        $(".gray_left").css("display","none");
+        $(".gray_right").css("display","block");
+        degree = -(5*8 + (8 - grade)*6)
+        $(".gray").css("transform",`rotate(${degree}deg)`);
+      }
+    });
+
+     // 波动区间
+     (function(){
+          var low= $(".progress_box .left_price").text();
+          var high= $(".progress_box .right_price").text();
+          var pointer = $(".progress .pointer");
+          var left = $(".progress_box .low");
+          var right = $(".progress_box .height");
+          progress(low,high,pointer,left,right);
+     })();
+     function progress(low,high,pointer,left,right){
+          var poin =pointer.text();
+          var difference1 = parseFloat(high - low);
+          var difference2 = parseFloat(poin - low);
+          var difference_green = parseInt((difference2 / difference1) * 100) + '%';
+          var difference_red =100 - parseInt((difference2 / difference1) * 100) + '%';
+          var poin_num = (parseInt((difference2 / difference1) * 100)) + '%';
+          left.css("width",difference_green);
+          right.css("width",difference_red);
+          pointer.css("left",poin_num);
+     }
+     // 菜单展开
+     $(".list_tow").on('click',function(){
+          $(this).toggleClass("open");
+          $(this).parent().siblings().find(".list_box").css("display","none");
+          $(this).parent().find(".list_box").slideToggle();
+     });
+      // $('#ttt').click()
+</script>
+</body>
+</html>

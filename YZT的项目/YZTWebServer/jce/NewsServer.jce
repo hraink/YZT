@@ -1,0 +1,262 @@
+module News
+{
+
+    enum  SUB_SORT_TYPE  //题材分类类型
+    {
+       HOT_SUB=1,  //热门题材(最热)
+       EXCEP_SUB=2, //异动题材(异动)
+       NEWS_SUB=3,  //最新题材(最新)
+       TOP_SUB=4   //top3热门题材
+    };
+    //大盘风向标
+    struct MarketVane
+    {
+       0 require string stockCode;  //指数代码
+       1 require int market;        //市场
+       2 optional int vane;         //大盘风向  0=谨慎投资季 1=安全投资季 -1=风险投资季
+       3 optional string advise;    //投资策略建议
+       4 optional double upprob;    //上涨概率
+       5 optional double flucFlor;  //预测低点
+       6 optional double flucCeil;  //预测高点
+       7 optional double flucPrice; //预期价
+       8 optional double fullPosition;//满仓线
+       9 optional double advisePosition;//智能仓位（建议仓位）
+       10 optional double price;//现价
+       11 optional double zd; //涨跌额
+       12 optional double zdf; //涨跌幅
+    };
+    //大盘风向标 回包
+    struct MarketVaneRsp
+    {
+       0 require int iRet;     //响应状态    0：正常   otherwise: 错误
+       1 optional string iMsg; //错误消息
+       2 optional vector<MarketVane> marketVaneList; //大盘风向标列表
+    };
+
+
+    //题材热门股
+    struct StockInfo
+    {
+       0 require string stockCode;  //股票代码
+       1 require string stockName;  //股票名称
+       2 require int market;        //市场
+       3 optional double price;     //现价
+       4 optional double zdf;       //涨跌幅
+       5 optional double zd;        //涨跌额
+    };
+
+    //题材
+    struct SubJect
+    {
+       0 require string code;       //题材代码
+       1 require string name;       //题材名称
+       2 optional string newsId;    //驱动事件ID
+       3 optional string title;     //驱动事件标题
+       4 optional string rankDate;  //上榜事件
+       5 optional double hot;       //题材热度
+       6 optional double chgRatio;  //涨跌幅
+       7 optional int type;         //题材类型
+       8 optional vector<StockInfo> stockList;
+    };
+
+
+    //题材气泡图指定返回数据格式
+    struct SubJectChartRsp
+    {
+       0 require int iRet;         //响应状态    0：正常   otherwise: 错误
+       1 optional string iMsg;     //错误消息
+       2 optional string dataJsonStr; //气泡图json格式字符串
+    };
+
+    struct SubJectsReq
+    {
+       0 require SUB_SORT_TYPE sortType;
+    };
+
+    struct SubJectsRsp
+    {
+        0 require int iRet;     //响应状态    0：正常   otherwise: 错误
+        1 optional string iMsg; //错误消息
+        2 optional vector<SubJect> subJectList; //大盘风向标列表
+    };
+
+    //相关题材
+    struct RelatedTheme
+    {
+       0 optional string code;  //题材code
+       1 optional string name;  //题材名称
+       2 optional double price; //现价
+       3 optional double zdf;   //涨跌幅
+    };
+
+    //相关个股
+    struct RelatedStock
+    {
+       0 optional string code;   //股票代码
+       1 optional string name;   //股票名称
+       2 optional int market;    //市场
+       3 optional string reason; //入选原因
+       4 optional double price;  //现价
+       5 optional double zdf;    //涨跌幅
+    };
+
+    //新闻龙虎榜
+    struct LhbNews
+    {
+       0 require string topicId; //龙虎榜ID
+       1 optional string title;  //上榜事件
+       2 optional string valueTrend;   //价值趋向
+       3 optional string time;         //时间
+       4 optional int isBull;    //0 利空 1 利多
+       5 optional vector<RelatedTheme> themeList;  //相关题材
+       6 optional vector<RelatedStock> stockList;  //相关个股
+       7 optional double drzf;  //个股收益均值 当日涨幅 平均涨幅
+       8 optional double frzf;  //5日涨幅
+       9 optional double trzf; //10日涨幅
+       10 optional double tyrzf; //20日涨幅
+       11 optional double totalRate;
+       12 optional int upNum;   //上涨家数
+       13 optional int downNum; //下跌家数
+    };
+
+    //传递type 查询当日利多，利空新闻龙虎榜
+    struct LhbNewsReq
+    {
+       0 optional int type; //1=利多  0=利空
+    };
+
+    //传递起始，截止时间 查询（历史新闻龙虎榜）事件跟踪
+    struct LhbHistoryReq
+    {
+       0 optional string startDate; //查询起始时间
+       1 optional string endDate;   //查询截止时间
+       2 optional int wantNum;      //查询条数
+       3 optional string beginTime; // 查询时间段开始时间戳 返回值里面有 查询第二页往后的时候用 必填
+       4 optional string lastNewsTime; //上一页数据最后一条的时间戳 查询第二页往后的时候用 必填
+       5 optional int offset;       //是否第一页   第一页offset=0 其他的页数offset=1
+    };
+
+
+    struct LhbNewsRsp
+    {
+       0 require int iRet;     //响应状态    0：正常   otherwise: 错误
+       1 optional string iMsg; //错误消息
+       2 optional string tradeStatus;//交易状态
+       3 optional vector<LhbNews> lhbNewsList; //新闻龙虎榜列表
+    };
+
+    struct TopLhbNewsRsp
+    {
+       0 require int iRet;     //响应状态    0：正常   otherwise: 错误
+       1 optional string iMsg; //错误消息
+       2 optional string tradeStatus;//交易状态
+       3 optional vector<LhbNews> lhbNewsListLD; //新闻龙虎榜列表利多
+       4 optional vector<LhbNews> lhbNewsListLK; //新闻龙虎榜列表利空
+    };
+
+    struct LhbHistorysRsp
+        {
+           0 require int iRet;     //响应状态    0：正常   otherwise: 错误
+           1 optional string iMsg; //错误消息
+           2 optional string tradeStatus;//交易状态
+           3 optional vector<LhbNews> lhbNewsList; //新闻龙虎榜列表
+           4 optional int hasNext;//是否还有数据
+           5 optional string beginTime;//下一页开始时间戳
+           6 optional int total;//总条数
+     };
+
+
+    //每日热股 走势图数据
+    struct HotChart
+    {
+       0 optional string code;
+       1 optional string date;
+       2 optional double hot;
+    };
+
+    //每日热股
+    struct HotDayStock
+    {
+        0 optional string code;   //股票代码
+        1 optional string name;   //股票名称
+        2 optional int market;    //市场
+        3 optional double price;  //现价
+        4 optional double zdf;    //涨跌幅
+        5 optional double hot;    //热度
+        6 optional double chgRatio; //异动
+        7 optional vector<RelatedTheme> themeList;  //相关题材
+        8 optional vector<HotChart> hotChartList;//热度走势图
+    };
+
+    struct HotDayStockRsp
+    {
+       0 require int iRet;     //响应状态    0：正常   otherwise: 错误
+       1 optional string iMsg; //错误消息
+       2 optional vector<HotDayStock> hotDayList; //每日热股列表
+
+    };
+
+
+    //每周牛股
+    struct HotWeekStock
+    {
+        0 optional string code;   //股票代码
+        1 optional string name;   //股票名称
+        2 optional int market;    //市场
+        3 optional double price;  //现价
+        4 optional double zdf;    //涨跌幅
+        5 optional vector<RelatedTheme> themeList;  //相关题材
+        6 optional double weekProfit;//本周收益
+    };
+
+    struct HotWeekStockRsp
+    {
+        0 require int iRet;     //响应状态    0：正常   otherwise: 错误
+        1 optional string iMsg; //错误消息
+        2 optional vector<HotWeekStock> hotWeekList; //每周热股列表
+    };
+
+    struct WeekHistory
+    {
+       0 optional string date;   //每周第一个交易日
+       1 optional double weekProfit; //周收益
+       2 optional double hsProfit; //同期沪深300收益
+       3 optional vector<HotWeekStock> stockList; //周牛股列表
+    };
+
+    struct WeekHistoryReq
+    {
+         0 optional int startNum; //开始
+         1 optional int wantNum;  //查询条数
+    };
+
+    struct WeekHistoryRsp
+    {
+          0 require int iRet;     //响应状态    0：正常   otherwise: 错误
+          1 optional string iMsg; //错误消息
+          2 optional vector<WeekHistory> weekHistoryList; //历史每周热股列表
+    };
+
+    interface NewsInterf
+    {
+         //大盘风向标
+         int getMarketVane(out MarketVaneRsp marketVaneRsp);
+         //根据分类获取题材列表
+         int getSubJects(SubJectsReq stReq,out SubJectsRsp stRsp);
+         //题材气泡图显示数据封装
+         int getSubJectsChart(out SubJectChartRsp stRsp);
+         //新闻龙虎榜-利多利空 TOP3
+         int getTopLhbNews(out TopLhbNewsRsp stRsp);
+         //新闻龙虎榜-今日榜单
+         int getLhbNews(LhbNewsReq stReq,out LhbNewsRsp stRsp);
+         //新闻龙虎榜-事件跟踪
+         int getLhbHistory(LhbHistoryReq stReq,out LhbHistorysRsp stRsp);
+         //每日热股
+         int getHotDayStock(out HotDayStockRsp stRsp);
+         //当周牛股
+         int getHotWeekStock(out HotWeekStockRsp stRsp);
+         //历史牛股
+         int getWeekHistoryStock(WeekHistoryReq stReq,out WeekHistoryRsp stRsp);
+
+    };
+};

@@ -1,0 +1,137 @@
+<% include ../common/header.ejs %>
+  <title>智能诊股</title>
+</head>
+<body>
+<div class="main">
+  <!-- 左侧菜单 -->
+  <% include ../common/leftMenu.ejs %>
+  <!--  右侧主内容区 -->
+  <div class="container">
+    <!-- 智能诊股开始 -->
+    <div class="clinic_cont" id="searchWrap">
+      <!-- 头部搜索 -->
+      <div class="clinic_head">
+        <img src="/img/pic_clinic_head.png">
+        <search-bar @select="handleSelect" search-btn-text="一键诊股"></search-bar>
+        <form action="/diagnose/stock" method="get">
+          <input type="hidden" name="code" :value="code">
+          <input type="hidden" name="market" :value="market">
+        </form>
+      </div>
+      <!-- 明星股 -->
+      <div class="stock_type">
+        <div class="title">
+          <p>明星股</p>
+          <!--<a href="javascript:void(0)" class="btn_more">更多</a>-->
+        </div>
+        <table>
+          <thead>
+          <tr>
+            <th><span>股票名称</span></th>
+            <th><span>股票代码</span></th>
+            <th><span>所属行业</span></th>
+            <th><span>现价</span></th>
+            <th><span>涨跌幅</span></th>
+            <th><span>综合评级</span></th>
+            <th><span></span></th>
+          </tr>
+          </thead>
+          <tbody>
+          <% starList.forEach(function(item){ %>
+          <tr>
+            <td class="txt_left"><span><a href="javascript:void(0)" class="open_stock" data-stock-market="<%=item.market%>" data-stock-code="<%=item.code%>"><%=item.name%></a></span></td>
+            <td><span><%=item.code%></span></td>
+            <td><span><%=item.industry%></span></td>
+            <td class="<%=calColor(item.zdf)%>"><span><%=item.price.toFixed(2)%></span></td>
+            <td class="<%=calColor(item.zdf)%>"><span><%=item.zdf.toFixed(2)%>%</span></td>
+            <td class="low">
+              <span class="rate_bar">
+                <span class="rate-stars level<%=item.starLevel%>"></span>
+              </span>
+            </td>
+            <td class="optional">
+              <div class="option_cont">
+                <a href="/diagnose/stock?code=<%=item.code%>&market=<%=item.market%>" class="stocks"></a>
+                <!--<span class="option">加入自选</span>-->
+              </div>
+            </td>
+          </tr>
+          <%})%>
+          </tbody>
+        </table>
+      </div>
+      <!-- 潜力股 -->
+      <div class="stock_type">
+        <div class="title">
+          <p>潜力股</p>
+          <!--<a href="javascript:void(0)" class="btn_more">更多</a>-->
+        </div>
+        <table>
+          <thead>
+          <tr>
+            <th><span>股票名称</span></th>
+            <th><span>股票代码</span></th>
+            <th><span>所属行业</span></th>
+            <th><span>现价</span></th>
+            <th><span>涨跌幅</span></th>
+            <th><span>综合评级</span></th>
+            <th><span></span></th>
+          </tr>
+          </thead>
+          <tbody>
+          <%potentialList.forEach(function(item){%>
+          <tr>
+            <td class="txt_left"><span><a href="javascript:void(0)" class="open_stock" data-stock-market="<%=item.market%>" data-stock-code="<%=item.code%>"><%=item.name%></a></span></td>
+            <td><span><%=item.code%></span></td>
+            <td><span><%=item.industry%></span></td>
+            <td class="<%=calColor(item.zdf)%>"><span><%=item.price.toFixed(2)%></span></td>
+            <td class="<%=calColor(item.zdf)%>"><span><%=item.zdf.toFixed(2)%>%</span></td>
+            <td class="low">
+              <span class="rate_bar">
+              <span class="rate-stars level<%=item.starLevel%>"></span>
+              </span>
+            </td>
+            <td class="optional">
+              <div class="option_cont">
+                <a href="/diagnose/stock?code=<%=item.code%>&market=<%=item.market%>" class="stocks"></a>
+                <!--<span class="option">加入自选</span>-->
+              </div>
+            </td>
+          </tr>
+          <%})%>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- 智能诊股结束 -->
+  </div>
+</div>
+<script src="/js/vue.js"></script>
+<% include ../common/searchBar.ejs %>
+<script>
+  // 搜索框
+  function initSearchBar() {
+    new Vue({
+      el: '#searchWrap',
+      data: {
+        code: '',
+        market: ''
+      },
+      methods: {
+        handleSelect: function (item) {
+          var form = this.$el.querySelector('form')
+
+          this.code = item.stkCode
+          this.market = item.secMarPar - 1
+
+          this.$nextTick(function() {
+            form.submit()
+          })
+        }
+      }
+    })
+  }
+
+  window.onload = initSearchBar
+</script>
+<% include ../common/footer.ejs %>

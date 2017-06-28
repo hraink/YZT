@@ -1,0 +1,86 @@
+<div class="menu" id="menu">
+    <div class="top">
+        <h1>优智投</h1>
+        <%if (daysRemain){%>
+        <p class="status">状态：<a href="javascript:void(0)"><%=daysRemain%>天到期</a></p>
+        <%}else {%>
+        <p class="status">状态：<a href="<%=payURL%>" target="_blank">立即开通</a></p>
+        <%}%>
+        <%if (userRiskInfo && userRiskInfo.userType){%>
+            <p class="type">类型：<%=userRiskInfo.userType.slice(0,3)%>&nbsp;&nbsp;<a href="/risk/result.html">查看 ></a></p>
+        <%}else if (loginUserName){%>
+            <p class="type">类型：<a href="/risk/index.html?retest=1">去测评 ></a></p>
+        <%}else {%>
+            <p class="type">类型：<a href="javascript:void(0);" id="loginCMD">去测评 ></a></p>
+        <%}%>
+    </div>
+    <div class="index <%if (yzt_org_url[1] && yzt_org_url[1].indexOf('main.html') === 0){%>active<%}%>">
+        <a href="/main.html">首页</a>
+    </div>
+    <div class="list">
+        <h3>大数据视点</h3>
+        <div class="lists">
+            <div class="list_tow <%if (yzt_org_url[1] && yzt_org_url[1] === 'market'){%>open<%}%>">市场关注</div>
+            <div class="list_box" style="display: <%if (yzt_org_url[1] && yzt_org_url[1] === 'market'){%>block<%}else {%>none<%}%>;">
+                <a href="/market/news.html" <%if (yzt_org_url[2] && yzt_org_url[2] === 'news.html'){%>class="active"<%}%>>新闻龙虎榜</a>
+                <a href="/market/track.html" <%if (yzt_org_url[2] && yzt_org_url[2] === 'track.html'){%>class="active"<%}%>>事件跟踪</a>
+            </div>
+        </div>
+        <div class="lists">
+            <div class="list_tow <%if (yzt_org_url[1] && yzt_org_url[1] === 'hot'){%>open<%}%>">机会热点</div>
+            <div class="list_box" style="display: <%if (yzt_org_url[1] && yzt_org_url[1] === 'hot'){%>block<%}else {%>none<%}%>;">
+                <a href="/hot/theme/panorama.html" <%if (yzt_org_url[2] && yzt_org_url[2] === 'theme'){%>class="active"<%}%>>题材风口</a>
+                <a href="/hot/industry.html" <%if (yzt_org_url[2] && yzt_org_url[2] === 'industry.html'){%>class="active"<%}%>>行业热图</a>
+            </div>
+        </div>
+        <div class="lists lists_one">
+            <div class="list_box <%if (yzt_org_url[1] && yzt_org_url[1] === 'capital'){%>active<%}%>">
+                <a href="/capital/index.html">资金流向</a>
+            </div>
+        </div>
+        <div class="lists lists_one">
+            <div class="list_box <%if (yzt_org_url[1] && yzt_org_url[1] === 'stock'){%>active<%}%>">
+                <%if (daysRemain){%>
+                <a href="/stock/day.html">舆情牛股<img src="/img/icon_v.png"></a>
+                <%}else {%>
+                <a href="<%=payURL%>" target="_blank">舆情牛股<img src="/img/icon_v.png"></a>
+                <%}%>
+            </div>
+        </div>
+    </div>
+    <div class="list list2">
+        <h3>智能化决策</h3>
+        <div class="lists lists_one">
+            <div class="list_box <%if (yzt_org_url[1] && yzt_org_url[1] === 'diagnose'){%>active<%}%>">
+                <a href="/diagnose/diagnose.html">智能诊股</a>
+            </div>
+        </div>
+        <div class="lists lists_one">
+            <div class="list_box <%if (yzt_org_url[1] && yzt_org_url[1] === 'strategy'){%>active<%}%>">
+                <%if (daysRemain){%>
+                <a href="/strategy/strategy.html">智能选股<img src="/img/icon_v.png"></a>
+                <%}else {%>
+                <a href="<%=payURL%>" target="_blank">智能选股<img src="/img/icon_v.png"></a>
+                <%}%>
+            </div>
+        </div>
+        <div class="lists lists_one">
+            <div class="list_box <%if (yzt_org_url[1] && yzt_org_url[1] === 'operate'){%>active<%}%>">
+                <%if (daysRemain){%>
+                <a href="/operate/operate.html">智能操盘<img src="/img/icon_v.png"></a>
+                <%}else {%>
+                <a href="<%=payURL%>" target="_blank">智能操盘<img src="/img/icon_v.png"></a>
+                <%}%>
+            </div>
+        </div>
+        <div class="lists lists_one">
+            <div class="list_box <%if (yzt_org_url[1] && yzt_org_url[1] === 'kline'){%>active<%}%>">
+                <%if (daysRemain){%>
+                <a href="/kline/kline.html">智能Ｋ线<img src="/img/icon_v.png"></a>
+                <%}else {%>
+                <a href="<%=payURL%>" target="_blank">智能Ｋ线<img src="/img/icon_v.png"></a>
+                <%}%>
+            </div>
+        </div>
+    </div>
+</div>

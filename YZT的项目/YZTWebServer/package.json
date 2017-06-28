@@ -1,0 +1,42 @@
+{
+  "name": "YZTWebServer",
+  "version": "1.0.0",
+  "private": true,
+  "createByTafnsGenerator": "0.3.3",
+  "config": {
+    "ip": "127.0.0.1",
+    "port": "3000"
+  },
+  "scripts": {
+    "start": "cross-env NODE_ENV=development DEBUG=app:* supervisor -w app.js,routes,bin,proxy,views ./bin/www",
+    "go": "DEBUG=app:* supervisor -w app.js,routes,bin,proxy,views ./bin/www",
+    "dev": "cross-env supervisor --debug=6344 -w app.js,routes,bin ./bin/www"
+  },
+  "nodeAgent": {
+    "main": "./bin/www"
+  },
+  "dependencies": {
+    "@taf/taf-config": "^1.2.4",
+    "@taf/taf-logs": "^0.1.1",
+    "@up/autopath": "^1.1.3",
+    "@up/crm-module": "^1.0.0",
+    "@up/trade-date": "^1.0.0",
+    "body-parser": "~1.17.1",
+    "co": "^4.6.0",
+    "compression": "^1.6.2",
+    "cookie-parser": "~1.4.3",
+    "cross-env": "^3.1.4",
+    "crypto": "0.0.3",
+    "d3-scale": "^1.0.4",
+    "debug": "~2.6.3",
+    "ejs": "~2.5.6",
+    "express": "~4.15.2",
+    "moment": "^2.17.1",
+    "morgan": "~1.8.1",
+    "node-cache": "^4.1.1",
+    "q": "^1.4.1",
+    "request": "^2.79.0",
+    "serve-favicon": "~2.4.1",
+    "validator": "^7.0.0"
+  }
+}

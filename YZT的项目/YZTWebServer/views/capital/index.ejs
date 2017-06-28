@@ -1,0 +1,119 @@
+<% include ../common/header %>
+<title><%=title%></title>
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+    <% include ../common/leftMenu %>
+    <!--  右侧主内容区 -->
+    <div class="container_auto">
+        <div class="switch">
+            <a href="javascript:void(0)" bussType = "EBT_BLK_HY" class="on">行业资金</a>
+            <a href="javascript:void(0)" bussType = "EBT_BLK_GN">题材资金</a>
+            <a href="javascript:void(0)" bussType = "EBT_A">个股资金</a>
+        </div>
+        <div class="subject">
+            <div class="time">
+                <div class="time_section">
+                    <p class="sectioned" rankDay = "1">实时</p>
+                    <p rankDay = "3">三日连续</p>
+                    <p rankDay = "5">五日连续</p>
+                    <p rankDay = "10">十日连续</p>
+                    <p class="reform"><img src="/img/icon_reform.png">刷新</p>
+                </div>
+            </div>
+            <div class="subject_chart" id="subjectChart" style="display: none"></div>
+            <div class="fund_data stocks_data" style="display: none" id="stocksData">
+                <!-- 行业 -->
+                <div class="table_head table_head_chart">
+                    <table>
+                        <thead id="EBT_BLK_HY_HEAD">
+                        <tr>
+                            <th><span>序号</span></th>
+                            <th><span>行业名称</span></th>
+                            <th sortColumn = 'CHG'><span>涨跌幅</span></th>
+                            <th sortColumn = 'DAY_ZLLR'class="sorting"><span>主力净流入</span></th>
+                            <th sortColumn = 'DAY_ZLZB'><span>主力净占比</span></th>
+                            <th sortColumn = 'DAY_CDDZJLR'><span>超大单净流入</span></th>
+                            <th sortColumn = 'DAY_CDDZJZB'><span>超大单净占比</span></th>
+                            <th sortColumn = 'DAY_DDZJLR'><span>大单净流入</span></th>
+                            <th sortColumn = 'DAY_DDZJZB'><span>大单净占比</span></th>
+                            <th sortColumn = 'DAY_ZDZJLR'><span>中单净流入</span></th>
+                            <th sortColumn = 'DAY_ZDZJZB'><span>中单净占比</span></th>
+                            <th sortColumn = 'DAY_XDZJLR'><span>小单净流入</span></th>
+                            <th sortColumn = 'DAY_XDZJZB'><span>小单净占比</span></th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- 题材 -->
+                <div class="table_head table_head_chart">
+                    <table>
+                        <thead id="EBT_BLK_GN_HEAD" style="display: none">
+                        <tr>
+                            <th><span>序号</span></th>
+                            <th><span>题材名称</span></th>
+                            <th sortColumn = 'CHG'><span>涨跌幅</span></th>
+                            <th sortColumn = 'DAY_ZLLR'class="sorting"><span>主力净流入</span></th>
+                            <th sortColumn = 'DAY_ZLZB'><span>主力净占比</span></th>
+                            <th sortColumn = 'DAY_CDDZJLR'><span>超大单净流入</span></th>
+                            <th sortColumn = 'DAY_CDDZJZB'><span>超大单净占比</span></th>
+                            <th sortColumn = 'DAY_DDZJLR'><span>大单净流入</span></th>
+                            <th sortColumn = 'DAY_DDZJZB'><span>大单净占比</span></th>
+                            <th sortColumn = 'DAY_ZDZJLR'><span>中单净流入</span></th>
+                            <th sortColumn = 'DAY_ZDZJZB'><span>中单净占比</span></th>
+                            <th sortColumn = 'DAY_XDZJLR'><span>小单净流入</span></th>
+                            <th sortColumn = 'DAY_XDZJZB'><span>小单净占比</span></th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <!-- 个股资金有table_fix -->
+                <div class="table_head table_fix">
+                    <table>
+                        <!-- A股 -->
+                        <thead id="EBT_A_HEAD" style="display: none">
+                        <tr>
+                            <th><span>序号</span></th>
+                            <th><span>股票代码</span></th>
+                            <th><span>股票名称</span></th>
+                            <!-- sorting降序 -->
+                            <!-- riseting升序 -->
+                            <th><span>最新价</span></th>
+                            <th sortColumn = 'CHG'><span>涨跌幅</span></th>
+                            <th sortColumn = 'DAY_ZLLR'class="sorting"><span>主力净流入</span></th>
+                            <th sortColumn = 'DAY_ZLZB'><span>主力净占比</span></th>
+                            <th sortColumn = 'DAY_CDDZJLR'><span>超大单净流入</span></th>
+                            <th sortColumn = 'DAY_CDDZJZB'><span>超大单净占比</span></th>
+                            <th sortColumn = 'DAY_DDZJLR'><span>大单净流入</span></th>
+                            <th sortColumn = 'DAY_DDZJZB'><span>大单净占比</span></th>
+                            <th sortColumn = 'DAY_ZDZJLR'><span>中单净流入</span></th>
+                            <th sortColumn = 'DAY_ZDZJZB'><span>中单净占比</span></th>
+                            <th sortColumn = 'DAY_XDZJLR'><span>小单净流入</span></th>
+                            <th sortColumn = 'DAY_XDZJZB'><span>小单净占比</span></th>
+                        </tr>
+                        </thead>
+                    </table>
+                </div>
+                <table class="table2_mian table2_fix">
+                    <tbody id="EBT_A_BODY">
+                    </tbody>
+                    <tbody id="EBT_BLK_GN_BODY">
+                    </tbody>
+                    <tbody id="EBT_BLK_HY_BODY">
+                    </tbody>
+                </table>
+                <!-- 翻页 -->
+                <div class="turn_page" id="turn_page">
+                </div>
+            </div>
+            <div class="no_data" style="display: none;" id="noData">
+                <img src="/img/pic_not_find.png" alt="">
+                <p>暂无数据</p>
+            </div>
+        </div>
+    </div>
+</div>
+<%-script('/js/echarts-all-3.js')%>
+<%-script('/js/capital.js')%>
+<% include ../common/footer %>

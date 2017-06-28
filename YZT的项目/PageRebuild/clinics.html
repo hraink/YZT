@@ -1,0 +1,389 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>智能诊股</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+     <div class="menu" id="menu">
+          <div class="top">
+               <h1>优智投</h1>
+               <p class="status">状态：<span>365天到期</span></p>
+               <p class="type">类型：<a href="javascript:viod(0)">去测评 ></a></p>
+          </div>
+          <div class="index">
+               <a href="javascript:viod(0);">首页</a>
+          </div>
+          <div class="list">
+               <h3>大数据视点</h3>
+               <div class="lists">
+                    <div class="list_tow">市场关注</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">新闻龙虎榜</a>
+                         <a href="javascript:viod(0);">事件跟踪</a>
+                    </div>
+               </div>
+               <div class="lists">
+                    <div class="list_tow">机会热点</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">题材风口</a>
+                         <a href="javascript:viod(0);">行业热图</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box active">
+                         <a href="javascript:viod(0);">资金流向</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">龙虎榜单</a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">舆情牛股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+          </div>
+          <div class="list list2">
+               <h3>智能化决策</h3>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能诊股</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能选股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能操盘<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能Ｋ线<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能监控</a>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <!--  右侧主内容区 -->
+	<div class="container">
+      <!-- 智能诊股开始 -->
+      <div class="clinic_cont">
+          <!-- 头部搜索 -->
+          <div class="clinic_head">
+              <img src="img/pic_clinic_head.png">
+              <div class="searchBox">
+                    <input type="text" placeholder="请输入代码/简称/简拼">
+                    <button>一键诊股</button>
+                    <ul class="searchUl"> <!-- 无数据时添加.search_none -->
+                        <!-- 无数据li -->
+                        <!--  <li>
+                          <div class="searchLi">您输入的股票不存在</div>
+                        </li> -->
+                        <li class="active">
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                      </ul>
+                </div>
+          </div>
+          <!-- 明星股 -->
+          <div class="stock_type">
+               <div class="title">
+                    <p>明星股</p>
+                    <a href="javascript:void(0)" class="btn_more">更多</a>
+               </div>
+               <table>
+                      <thead>
+                            <tr>
+                                 <th><span>股票名称</span></th>
+                                 <th><span>股票代码</span></th>
+                                 <th><span>所属行业</span></th>
+                                 <th><span>现价</span></th>
+                                 <th><span>涨跌幅</span></th>
+                                 <th><span>综合评级</span></th>
+                                 <th><span></span></th>
+                            </tr>
+                          </thead>
+                          <!-- 暂无数据 -->
+                          <tbody class="tab_noData">
+                              <tr>
+                                <td colspan="7">-暂无数据-</td>
+                              </tr>
+                          </tbody>
+                          <tbody>  
+                            <tr>
+                                <td class="txt_left"><span><a href="javascript:void(0)">广信材料</a></span></td>
+                                 <td><span>600125</span></td>
+                                 <td><span>化工原料</span></td>
+                                 <td class="low"><span>23.89</span></td>
+                                 <td class="height"><span>323.89%</span></td>
+                                 <td class="low">
+                                      <span class="rate_bar">
+                                        <span class="rate-stars level1"></span>
+                                      </span>
+                                 </td>
+                                 <td class="optional">
+                                    <div class="option_cont">
+                                         <a href="javascript:void();" class="stocks"></a>
+                                        <!--  <span class="option">加入自选</span> -->
+                                    </div>
+                                 </td>
+                            </tr>
+                            <tr>
+                                <td class="txt_left"><span><a href="javascript:void(0)">广信材料</a></span></td>
+                                 <td><span>600125</span></td>
+                                 <td><span>化工原料</span></td>
+                                 <td class="low"><span>23.89</span></td>
+                                 <td class="height"><span>323.89%</span></td>
+                                 <td class="low">
+                                     <span class="rate_bar">
+                                        <span class="rate-stars level2"></span>
+                                     </span>
+                                 </td>
+                                 <td class="optional">
+                                    <div class="option_cont">
+                                         <a href="javascript:void();" class="stocks"></a>
+                                         <!-- <span class="option optioned">删除自选</span> -->
+                                    </div>
+                                 </td>
+                            </tr>
+                            <tr>
+                                <td class="txt_left"><span><a href="javascript:void(0)">广信材料</a></span></td>
+                                 <td><span>600125</span></td>
+                                 <td><span>化工原料</span></td>
+                                 <td class="low"><span>23.89</span></td>
+                                 <td class="height"><span>323.89%</span></td>
+                                 <td class="low">
+                                      <span class="rate_bar">
+                                        <span class="rate-stars level3"></span>
+                                      </span>
+                                 </td>
+                                 <td class="optional">
+                                    <div class="option_cont">
+                                         <a href="javascript:void();" class="stocks"></a>
+                                        <!--  <span class="option">加入自选</span> -->
+                                    </div>
+                                 </td>
+                            </tr>
+                            <tr>
+                                <td class="txt_left"><span><a href="javascript:void(0)">广信材料</a></span></td>
+                                 <td><span>600125</span></td>
+                                 <td><span>化工原料</span></td>
+                                 <td class="low"><span>23.89</span></td>
+                                 <td class="height"><span>323.89%</span></td>
+                                 <td class="low">
+                                      <span class="rate_bar">
+                                        <span class="rate-stars level4"></span>
+                                      </span>
+                                 </td>
+                                 <td class="optional">
+                                    <div class="option_cont">
+                                         <a href="javascript:void();" class="stocks"></a>
+                                         <!-- <span class="option">加入自选</span> -->
+                                    </div>
+                                 </td>
+                            </tr>
+                            <tr>
+                                <td class="txt_left"><span><a href="javascript:void(0)">广信材料</a></span></td>
+                                 <td><span>600125</span></td>
+                                 <td><span>化工原料</span></td>
+                                 <td class="low"><span>23.89</span></td>
+                                 <td class="height"><span>323.89%</span></td>
+                                 <td class="low">
+                                      <span class="rate_bar">
+                                        <span class="rate-stars level5"></span>
+                                      </span>
+                                 </td>
+                                 <td class="optional">
+                                    <div class="option_cont">
+                                         <a href="javascript:void();" class="stocks"></a>
+                                         <!-- <span class="option">加入自选</span> -->
+                                    </div>
+                                 </td>
+                            </tr>
+                        </tbody>
+                  </table>
+          </div>
+          <!-- 潜力股 -->
+          <div class="stock_type">
+               <div class="title">
+                    <p>潜力股</p>
+                    <a href="javascript:void(0)" class="btn_more">更多</a>
+               </div>
+               <table>
+                      <thead>
+                            <tr>
+                                 <th><span>股票名称</span></th>
+                                 <th><span>股票代码</span></th>
+                                 <th><span>所属行业</span></th>
+                                 <th><span>现价</span></th>
+                                 <th><span>涨跌幅</span></th>
+                                 <th><span>综合评级</span></th>
+                                 <th><span></span></th>
+                            </tr>
+                          </thead>
+                          <!-- 暂无数据 -->
+                          <tbody class="tab_noData">
+                              <tr>
+                                <td colspan="7">-暂无数据-</td>
+                              </tr>
+                          </tbody>
+                          <tbody>  
+                            <tr>
+                                <td class="txt_left"><span><a href="javascript:void(0)">广信材料</a></span></td>
+                                 <td><span>600125</span></td>
+                                 <td><span>化工原料</span></td>
+                                 <td class="low"><span>23.89</span></td>
+                                 <td class="height"><span>323.89%</span></td>
+                                 <td class="low">
+                                      <span class="rate_bar">
+                                        <span class="rate-stars level1"></span>
+                                      </span>
+                                 </td>
+                                 <td class="optional">
+                                    <div class="option_cont">
+                                         <a href="javascript:void();" class="stocks"></a>
+                                         <!-- <span class="option">加入自选</span> -->
+                                    </div>
+                                 </td>
+                            </tr>
+                            <tr>
+                                <td class="txt_left"><span><a href="javascript:void(0)">广信材料</a></span></td>
+                                 <td><span>600125</span></td>
+                                 <td><span>化工原料</span></td>
+                                 <td class="low"><span>23.89</span></td>
+                                 <td class="height"><span>323.89%</span></td>
+                                 <td class="low">
+                                     <span class="rate_bar">
+                                        <span class="rate-stars level2"></span>
+                                     </span>
+                                 </td>
+                                 <td class="optional">
+                                    <div class="option_cont">
+                                         <a href="javascript:void();" class="stocks"></a>
+                                         <!-- <span class="option optioned">删除自选</span> -->
+                                    </div>
+                                 </td>
+                            </tr>
+                            <tr>
+                                <td class="txt_left"><span><a href="javascript:void(0)">广信材料</a></span></td>
+                                 <td><span>600125</span></td>
+                                 <td><span>化工原料</span></td>
+                                 <td class="low"><span>23.89</span></td>
+                                 <td class="height"><span>323.89%</span></td>
+                                 <td class="low">
+                                      <span class="rate_bar">
+                                        <span class="rate-stars level3"></span>
+                                      </span>
+                                 </td>
+                                 <td class="optional">
+                                    <div class="option_cont">
+                                         <a href="javascript:void();" class="stocks"></a>
+                                         <!-- <span class="option">加入自选</span> -->
+                                    </div>
+                                 </td>
+                            </tr>
+                            <tr>
+                                <td class="txt_left"><span><a href="javascript:void(0)">广信材料</a></span></td>
+                                 <td><span>600125</span></td>
+                                 <td><span>化工原料</span></td>
+                                 <td class="low"><span>23.89</span></td>
+                                 <td class="height"><span>323.89%</span></td>
+                                 <td class="low">
+                                      <span class="rate_bar">
+                                        <span class="rate-stars level4"></span>
+                                      </span>
+                                 </td>
+                                 <td class="optional">
+                                    <div class="option_cont">
+                                         <a href="javascript:void();" class="stocks"></a>
+                                         <!-- <span class="option">加入自选</span> -->
+                                    </div>
+                                 </td>
+                            </tr>
+                            <tr>
+                                <td class="txt_left"><span><a href="javascript:void(0)">广信材料</a></span></td>
+                                 <td><span>600125</span></td>
+                                 <td><span>化工原料</span></td>
+                                 <td class="low"><span>23.89</span></td>
+                                 <td class="height"><span>323.89%</span></td>
+                                 <td class="low">
+                                      <span class="rate_bar">
+                                        <span class="rate-stars level5"></span>
+                                      </span>
+                                 </td>
+                                 <td class="optional">
+                                    <div class="option_cont">
+                                         <a href="javascript:void();" class="stocks"></a>
+                                         <!-- <span class="option">加入自选</span> -->
+                                    </div>
+                                 </td>
+                            </tr>
+                        </tbody>
+                  </table>
+          </div>
+      </div>
+      <!-- 智能诊股结束 -->
+      <!-- 弹窗开始 -->
+      <div class="pop_box">
+          <div class="pop_title">
+            <p>最优策略（603833）</p>
+            <div class="btn_colse"></div>
+          </div>
+          <div class="pop_cont"></div>
+      </div>
+	</div>
+</div>     
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+    window.onscroll=function(){ 
+        var menu=document.getElementById("menu");
+        menu.style.top=document.body.scrollTop +'px';
+    } 
+     // 菜单展开
+     $(".list_tow").click(function(){
+          $(this).toggleClass("open");
+          $(this).parent().find(".list_box").slideToggle();
+     });
+
+</script>
+</body>
+</html>

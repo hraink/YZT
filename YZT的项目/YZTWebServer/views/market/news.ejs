@@ -1,0 +1,32 @@
+<% include ../common/header %>
+<title><%=title%></title>
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+    <% include ../common/leftMenu %>
+    <!--  右侧主内容区 -->
+    <div class="container">
+        <div class="switch switch_st">
+            <a href="javascript:void(0)" class="on" id="ldsj" data-ldlk="1">利多事件</a>
+            <a href="javascript:void(0)" id="lksj" data-ldlk="0">利空事件</a>
+            <div class="status_right">
+                <span>北京时间</span>
+                <span class="date"><%= moment().format("YYYY-MM-DD") %></span>
+                <span class="status"><%=tradeStatus%></span>
+                <span class="reform" id="reformBtn"><img src="/img/icon_reform.png">刷新</span>
+            </div>
+        </div>
+        <!-- 利多开始-->
+        <div class="content_ld news_list" id="news_list">
+            <!-- 详细内容 -->
+            <% include ../tpl/market_news%>
+            <!-- 利空结束-->
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://cdn.upchinapro.com/assert/moment/2.16.0/moment.min.js"></script>
+<script src="/tpl-mix/market_news.js"></script>
+<%-script('/js/ejs.js')%>
+<%-script('/js/market-news.js')%>
+<% include ../common/footer %>

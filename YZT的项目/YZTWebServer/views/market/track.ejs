@@ -1,0 +1,51 @@
+<% include ../common/header %>
+<title><%=title%></title>
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+    <% include ../common/leftMenu %>
+    <!--  右侧主内容区 -->
+    <div class="container">
+        <div class="switch switch_st">
+            <a href="javascript:void(0)" class="on">事件跟踪</a>
+            <div class="status_right">
+                <span>北京时间</span>
+                <span class="date"><%= moment().format("YYYY-MM-DD") %></span>
+                <span class="status"><%=tradeStatus%></span>
+            </div>
+        </div>
+        <div class="topbar">
+            <div class="date">
+                <input type="text" placeholder="起始时间" class="laydate-icon" value="<%=begin%>" name="begin" id="start"
+                       onblur="if (this.value == '') {this.value = '起始时间';}"
+                       onfocus="if (this.value == '起始时间') {this.value = '';}"/>
+                <span class="to">至</span>
+                <input type="text" placeholder="结束时间" class="laydate-icon" value="<%=end%>" name="end" id="end"
+                       onblur="if (this.value == '') {this.value = '结束时间';}"
+                       onfocus="if (this.value == '结束时间') {this.value = '';}"/>
+            </div>
+            <div class="btnSearch" id="btnSearch">搜索</div>
+        </div>
+        <!-- 事件跟踪开始 -->
+        <div class="content_ld news_list" id="news_list">
+            <!-- 在div中增加一个属性值,方便做收起和展开的处理 -->
+            <% include ../tpl/market_track%>
+        </div>
+        <!-- 事件跟踪结束 -->
+    </div>
+</div>
+<script type="text/javascript" src="http://cdn.upchinapro.com/assert/moment/2.16.0/moment.min.js"></script>
+<%-script('/js/ejs.js')%>
+<script src="/tpl-mix/market_track.js"></script>
+<%-script('/js/laydate.js')%>
+<%-script('/js/jqueryToolPlugins.js')%>
+<script type="text/javascript">
+    var trackOpt = {
+        beginTime : '<%=beginTime%>',
+        lastNewsTime : '<%=lastNewsTime%>',
+        offset : 0
+    }
+</script>
+<%-script('/js/market-track.js')%>
+<% include ../common/footer %>

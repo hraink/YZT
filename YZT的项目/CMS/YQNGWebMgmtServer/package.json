@@ -1,0 +1,32 @@
+{
+  "name": "YQNGWebMgmtServer",
+  "version": "1.0.0",
+  "private": true,
+  "createByTafnsGenerator": "0.3.3",
+  "config": {
+    "ip": "127.0.0.1",
+    "port": "4000"
+  },
+  "scripts": {
+    "start": "set DEBUG=app:* & supervisor -w app.js,routes,bin,proxy,views ./bin/www",
+    "go": "DEBUG=app:* supervisor -w app.js,routes,bin,proxy,views ./bin/www"
+  },
+  "nodeAgent": {
+    "main": "./bin/www"
+  },
+  "dependencies": {
+    "@taf/taf-config": "^1.2.4",
+    "@taf/taf-logs": "^0.1.1",
+    "@up/trade-date": "^0.1.2",
+    "body-parser": "~1.15.1",
+    "compression": "^1.6.2",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.2.0",
+    "ejs": "~2.4.1",
+    "express": "~4.13.4",
+    "morgan": "~1.6.1",
+    "mysql": "^2.12.0",
+    "q": "^1.4.1",
+    "serve-favicon": "~2.3.0"
+  }
+}

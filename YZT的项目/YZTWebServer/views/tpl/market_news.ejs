@@ -1,0 +1,66 @@
+<%if(lhbNewsList && lhbNewsList.length > 0){%>
+    <%for(var i in lhbNewsList){var obj = lhbNewsList[i];%>
+        <div class="billboardList">
+            <div class="corner"><img src="/img/icon_hot0<%=(Number(i)+1) > 3 ? 4 : (Number(i)+1)%>.png" alt=""><span><%=Number(i)+1%></span></div>
+            <div class="containerbg">
+                <!-- 上半部内容 -->
+                <div class="topContent">
+                    <div class="topleft">
+                        <div class="event">
+                            <span class="msg">上榜事件</span>
+                            <a class="title" href="http://www.upchina.com/article/<%=obj.topicId%>.html" target="_blank"><%=obj.title%></a>
+                            <% if(moment(obj.time, "YYYY-MM-DD HH:mm:ss").isSame(moment(), "day")){ %>
+                            <span class="date">今天 <%= moment(obj.time).format("HH:mm") %></span>
+                            <% }else{ %>
+                            <span class="date"><%= moment(obj.time).format("MM-DD HH:mm") %></span>
+                            <% } %>
+                        </div>
+                        <div class="value">
+                            <span class="msg">价值趋向</span>
+                            <div class="summary"><%=obj.valueTrend%></div>
+                        </div>
+                        <div class="material">
+                            <span class="msg">相关题材</span>
+                            <%if(obj.themeList.value && obj.themeList.value.length > 0){%>
+                            <%for(var i in obj.themeList.value){var theme = obj.themeList.value[i];%>
+                            <div class="stock <%if(theme.zdf>0){%>height<%}else if(theme.zdf<0){%>low<%}else{%>middle<%}%>">
+                                <a class="name open_stock" href="javascript:void(0);" target="_blank" data-stock-market="<%=theme.code%>" data-stock-code="<%=theme.code%>"><%=theme.name%></a>
+                                <span class="index"><%=parseFloat(theme.price).toFixed(2)%></span><span class="rose"><%=parseFloat(theme.zdf).toFixed(2)%>%</span>
+                            </div>
+                            <%}%>
+                            <%}%>
+                        </div>
+                    </div>
+                    <div class="topright">
+                        <div class="title">平均涨幅</div>
+                        <div class="rose <%if(obj.drzf>0){%>height<%}else if(obj.drzf<0){%>low<%}else{%>middle<%}%>"><%=parseFloat(obj.drzf).toFixed(2)%>%</div>
+                        <div class="mixed">涨: <span class="num"><%=obj.upNum%>家</span>跌: <span><%=obj.downNum%>家</span></div>
+                    </div>
+                </div>
+                <!-- 下半部内容 -->
+                <div class="bottomContent">
+                    <div class="msg">相关个股</div>
+                    <ul>
+                        <%if(obj.stockList.value && obj.stockList.value.length > 0){%>
+                            <%for(var i in obj.stockList.value.slice(0,6)){var stock = obj.stockList.value[i];%>
+                                <li class="li<%=Number(i)+1%> open_stock" data-stock-market="<%=stock.market%>" data-stock-code="<%=stock.code%>">
+                                    <div class="stock <%if(stock.zdf>0){%>height<%}else if(stock.zdf<0){%>low<%}else{%>middle<%}%>">
+                                        <a class="name" href="javascript:void(0);" target="_blank"><%=stock.name%></a>
+                                        <span class="index"><%=parseFloat(stock.price).toFixed(2)%></span>
+                                        <span class="rose"><%=parseFloat(stock.zdf).toFixed(2)%>%</span>
+                                    </div>
+                                    <p><%=stock.reason%></p>
+                                </li>
+                            <%}%>
+                        <%}%>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    <%}%>
+<%}else {%>
+<div class="no_data">
+    <img src="/img/pic_not_find.png" alt="">
+    <p>暂无数据</p>
+</div>
+<%}%>

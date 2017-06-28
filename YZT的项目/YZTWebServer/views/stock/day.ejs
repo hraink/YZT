@@ -1,0 +1,61 @@
+<% include ../common/header %>
+<title><%=title%></title>
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+    <% include ../common/leftMenu %>
+    <!--  右侧主内容区 -->
+    <div class="container week_containser">
+        <div class="switch switch_st">
+            <a href="/stock/day.html" class="on">每日热股</a>
+            <a href="/stock/week.html">每周牛股</a>
+        </div>
+        <!-- 每日热股开始 -->
+        <div class="hot_shares">
+            <%if(hotWeekList && hotWeekList.length > 0){%>
+            <%for(var i in hotWeekList){var obj = hotWeekList[i];%>
+            <div class="hot_list hot_info_<%=obj.code%>" data-stock-code="<%=obj.code%>" data-stock-market="<%=obj.market%>" data-chart-list="<%=JSON.stringify(obj.hotChartList.value||[])%>">
+                <!-- 文字信息框 -->
+                <div class="hot_main <%if(obj.zdf>0){%>height<%}else if(obj.zdf<0){%>low<%}else{%>middle<%}%>">
+                    <a href="javascript:void(0);" class="left_info open_stock"  data-stock-market="<%=obj.market%>" data-stock-code="<%=obj.code%>">
+                        <p><%=obj.name%></p>
+                        <p><%=obj.code%></p>
+                    </a>
+                    <div class="right_info">
+                        <div class="data_num">
+                            <p>股价<span id="price"><%=parseFloat(obj.price).toFixed(2)%></span></p>
+                            <p>新闻热度<span><%=parseFloat(obj.hot).toFixed(2)%></span></p>
+                        </div>
+                        <div class="data_num <%if(obj.chgRatio>0){%>height<%}else if(obj.chgRatio<0){%>low<%}else{%>middle<%}%>">
+                            <p>涨幅<span id="zdf"><%=parseFloat(obj.zdf).toFixed(2)%>%</span></p>
+                            <p>异动系数<span><%=parseFloat(obj.chgRatio).toFixed(2)%>%</span></p>
+                        </div>
+                        <div class="theme">
+                            <p>相关题材
+                                <%if(obj.themeList.value && obj.themeList.value.length > 0){%>
+                                <%for(var i in obj.themeList.value.slice(0,3)){var theme = obj.themeList.value[i];%>
+                                <a href="javascript:void(0);" target="_blank" class="open_stock" data-stock-market="<%=theme.code%>" data-stock-code="<%=theme.code%>"><%=theme.name%></a>
+                                <%}%>
+                                <%}%>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 热股图 -->
+                <div class="hot_chart hot_chart_<%=obj.code%>"></div>
+            </div>
+            <%}%>
+            <%}else {%>
+            <div class="no_data">
+                <img src="/img/pic_not_find.png" alt="">
+                <p>暂无数据</p>
+            </div>
+            <%}%>
+        </div>
+        <!-- 每日热股结束 -->
+    </div>
+</div>
+<%-script('/js/highcharts.js')%>
+<%-script('/js/stock-day.js')%>
+<% include ../common/footer %>

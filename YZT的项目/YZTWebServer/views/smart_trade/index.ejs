@@ -1,0 +1,88 @@
+<% include ../common/header.ejs %>
+<title>优智投</title>
+  <head>
+<body>
+<div class="main">
+  <% include ../common/leftMenu.ejs %>
+  <div class="container">
+    <!-- 顶部搜索 -->
+    <div class="trader">
+      <div class="trader_cont">
+        <div class="secure-scan">
+          <div class="scan-wrap scan-bg"></div>
+          <div class="scan-wrap scan-pie"></div>
+          <div class="scan-wrap scan-planet1"></div>
+          <div class="scan-wrap scan-planet2"></div>
+          <div class="scan-wrap scan-planet3"></div>
+        </div>
+        <div class="trader_right">
+          <div class="intellig"></div>
+          <div id="searchWrap">
+            <search-bar search-btn-text="精准操盘" @select="handleSelect"></search-bar>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- 底部排行榜 -->
+    <div class="tactics">
+      <!-- 策略点金表格 -->
+      <div class="title">
+        <p>策略点金</p>
+        <!--<a href="javascript:viod(0);" class="btn_more">更多</a>-->
+        <!--点击操盘按钮新打开PC端个股的最优策略页,
+        点击更多按钮新打开PC端股票池-策略点金-战绩页-->
+      </div>
+      <table id="data-table" v-cloak>
+        <thead>
+        <tr>
+          <th class="txt_left"><span>股票名称</span></th>
+          <th class="txt_left"><span>股票代码</span></th>
+          <th class="txt_left"><span>入选日期</span></th>
+          <th class="txt_left"><span>入选模块</span></th>
+          <th><span>最高涨幅</span></th>
+          <th><span>次日涨幅</span></th>
+          <th><span>5日涨幅</span></th>
+          <th><span>10日涨幅</span></th>
+          <th><span></span></th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr v-for="stock in list" :key="stock.stockCode">
+            <td class="txt_left"><a class="open_stock" href="javascript:;" :data-stock-market="stock.market" :data-stock-code="stock.stockCode">{{stock.stockName}}</a></td>
+            <td class="txt_left"><span>{{stock.stockCode}}</span></td>
+            <td class="txt_left"><span>{{stock.chooseDate}}</span></td>
+            <td class="txt_left"><span>{{stock.flagName}}</span></td>
+            <td :class="stock.highIncrease|calColor"><span>{{stock.highIncrease * 100 | percent}}</span></td>
+            <td :class="stock.nextIncrease|calColor"><span>{{stock.nextIncrease * 100 | percent}}</span></td>
+            <td :class="stock.fiveDayIncrease|calColor"><span>{{stock.fiveDayIncrease * 100 | percent}}</span></td>
+            <td :class="stock.tenDayIncrease|calColor"><span>{{stock.tenDayIncrease * 100 | percent}}</span></td>
+            <td class="optional">
+              <div class="option_cont">
+                <a href="javascript:;" class="stocks" @click="redirect(stock)"></a>
+                <span v-if="stock.optioned" class="option optioned" @click="removeFromOptional(stock.stockCode)">删除自选</span>
+                <!--<span v-else class="option" @click="addToOptional(stock.stockCode)">加入自选</span>-->
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+<div class="pop_box" style="display:none;">
+  <div class="pop_title">
+    <p></p>
+    <div class="btn_colse"></div>
+  </div>
+  <div class="pop_cont">
+    <iframe id="pop_frm" frameborder="0" width="832" height="100%" border="0"></iframe>
+  </div>
+</div>
+<script>
+var optiStockList = <%-JSON.stringify(optiStockList)%>
+</script>
+<script src="/js/vue.js"></script>
+<script src="/js/utils.js"></script>
+<% include ../common/searchBar.ejs %>
+<script src="/js/smartTrade.js"></script>
+<% include ../common/footer.ejs %>

@@ -1,0 +1,210 @@
+
+module Quant
+{
+
+enum E_MATCH_RET_TYPE
+{
+    E_MATCH_OK = 0,
+    E_MATCH_INVALID_PARAM = -1,
+    E_MATCH_NOT_READY     = -2,
+    E_MATCH_NO_DATA       = -3,
+    E_MATCH_NO_KLINE      = -4,
+    E_MATCH_INPUT_SUSPEND = -5,
+    E_MATCH_NOT_ENOUGH_KLINE = -6,
+    E_MATCH_SERVER_FAIL   = -99,
+};
+
+//日K线
+struct ChartData
+{
+    0 optional int high;      //最高价     *100
+    1 optional int low;       //最低价     *100
+    2 optional int open;      //开盘价     *100
+    3 optional int close;     //收盘价     *100
+    4 optional int ceil;      //预测上限    *10000
+    5 optional int flor;      //预测下限     *10000
+    6 optional int profit;    //预测收益率    *10000
+    7 optional int upProb;    //上涨概率      *10000
+    8 optional int ratio;     //风险收益比
+    9 require  int date;      //K线，预测日期
+    10 optional long volume;   //成交量
+};
+
+const int TOP_N_NUM    = 10;      //TOP个数
+
+//定义指标
+enum MatchFactor
+{
+    MATCH_FACTOR_RISE_RATE = 0x01,           //收盘价涨幅
+    MATCH_FACTOR_AMOUNT    = 0x02,           //金额
+    MATCH_FACTOR_AVG_PRICE = 0x04,           //平均价格
+    MATCH_FACTOR_ALL       = 0xff,           //匹配所有
+};
+
+
+
+struct Kline
+{
+    0  optional string code;        //代码
+    1  optional int  market;        //市场
+    2  optional int  semBlance;     //相似度  *10000
+    3  optional int profit;         //收益率     *10000
+    4  optional int iStartTime;     //开始日期
+    5  optional int iEndTime;       //结束日期
+    6  optional vector<ChartData> chartDataList; //K线数据
+    7  optional string name;        //股票名称
+    8  optional double value;        //总市值 
+    9  optional string industry;     //所属行业，名称
+};
+
+//k线匹配数据
+struct SimilarKlineSample
+{
+    0    optional int    sampleNum;            //样本数
+    1    optional int    positiveSample;       //正收益样本数
+    2    optional int    negativeSample;       //负收益样本数
+    3    optional int    upProb;               //上涨概率  正收益样本数/总样本数  *10000
+    4    optional int    avgProfit;            //总样本 平均收益率               *10000
+    5    optional int    middleProfit;         //总样本 中位数收益率             *10000
+    6    optional int    positiveAvgProfit;    //正收益样本 平均收益率           *10000
+    7    optional int    positiveMiddleProfit; //正收益样本 中位数收益率         *10000
+    8    optional int    negativeAvgProfit;    //负收益样本 平均收益率           *10000
+    9    optional int    negativeMiddleProfit; //负收益样本 中位数收益率         *10000
+    10   optional int    ratio;                //收益风险比   //平均预测上限/平均预测下限        *10000
+    11   optional int    ceil;                 //预测上限    //总样本 平均预测上限              *10000
+    12   optional int    flor;                 //预测下限    //总样本 平均预测下限              *10000
+    13   optional int    cycle;                //匹配周期
+    14   optional vector<Kline>  klineList;     //匹配相似K线
+    15   optional int    mostProbPrifit;        //85%以上的概率在周期内(不一定是最后一天)上涨的值 *10000
+};
+
+
+enum PREDICT_RET_TYPE
+{
+    RT_PREDICT_ONLY = 1, //仅预测 Predict.chartDataList
+    RT_KLINE_ONLY   = 2,   //仅被预测的K线 Predict.klineList
+    RT_SAMPLE_ONLY  = 4,  //仅样本 Predict.sample
+    RT_ALL          = 0xFF,       //都返回
+    
+};
+
+//单个证券 K线，预测数据请求
+struct SinglePredictReq
+{
+    1 optional   int    market;              //证券市场  0=深圳  1=上海  指数不填
+    2 require    string code;                //证券代码
+    3 require    int    matchFactor;         //匹配哪些指标
+    4 optional   int    semBlance;           //相似度 1-100 整数
+    5 optional   int    matchCycle;          //预测多少天的数据
+    6 optional   string matchIndustry;       //匹配行业
+    7 optional  int    matchStartDate = 0;   //匹配周期开始时间，为0时，用cycle来推算
+    8 optional  int    matchEndDate = 0;     //匹配周期结束时间，为0时，用cycle来推算
+    9 optional  int    queryStartDate = 19901201;      //搜索周期开始时间
+    10 optional  int   queryEndDate;            //搜索周期结束时间
+    11 optional  int   eRetType;                //预测、样本, PREDICT_RET_TYPE类型的bitmap
+    12 optional  bool  bMatchSuspendInput=true; //输入股票如果停牌是否匹配，如果填false，检查到输入股票停牌后，直接返回失败    E_MATCH_INPUT_SUSPEND
+    13 optional  unsigned int   uiMaxSampleSize = 100;       //最多匹配多少的样本，默认100
+    14 optional  unsigned int   uiMinSampleToPredict = 3;   //最少用多少样本来匹配
+};
+
+
+
+
+//单个证券
+struct Predict
+{
+    0 require  string code;      //证券代码
+    1 optional string name;      //证券名称
+    2 optional int market;          //证券市场 0=深证 1=上海
+    3 optional vector<ChartData> chartDataList; //证券K线图，预测图 ， 单个股票的 多日K线数据图，多日预测走势图
+    4 optional vector<ChartData> klineList;     //原始数据的K线  
+    5 optional SimilarKlineSample sample;       //匹配样本    
+    6 optional int useFactor;                   //使用的因子
+};
+
+enum E_LIST_CATEGORY
+{
+    E_LIST_MARKET_INDEX = 1, //大盘指数
+    E_LIST_HOT_STOCK    = 2, //热门股票
+    E_LIST_HOT_INDEX    = 3, //热点指数
+    E_LIST_TOP_TEN      = 4, //龙虎榜前10
+    E_LIST_LAST_TEN     = 5, //龙虎榜后10   
+};
+
+enum E_LIST_PLATE
+{
+    E_PLATE_HS_AG = 1, //沪深A股 
+    E_PLATE_SH_AG = 2, //上证A股
+    E_PLATE_SZ_AG = 3, //深证A股
+    E_PLATE_ZXB   = 4, //中小板 
+    E_PLATE_CYB   = 5  //创业板
+};
+
+enum E_LIST_SORT
+{
+    E_SORT_PROFIT  = 1,   //预测收益排行
+    E_SORT_UPPROB  = 2,   //上涨概率排行
+    E_SORT_RATIO   = 3    //收益风险比排行
+};
+
+
+//首页（大盘预测，热点股票，热点指数，），龙虎榜 K线图，预测图 请求参数
+struct PredictListReq
+{
+    0 require  int     cycle;                       //预测周期       1=预测周期1天 5=预测周期5天 10=预测周期10天 20=预测周期20天
+    1 require  int     category;                    //分类           E_LIST_CATEGORY的值(1=大盘预测 2=热点股票 3=热点指数 4=龙虎榜前十 5=龙虎榜后十)
+    2 optional int     plate = 1;                   //股票所属板块    E_LIST_PLATE的值 (1=沪深A股 2=上证A股 3=深证A股 4=中小板 5=创业板)
+    3 optional int     sort = 1;                    //排序方法，E_LIST_SORT的值( 1=预测收益排行  2=上涨概率排行 3=收益风险比排行 )    
+};
+
+//首页（大盘预测，热点股票，热点指数，），龙虎榜 K线图，预测图 响应结果
+struct PredictListRsp
+{
+    0 require   vector<Predict>         predictList;        //根据分类查询证券列表
+};
+
+//预测数据
+struct ForecastKlineSample
+{
+    //统计结果区
+    0    optional int    sampleNum;             //样本数
+    1    optional int    positiveSample;        //正收益样本数
+    2    optional int    negativeSample;        //负收益样本数
+    3    optional int    upProb;                //上涨概率  正收益样本数/总样本数           *10000
+    4    optional int    avgProfit;             //总样本 平均收益率                      *10000
+    5    optional int    middleProfit;          //总样本 中位数收益率                    *10000
+    6    optional int    positiveAvgProfit;     //正收益样本 平均收益率          *10000
+    7    optional int    positiveMiddleProfit;  //正收益样本 中位数收益率        *10000
+    8    optional int    negativeAvgProfit;     //负收益样本 平均收益率          *10000
+    9    optional int    negativeMiddleProfit;  //负收益样本 中位数收益率        *10000
+    10   optional int    ratio;                 //收益风险比   //平均预测上限/平均预测下限        *10000
+    11   optional int    ceil;                  //预测上限        //总样本 平均预测上限              *10000
+    12   optional int    flor;                  //预测下限       //总样本 平均预测下限              *10000
+    13   optional int    matchDay;              //匹配天数
+    14   optional vector<Kline>  klineList;     //匹配相似K线
+};
+
+
+struct IndustryList
+{
+    0 optional map<string, string> mIndustry;
+};
+
+
+
+
+interface Match
+{
+    //不同预测周期 日K线&预测数据查询
+    int getPredictList(PredictListReq req, out PredictListRsp rsp);
+
+    //单个证券 不同预测周期 日K线&预测数据查询
+    int getSinglePredict(SinglePredictReq req, out Predict predict);
+    
+    /**
+    * 行业列表
+    */
+    int getIndustry(out IndustryList stRsp);
+};
+
+}; 

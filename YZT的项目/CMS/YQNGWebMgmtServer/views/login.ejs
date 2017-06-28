@@ -1,0 +1,61 @@
+<% include ./common/header %>
+<title><%=title%></title>
+<link rel="stylesheet" href="/css/bootstrap.min.css" />
+<script src="/js/jquery-1.11.3.min.js"></script>
+<script>
+$(function(){
+    $("#loginBtn").click(function(){
+        var userName = $("#userName").val();
+        var userPass = $("#userPass").val();
+        if(userName==''||userPass==''){
+            return false;
+        }else{
+            $("#form1").submit();
+        }
+    });
+});
+</script>
+</head>
+<body>
+
+<div class="container">
+
+    <form id="form1" class="form-signin" method="post" action="/doLogin">
+        <br><br><br><br><br>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <h2 class="form-signin-heading">舆情牛股后台</h2>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <br><br>
+        <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            <input type="text" id="userName" name="userName" class="form-control" placeholder="用户名" required autofocus>
+        </div>
+        <div class="col-md-4"></div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <input type="password" id="userPass" name="userPass" class="form-control" placeholder="密码" required>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+        <br>
+
+        <div class="row">
+            <div class="col-md-5"></div>
+            <div class="col-md-2">
+                <button class="btn btn-lg btn-primary btn-block" id="loginBtn" type="button">登录</button>
+            </div>
+            <div class="col-md-5"></div>
+        </div>
+    </form>
+
+</div>
+
+<% include ./common/footer %>

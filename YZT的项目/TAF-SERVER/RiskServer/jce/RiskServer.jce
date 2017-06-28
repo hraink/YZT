@@ -1,0 +1,50 @@
+module Risk
+{
+
+    //用户风险评测
+    struct UserRisk
+    {
+       0 require string userName;//用户名
+       1 require int risk1;//评测选择1
+       2 require int risk2;//评测选择2
+       3 require int risk3;//评测选择3
+       4 require int risk4;//评测选择4
+       5 require int risk5;//评测选择5
+       6 require int risk6;//评测选择6
+       7 require int risk7;//评测选择7
+       8 require int risk8;//评测选择8
+       9 optional string riskType;//风险分类 (用户风险分类+用户资金分类)
+       10 optional string userType;//用户类型
+       11 optional string riskEndure;//风险承受能力
+       12 optional string winHope;//获利期待
+       13 optional string riskPrepare;//风险准备
+       14 optional int low; //投资建议 低风险比例
+       15 optional int middle;//投资建议 中风险比例
+       16 optional int high;//投资建议 高风险比例
+    };
+
+    struct UserAuthReq
+    {
+       0 require string userName; //用户名
+       1 require string code;  //权限ID
+    };
+
+    struct UserAuthRsp
+    {
+       0 require int  iRet;
+       1 require string iMsg;
+       2 optional bool    hasRights; //是否拥有权限
+       3 optional string  endDate;   //权限到期时间
+    };
+
+    interface RiskInter
+    {
+        //查询用户风险评测
+        int queryUserRisk(string userName,out UserRisk userRisk);   //状态码返回 0：用户已风险评测过  otherwise：服务异常
+        //用户风险评测
+        int setUserRisk(UserRisk userRisk); //状态码返回 0：评测成功  otherwise：评测失败
+        //查询用户权限
+        int queryUserAuth(UserAuthReq stReq,out UserAuthRsp stRsp);
+    };
+
+};

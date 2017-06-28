@@ -1,0 +1,65 @@
+<html>
+<head>
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <script src="/js/jquery-1.11.3.min.js"></script>
+    <script src="/js/common.js"></script>
+<script>
+    $(function(){
+        $("#editStk").click(function(){
+            var stockName = $("#stockName").val();
+            var stockCode = $("#stockCode").val();
+            var stockMar = $("#stockMar").val();
+            var sId = $("#sId").val();
+            if(stockName==''||stockCode==''){
+                alert('股票名称和股票代码都不能为空!');
+                return false;
+            }
+            $.ajax({
+                url:'/dayStocks/edit',
+                type:'get',
+                data:{'stockName':stockName,
+                    'stockCode':stockCode,
+                    'stockMar':stockMar,
+                    'sId':sId},
+                success:function(data){
+                    if(data.retVal==0){
+                        window.location.href = '/html/a.html';
+                    }else if(data.retVal==2){
+                        alert('修改失败,今天已添加了这支股票！');
+                    }else{
+                        alert('修改失败！');
+                    }
+
+                }
+            });
+        });
+
+        $("#cancel").click(function(){
+            window.location.href = '/html/a.html';
+        });
+
+    });
+
+</script>
+</head>
+<body>
+<form id="stock" >
+    <br><br><br><br><br>
+    <div class="form-group text-center">日期:<%=curDate%></div>
+    <div class="form-group text-center">
+        <label for="stockName">股票名称</label>
+        <input type="text" id="stockName" name="stockName" value="<%=rowsData.Stock_Name%>">
+        <input type="hidden" id="sId" name="sId" value="<%=rowsData.Id%>">
+        <input type="hidden" id="stockMar" name="stockMar" value="<%=rowsData.Stock_Mar%>">
+    </div>
+    <div class="form-group text-center">
+        <label for="stockCode">股票代码</label>
+        <input type="text" id="stockCode" name="stockCode" value="<%=rowsData.Stock_Code%>" readonly>
+    </div>
+    <div class="form-group text-center">
+        <input type="button" class="btn btn-info" name="editStk" id="editStk" value="提交">
+        <input type="button" class="btn btn-warning" name="cancel" id="cancel" value="返回">
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<div class="left">
+    <p>本周</p>
+</div>
+<%if(hotWeekList && hotWeekList.length > 0){%>
+<div class="right">
+<%for(var i in hotWeekList){var obj = hotWeekList[i];%>
+<div class="rank_week">
+    <div class="income <%if(obj.zdf>0){%>height<%}else if(obj.zdf<0){%>low<%}else{%>middle<%}%>">
+        <p class="income_num"><%=parseFloat(obj.weekProfit).toFixed(2)%><span>%</span></p>
+        <p>本周收益</p>
+    </div>
+    <div class="details">
+        <div class="name">
+            <a href="javascript:void(0);" class="open_stock" data-stock-market="<%=obj.market%>" data-stock-code="<%=obj.code%>"><%=obj.name%></a>
+            <span><%=obj.code%></span>
+        </div>
+        <div class="increase <%if(obj.zdf>0){%>height<%}else if(obj.zdf<0){%>low<%}else{%>middle<%}%>">
+            <span class="price"><%=parseFloat(obj.price).toFixed(2)%></span>
+            <span class="rate"><%=parseFloat(obj.zdf).toFixed(2)%> % </span>
+        </div>
+        <div class="theme">
+            <span>相关题材</span>
+            <%if(obj.themeList.value && obj.themeList.value.length > 0){%>
+            <%for(var i in obj.themeList.value.slice(0,3)){var theme = obj.themeList.value[i];%>
+            <a href="javascript:void(0);" class="open_stock" data-stock-market="<%=theme.code%>" data-stock-code="<%=theme.code%>"><%=theme.name%></a>
+            <%}%>
+            <%}%>
+        </div>
+    </div>
+</div>
+<%}%>
+<%}else {%>
+<div class="right no_data">
+    <p>市场风险较高，建议持币观望。</p>
+<%}%>
+</div>

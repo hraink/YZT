@@ -1,0 +1,79 @@
+<% include ../common/header %>
+<title><%=title%></title>
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+    <% include ../common/leftMenu %>
+    <!--  右侧主内容区 -->
+    <div class="container indu_container">
+        <!-- 行业热图 -->
+        <div class="popular">
+            <div class="popular_top">
+                <h3 class="popular_tit">沪深市场热门行业<span>按成交额从大到小排列</span></h3>
+                <div class="legend">
+                    <span class="legend_tit">涨跌幅</span>
+                    <span class="list">0.8%以上</span>
+                    <span class="list">0.8%-0.4%</span>
+                    <span class="list">0.4%-0%</span>
+                    <span class="list">0%</span>
+                    <span class="list">0%-0.4%</span>
+                    <span class="list">0.4%-0.8%</span>
+                    <span class="list">0.8%以上</span>
+                </div>
+            </div>
+            <div class="popular_chart" id="popular_chart"></div>
+            <!-- 暂无数据 -->
+            <div class="no_data" id="noData">
+                <img src="/img/pic_not_find.png" alt="">
+                <p>-暂无数据-</p>
+            </div>
+        </div>
+        <!-- 底部排行榜 -->
+        <div class="industry_list">
+            <!-- 涨跌排行榜 -->
+            <div class="list_main increa_list" id="increa_list">
+                <div class="title">
+                    <p>行业个股涨跌幅排行</p>
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>代码</th>
+                        <th>名称</th>
+                        <th class="txt_r"><span>最新</span></th>
+                        <th class="txt_r"><span>涨跌幅</span></th>
+                        <th class="txt_r"><span>涨跌额</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+            <!-- 个股排行榜 -->
+            <div class="list_main deal_list" id="deal_list">
+                <div class="title">
+                    <p>行业个股成交额排行</p>
+                </div>
+                <table>
+                    <thead>
+                    <tr>
+                        <th>代码</th>
+                        <th>名称</th>
+                        <th class="txt_r"><span>最新</span></th>
+                        <th class="txt_r"><span>涨跌幅</span></th>
+                        <th class="txt_r"><span>成交额</span></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://cdn.upchinapro.com/assert/echarts/3.3.2/echarts.min.js"></script>
+<%-script('/js/d3.3.5.js')%>
+<%-script('/js/industry.js')%>
+
+<% include ../common/footer %>

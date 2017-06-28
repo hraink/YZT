@@ -1,0 +1,602 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>智能K线_匹配样本</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css">
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+     <div class="menu" id="menu">
+          <div class="top">
+               <h1>优智投</h1>
+               <p class="status">状态：<span>365天到期</span></p>
+               <p class="type">类型：<a href="javascript:viod(0)">去测评 ></a></p>
+          </div>
+          <div class="index">
+               <a href="javascript:viod(0);">首页</a>
+          </div>
+          <div class="list">
+               <h3>大数据视点</h3>
+               <div class="lists">
+                    <div class="list_tow">市场关注</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">新闻龙虎榜</a>
+                         <a href="javascript:viod(0);">事件跟踪</a>
+                    </div>
+               </div>
+               <div class="lists">
+                    <div class="list_tow">机会热点</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">题材风口</a>
+                         <a href="javascript:viod(0);">行业热图</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box active">
+                         <a href="javascript:viod(0);">资金流向</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">龙虎榜单</a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">舆情牛股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+          </div>
+          <div class="list list2">
+               <h3>智能化决策</h3>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能诊股</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能选股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能操盘<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能Ｋ线<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能监控</a>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <!--  右侧主内容区 -->
+	<div class="container">
+        <div class="switch switch_st">
+             <a href="javascript:viod(0)">K线趋势</a>
+             <a href="javascript:viod(0)" class="on">K线模式匹配</a>
+        </div>
+        <div class="line_cont">
+            <div class="line_top clearfix">
+                <div class="searchBox">
+                    <input type="text" placeholder="请输入代码/简称/简拼">
+                    <button>搜索</button>
+                    <ul class="searchUl"> <!-- 无数据时添加.search_none -->
+                        <!-- 无数据li -->
+                        <!--  <li>
+                          <div class="searchLi">您输入的股票不存在</div>
+                        </li> -->
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                      </ul>
+                </div>
+            </div>
+            <!-- K线模式匹配 -->  
+            <div class="shares_match_wrap">
+                  <h1 class="matched_shares_name">
+                      <span class="code">000002</span>
+                      <a href="javascript:void(0)" class="name">万科Ａ</a>
+                      <span>最新价<span class="num height">20.83</span></span>
+                      <span>涨跌<span class="num low">-0.15</span></span>
+                      <span>涨幅<span class="num middle">-0.71%</span></span>
+                      <span class="stop">*该股票已停牌，预测结果有较大不确定性。</span>
+                  </h1>
+                  <div class="summary_condition_wrap">
+                      <p class="tip">该股票未来5天内有85%的概率最高收益大于-0.6%</p>
+                      <p class="shares_info_line_wrap">
+                          预测收益率<span class="height">0.3%</span>
+                          预测上限<span class="low">12.1%</span>
+                          预测下限<span class="middle">-6.0%</span>
+                      </p>
+                  </div>
+                  <div class="icon_select_graph">
+                      <span class="js_show_candle active">K线</span>
+                      <span class="js_show_poly">折线</span>
+                  </div>
+                  <div class="match_graph_wrap"></div>   
+                  <div class="match_pattern">
+                      <div class="form_col">
+                          <div class="match_mode">
+                              <label>匹配模式：</label>
+                              <span class="beau_ck">
+                                    <input type="checkbox" id="price" name="price" value="1">
+                                    <label for="price" id="checkbox_price" class="selecting disable">价格</label>
+                              </span>
+                              <span class="beau_ck">
+                                    <input type="checkbox" id="order_volume" name="volume" value="2">
+                                    <label id="checkbox_volume" class="">成交量</label>
+                              </span>
+                              <span class="beau_ck">
+                                    <input type="checkbox" id="average_line" name="average" value="4">
+                                    <label id="checkbox_average" class="">均线</label>
+                              </span>
+                          </div>
+                          <div class="forecast_cycle">
+                                <label>预测周期：</label>
+                                <span>1天</span>
+                                <span class="active">5天</span>
+                                <span>10天</span>
+                                <span>20天</span>
+                          </div>
+                          <button type="button" class="go_match_btn">开始匹配</button>
+                      </div>
+                      <div class="match_more_condition">
+                           <div class="match_more_main">
+                                <div class="choice_cycle_wrapper">
+                                     <p class="choice_cycle">匹配周期：
+                                         <input type="text" placeholder="2017-01-19" readonly="readonly" autocomplete="off" class="date">
+                                         <span>-</span>
+                                         <input type="text" placeholder="2017-02-15" readonly="readonly" autocomplete="off" class="date">
+                                         <button type="button" class="lock_btn unlock"></button>
+                                         <span class="match_condition">匹配条件：
+                                               <span>
+                                                   <label class="sim_label">相似度≥</label>
+                                                   <input id="semBlance" name="semblance" type="text" placeholder="85">%
+                                               </span>
+                                         </span>
+                                      </p>
+                                </div>
+                                <div class="choice_cycle_wrapper">
+                                     <p class="choice_cycle">搜索周期：
+                                        <input type="text" placeholder="选择日期范围" readonly="readonly" autocomplete="off" class="date">
+                                        <span>-</span>
+                                        <input type="text" placeholder="选择日期范围" readonly="readonly" autocomplete="off" class="date">
+                                        <span class="match_industry">匹配行业：
+                                              <select name="industry" id="industry" class="industry">
+                                                  <option value="" >全部</option>
+                                                  <option value="880001">农林牧渔</option>
+                                                  <option value="880002">石油</option>
+                                                  <option value="880003">煤炭</option>
+                                                  <option value="880004">其他采掘</option>
+                                                  <option value="880007">化工原料</option>
+                                                  <option value="880008">化学制品</option>
+                                                  <option value="880009">化学纤维</option>
+                                                  <option value="880010">橡胶塑料</option>
+                                                  <option value="880012">化工新材料</option>
+                                                  <option value="880013">钢铁</option>
+                                                  <option value="880014">有色金属</option>
+                                                  <option value="880015">金属新材料</option>
+                                                  <option value="880016">建材</option>
+                                                  <option value="880017">建筑</option>
+                                                  <option value="880018">通用机械</option>
+                                                  <option value="880019">工程机械</option>
+                                                  <option value="880020">仪器仪表</option>
+                                                  <option value="880021">电气设备</option>
+                                                  <option value="880022">金属制品</option>
+                                                  <option value="880023">电子元器件</option>
+                                                  <option value="880024">汽车</option>
+                                                  <option value="880025">通信设备</option>
+                                                  <option value="880026">电脑设备</option>
+                                                  <option value="880027">家用电器</option>
+                                                  <option value="880028">酿酒饮料</option>
+                                                  <option value="880029">食品加工</option>
+                                                  <option value="880030">纺织服装</option>
+                                                  <option value="880031">造纸印刷</option>
+                                                  <option value="880033">轻工制造</option>
+                                                  <option value="880035">医药</option>
+                                                  <option value="880039">医疗器械服务</option>
+                                                  <option value="880041">电力</option>
+                                                  <option value="880042">水务</option>
+                                                  <option value="880043">环保工程</option>
+                                                  <option value="880044">燃气</option>
+                                                  <option value="880045">交通运输</option>
+                                                  <option value="880046">房地产</option>
+                                                  <option value="880047">银行</option>
+                                                  <option value="880048">多元金融</option>
+                                                  <option value="880049">证券</option>
+                                                  <option value="880050">保险</option>
+                                                  <option value="880051">零售贸易</option>
+                                                  <option value="880052">旅游</option>
+                                                  <option value="880053">酒店餐饮</option>
+                                                  <option value="880056">通信运营</option>
+                                                  <option value="880057">网络服务</option>
+                                                  <option value="880058">软件服务</option>
+                                                  <option value="880059">文化传媒</option>
+                                                  <option value="880060">综合</option>
+                                                  <option value="880064">国防军工</option>
+                                                  <option value="880065">交运设备</option>
+                                              </select>
+                                          </span>
+                                       </p>
+                                </div>
+                                
+                            </div> 
+                            <button type="button" class="back_default_btn">恢复默认</button>
+                      </div>
+                      <div class="more_select_wrap more_select_wrap_more">更多筛选</div>
+                  </div>
+                  <div class="match_result">
+                       <div class="left_table">
+                          <table>
+                              <thead>
+                                  <tr>
+                                      <th><span></span></th>
+                                      <th><span>样本数</span></th>
+                                      <th><span>平均收益率</span></th>
+                                      <th><span>收益中位数</span></th>
+                                  </tr>
+                              </thead>
+                              <tbody>
+                                  <tr>
+                                      <td><span>总样本</span></td>
+                                      <td><span>100</span></td>
+                                      <td class="height"><span>3.5%</span></td>
+                                      <td class="low"><span>3.5%</span></td>
+                                  </tr>
+                                  <tr>
+                                      <td><span>正收益样本</span></td>
+                                      <td><span>100</span></td>
+                                      <td class="height"><span>3.5%</span></td>
+                                      <td class="low"><span>3.5%</span></td>
+                                  </tr>
+                                  <tr>
+                                      <td><span>负收益样本</span></td>
+                                      <td><span>100</span></td>
+                                      <td class="low"><span>3.5%</span></td>
+                                      <td class="height"><span>3.5%</span></td>
+                                  </tr>
+                              </tbody>
+                            </table>
+                       </div>
+                       <div class="right_table">
+                            <table>
+                                <tbody>
+                                    <tr>
+                                        <td><span>上涨概率</span></td>
+                                        <td class="height"><span>45%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>预测上限</span></td>
+                                        <td class="low"><span>45%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>收益风险比</span></td>
+                                        <td class="middle"><span>45%</span></td>
+                                    </tr>
+                                    <tr>
+                                        <td><span>上涨概率</span></td>
+                                        <td class="height"><span>45%</span></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                           
+                       </div>
+                    
+                </div> 
+            </div> 
+
+            <div class="match_tabs">
+                <div class="tabs_header">
+                   <!-- 导航tab切换 -->
+                     <ul>
+                         <li class="js_tab"><a href="javascript:void(0);" class="active">匹配样本</a></li>
+                         <li class="js_tab"><a href="javascript:void(0);" class="">详细列表</a></li>
+                         <li class="js_tab"><a href="javascript:void(0);" class="">收益分布</a></li>
+                     </ul>
+                </div>
+                <div class="tabs_content">
+                    <!-- 匹配样本 -->
+                     <div class="tabs_item">
+                          <ul class="shars_float_list">
+                              <li>
+                                  <div class="item_head">
+                                      <h4><span>000000</span><a href="javascript:void(0);">祥龙电业</a></h4>
+                                      <p>相似度<span>86%</span>收益率<span class="height">-4.5%</span></p>
+                                  </div>
+                                  <div class="match_k_graph"></div>
+                              </li>
+                              <li>
+                                  <div class="item_head">
+                                      <h4><span>000000</span><a href="javascript:void(0);">祥龙电业</a></h4>
+                                      <p>相似度<span>86%</span>收益率<span class="height">-4.5%</span></p>
+                                  </div>
+                                  <div class="match_k_graph"></div>
+                              </li>
+                              <li>
+                                  <div class="item_head">
+                                      <h4><span>000000</span><a href="javascript:void(0);">祥龙电业</a></h4>
+                                      <p>相似度<span>86%</span>收益率<span class="height">-4.5%</span></p>
+                                  </div>
+                                  <div class="match_k_graph"></div>
+                              </li>
+                              <li>
+                                  <div class="item_head">
+                                      <h4><span>000000</span><a href="javascript:void(0);">祥龙电业</a></h4>
+                                      <p>相似度<span>86%</span>收益率<span class="height">-4.5%</span></p>
+                                  </div>
+                                  <div class="match_k_graph"></div>
+                              </li>
+                              <li>
+                                  <div class="item_head">
+                                      <h4><span>000000</span><a href="javascript:void(0);">祥龙电业</a></h4>
+                                      <p>相似度<span>86%</span>收益率<span class="height">-4.5%</span></p>
+                                  </div>
+                                  <div class="match_k_graph"></div>
+                              </li>
+                              <li>
+                                  <div class="item_head">
+                                      <h4><span>000000</span><a href="javascript:void(0);">祥龙电业</a></h4>
+                                      <p>相似度<span>86%</span>收益率<span class="height">-4.5%</span></p>
+                                  </div>
+                                  <div class="match_k_graph"></div>
+                              </li>
+                          </ul>
+                          <div class="turn_page">
+                                <div class="btn_prev btn_disabled">上一页</div>
+                                <div class="pageindex active">1</div>
+                                <div class="pageindex">2</div>
+                                <div class="pageindex">3</div>
+                                <div class="pageindex">...</div>
+                                <div class="pageindex">99</div>
+                                <div class="pageindex">99</div>
+                                <div class="pageindex">99</div>
+                                <div class="pageindex">99</div>
+                                <div class="pageindex">99</div>
+                                <div class="btn_next">下一页</div>
+                          </div>
+                     </div>
+                     <!-- 详细列表 -->
+                     <div class="tabs_item">
+                          <div class="table_shares">
+                               <div class="table_header">
+                                    <span>代码</span>
+                                    <span>股票名称</span>
+                                    <span>开始日期</span>
+                                    <span>结束日期</span>
+                                    <span class="riseting">相似度</span>
+                                    <span class="sorting">收益率</span>
+                                    <span>行业</span>
+                                    <span>市值</span>
+                                    <span>匹配次数</span>
+                               </div>
+                               <div class="table_ctn">
+                                    <ul class="matched_stop_list">
+                                        <li>
+                                            <span>002393</span>
+                                            <span><a href="javascript:void(0);">力生制药</a></span>
+                                            <span>2016-10-31</span>
+                                            <span>2016-11-21</span>
+                                            <span>87%</span>
+                                            <span class="height">-3.5%</span>
+                                            <span>仓储行业</span>
+                                            <span>87%</span>
+                                            <span>87%</span>
+                                        </li>
+                                        <li>
+                                            <span>002393</span>
+                                            <span><a href="javascript:void(0);">力生制药</a></span>
+                                            <span>2016-10-31</span>
+                                            <span>2016-11-21</span>
+                                            <span>87%</span>
+                                            <span class="height">-3.5%</span>
+                                            <span>仓储行业</span>
+                                            <span>87%</span>
+                                            <span>87%</span>
+                                        </li>
+                                        <li>
+                                            <span>002393</span>
+                                            <span><a href="javascript:void(0);">力生制药</a></span>
+                                            <span>2016-10-31</span>
+                                            <span>2016-11-21</span>
+                                            <span>87%</span>
+                                            <span class="height">-3.5%</span>
+                                            <span>仓储行业</span>
+                                            <span>87%</span>
+                                            <span>87%</span>
+                                        </li>
+                                        <li>
+                                            <span>002393</span>
+                                            <span><a href="javascript:void(0);">力生制药</a></span>
+                                            <span>2016-10-31</span>
+                                            <span>2016-11-21</span>
+                                            <span>87%</span>
+                                            <span class="height">-3.5%</span>
+                                            <span>仓储行业</span>
+                                            <span>87%</span>
+                                            <span>87%</span>
+                                        </li>
+                                        <li>
+                                            <span>002393</span>
+                                            <span><a href="javascript:void(0);">力生制药</a></span>
+                                            <span>2016-10-31</span>
+                                            <span>2016-11-21</span>
+                                            <span>87%</span>
+                                            <span class="height">-3.5%</span>
+                                            <span>仓储行业</span>
+                                            <span>87%</span>
+                                            <span>87%</span>
+                                        </li>
+                                        <li>
+                                            <span>002393</span>
+                                            <span><a href="javascript:void(0);">力生制药</a></span>
+                                            <span>2016-10-31</span>
+                                            <span>2016-11-21</span>
+                                            <span>87%</span>
+                                            <span class="height">-3.5%</span>
+                                            <span>仓储行业</span>
+                                            <span>87%</span>
+                                            <span>87%</span>
+                                        </li>
+                                        <li>
+                                            <span>002393</span>
+                                            <span><a href="javascript:void(0);">力生制药</a></span>
+                                            <span>2016-10-31</span>
+                                            <span>2016-11-21</span>
+                                            <span>87%</span>
+                                            <span class="height">-3.5%</span>
+                                            <span>仓储行业</span>
+                                            <span>87%</span>
+                                            <span>87%</span>
+                                        </li>
+                                        <li>
+                                            <span>002393</span>
+                                            <span><a href="javascript:void(0);">力生制药</a></span>
+                                            <span>2016-10-31</span>
+                                            <span>2016-11-21</span>
+                                            <span>87%</span>
+                                            <span class="height">-3.5%</span>
+                                            <span>仓储行业</span>
+                                            <span>87%</span>
+                                            <span>87%</span>
+                                        </li>
+                                        <li>
+                                            <span>002393</span>
+                                            <span><a href="javascript:void(0);">力生制药</a></span>
+                                            <span>2016-10-31</span>
+                                            <span>2016-11-21</span>
+                                            <span>87%</span>
+                                            <span class="height">-3.5%</span>
+                                            <span>仓储行业</span>
+                                            <span>87%</span>
+                                            <span>87%</span>
+                                        </li>
+                                        <li>
+                                            <span>002393</span>
+                                            <span><a href="javascript:void(0);">力生制药</a></span>
+                                            <span>2016-10-31</span>
+                                            <span>2016-11-21</span>
+                                            <span>87%</span>
+                                            <span class="height">-3.5%</span>
+                                            <span>仓储行业</span>
+                                            <span>87%</span>
+                                            <span>87%</span>
+                                        </li>
+                                        <li>
+                                            <span>002393</span>
+                                            <span><a href="javascript:void(0);">力生制药</a></span>
+                                            <span>2016-10-31</span>
+                                            <span>2016-11-21</span>
+                                            <span>87%</span>
+                                            <span class="height">-3.5%</span>
+                                            <span>仓储行业</span>
+                                            <span>87%</span>
+                                            <span>87%</span>
+                                        </li>
+                                        <li>
+                                            <span>002393</span>
+                                            <span><a href="javascript:void(0);">力生制药</a></span>
+                                            <span>2016-10-31</span>
+                                            <span>2016-11-21</span>
+                                            <span>87%</span>
+                                            <span class="height">-3.5%</span>
+                                            <span>仓储行业</span>
+                                            <span>87%</span>
+                                            <span>87%</span>
+                                        </li>
+                                
+                                    </ul>
+                               </div>
+                          </div>
+                     </div>
+                     <!-- 收益分布 -->
+                     <div class="tabs_item" >
+                          <div class="profit_precent_header">
+                              <p>统计方式：<span class="active">收益</span><span>时间</span></p>
+                          </div>
+                          <p class="income">收益率</p>
+                          <div class="profit_graph_wrap"></div>
+                     </div>
+                     <!-- 收益分布 -->
+                </div>
+                
+            </div>
+
+
+	     </div>
+</div>     
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript">
+    window.onscroll=function(){ 
+        var menu=document.getElementById("menu");
+        menu.style.top=document.body.scrollTop +'px';
+    } 
+    //更多筛选展开
+    $(".more_select_wrap").click(function(){
+        $(this).toggleClass("more_select_wrap_open");
+        $(".match_more_condition").toggle();
+    });
+    // 底部tab切换
+    $(".tabs_header .js_tab").click(function(){
+        var index = $(this).index();
+         $(".tabs_content .tabs_item").css("display","none");
+         $(".tabs_content").find(".tabs_item").eq(index).css("display","block");
+         $('.table_ctn').jScrollPane();
+         // 详情列表宽度
+          var ul_heigh = $('.matched_stop_list').css("height");
+          var div_heigh = $('.table_ctn').css("height");
+          if(ul_heigh > div_heigh){
+            $(".table_header").addClass("hidden");
+          }
+    });
+
+
+    //checkbox切换效果
+    $(".beau_ck label").click(function(){
+        $(this).toggleClass("selecting");
+    });
+     // 菜单展开
+     $(".list_tow").click(function(){
+          $(this).toggleClass("open");
+          $(this).parent().find(".list_box").slideToggle();
+     });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,449 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>事件追踪</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+  <link href="js/need/laydate.css" rel="stylesheet" type="text/css">
+  <link href="js/skins/default/laydate.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+     <div class="menu" id="menu">
+          <div class="top">
+               <h1>优智投</h1>
+               <p class="status">状态：<span>365天到期</span></p>
+               <p class="type">类型：<a href="javascript:viod(0)">去测评 ></a></p>
+          </div>
+          <div class="index">
+               <a href="javascript:viod(0);">首页</a>
+          </div>
+          <div class="list">
+               <h3>大数据视点</h3>
+               <div class="lists">
+                    <div class="list_tow">市场关注</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">新闻龙虎榜</a>
+                         <a href="javascript:viod(0);">事件跟踪</a>
+                    </div>
+               </div>
+               <div class="lists">
+                    <div class="list_tow">机会热点</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">题材风口</a>
+                         <a href="javascript:viod(0);">行业热图</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box active">
+                         <a href="javascript:viod(0);">资金流向</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">龙虎榜单</a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">舆情牛股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+          </div>
+          <div class="list list2">
+               <h3>智能化决策</h3>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能诊股</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能选股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能操盘<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能Ｋ线<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能监控</a>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <!--  右侧主内容区 -->
+	<div class="container">
+       <div class="switch switch_st">
+               <a href="javascript:viod(0)">利多事件</a>
+               <a href="javascript:viod(0)" class="on">利空事件</a>
+               <div class="status_right">
+                   <span>北京时间</span>
+                   <span class="date">2017-02-14</span>
+                   <span class="status">交易中</span>
+               </div>
+        </div>
+        <div class="topbar">
+              <div class="date">
+              <input type="text" placeholder="2016-07-26" class="laydate-icon" onclick="laydate()" id="start"/>
+              <span class="to">至</span>
+              <input type="text" placeholder="2016-07-26" class="laydate-icon" onclick="laydate()" id="end"/>
+           </div>
+           <div class="btnSearch">搜索</div>
+        </div>
+        <!-- 事件跟踪开始 -->
+        <div class="content_ld news_list">
+           <!-- 在div中增加一个属性值,方便做收起和展开的处理 -->
+            <div class="billboards" content_id="cc_sq">
+                 <div class="corner"><img src="img/icon_hot01.png" alt=""><span>1</span></div>
+               <div class="containerbg">
+                    <!-- 上半部内容 -->
+                   <div class="topContent pittedContent">
+                        <div class="topleft">
+                            <div class="event"><span class="msg">上榜事件</span><a class="title" href="" target="_blank">我国量子计算获突破性进展 成功研发半导体量子芯片</a><span class="dates">2016-08-22</span></div>
+                            <div class="value"><span class="msg">价值趋向</span><div class="summary">中科院量子信息重点实验室研究员周宗权表示，下一步发展方向，要把这个量子</div></div>
+                            <div class="gains">
+                              <span class="msg">个股收益</span>
+                              <span class="rise">当日涨幅</span>
+                              <span class="rise">5日涨幅</span>
+                              <span class="rise">10日涨幅</span>
+                              <span class="rise">20日涨幅</span>
+                          </div>
+                          <div class="means">
+                              <span class="msg">均&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;值</span>
+                              <span class="rise height">8.26%</span>
+                              <span class="rise low">-13.71%</span>
+                              <span class="rise middle">--</span>
+                              <span class="rise low">-13.71%</span>
+                              <span class="control stuff">收起 </span>
+                          </div>
+                        </div>
+                        <div class="topright">
+                             <div class="title">平均涨幅</div>
+                             <div class="rose height">10.00%</div>
+                             <div class="mixed">涨: <span class="num">5家</span>跌: <span>0家</span></div>
+                        </div>
+                    </div>
+                    <div class="stuffContent">
+                    <div class="material">
+                          <span class="msg">相关题材</span>
+                          <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index height">790.56</span><span class="rose height">10.00%</span></div>
+                          <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                    </div>
+                       <!-- 下半部内容 -->
+                       <div class="bottomContent">
+                            <div class="msg">相关个股</div>
+
+                            <ul>
+                                 <li class="li1">
+                                       <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                       <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。NDL-1智能通信网络数据处理器专用于量子</p>
+                                 </li>
+                                 <li class="li2">
+                                       <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                       <p>NDL-1智能通信网络数</p>
+                                 </li>
+                                 <li class="li3">
+                                       <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                       <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                 </li>
+                                 <li class="li4">
+                                       <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                       <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                 </li>
+                                 <li class="li5">
+                                       <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                       <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                 </li>
+                                 <li class="li6">
+                                       <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index height">790.56</span><span class="rose height">-10.00%</span></div>
+                                       <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                 </li>
+                              </ul>
+                        </div>
+                   </div>
+               </div>
+            </div>
+            <div class="billboards pittedCt" content_id="cc_sq">
+               <div class="corner"><img src="img/icon_hot02.png" alt=""><span>2</span></div>
+               <div class="containerbg">
+                    <!-- 上半部内容 -->
+                    <div class="topContent">
+                        <div class="topleft">
+                            <div class="event">
+                                <span class="msg">上榜事件</span>
+                                <a class="title" href="" target="_blank">我国量子计算获突破性进展 成功研发半导体量子芯片</a>
+                                <span class="dates">2016-08-22</span>
+                            </div>
+                            <div class="value">
+                                <span class="msg">价值趋向</span>
+                                <div class="summary">中科院量子信息重点实验室研究员周宗权表示，下一步发展方向，要把这个量子</div>
+                            </div>
+                            <div class="gains">
+                                <span class="msg">个股收益</span>
+                                <span class="rise">当日涨幅</span>
+                                <span class="rise">5日涨幅</span>
+                                <span class="rise">10日涨幅</span>
+                                <span class="rise">20日涨幅</span>
+                            </div>
+                            <div class="means">
+                                  <span class="msg">均&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;值</span>
+                                  <span class="rise height">8.26%</span>
+                                  <span class="rise low">-13.71%</span>
+                                  <span class="rise middle">--</span>
+                                  <span class="rise low">-13.71%</span>
+                                  <span class="control pitted">详情</span>
+                            </div>
+                        </div>
+                        <div class="topright">
+                             <div class="title">平均涨幅</div>
+                             <div class="height rose">10.00%</div>
+                             <div class="mixed">涨: <span class="num">5家</span>跌: <span>0家</span></div>
+                        </div>
+                    </div>
+                    <div class="stuffContent" style="display:none">
+                         <div class="material">
+                                <span class="msg">相关题材</span>
+                                <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index height">790.56</span><span class="rose height">10.00%</span></div>
+                                <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose down">-10.00%</span></div>
+                         </div>
+                         <!-- 下半部内容 -->
+                         <div class="bottomContent">
+                            <div class="msg">相关个股</div>
+                                 <ul>
+                                      <li class="li1">
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。NDL-1智能通信网络数据处理器专用于量子</p>
+                                      </li>
+                                      <li class="li2">
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数</p>
+                                      </li>
+                                      <li class="li3">
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                      </li>
+                                      <li class="li4">
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                      </li>
+                                      <li class="li5">
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                      </li>
+                                      <li class="li5">
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                      </li>
+                                 </ul>
+                          </div>
+                    </div>
+               </div>
+            </div>
+            <div class="billboards pittedCt" content_id="cc_sq">
+               <div class="corner"><img src="img/icon_hot03.png" alt=""><span>3</span></div>
+               <div class="containerbg">
+                    <!-- 上半部内容 -->
+                    <div class="topContent">
+                        <div class="topleft">
+                            <div class="event">
+                                <span class="msg">上榜事件</span>
+                                <a class="title" href="" target="_blank">我国量子计算获突破性进展 成功研发半导体量子芯片</a>
+                                <span class="dates">2016-08-22</span>
+                            </div>
+                            <div class="value">
+                                <span class="msg">价值趋向</span>
+                                <div class="summary">中科院量子信息重点实验室研究员周宗权表示，下一步发展方向，要把这个量子</div>
+                            </div>
+                            <div class="gains">
+                                <span class="msg">个股收益</span>
+                                <span class="rise">当日涨幅</span>
+                                <span class="rise">5日涨幅</span>
+                                <span class="rise">10日涨幅</span>
+                                <span class="rise">20日涨幅</span>
+                            </div>
+                            <div class="means">
+                                  <span class="msg">均&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;值</span>
+                                  <span class="rise height">8.26%</span>
+                                  <span class="rise low">-13.71%</span>
+                                  <span class="rise middle">--</span>
+                                  <span class="rise low">-13.71%</span>
+                                  <span class="control pitted">详情</span>
+                            </div>
+                        </div>
+                        <div class="topright">
+                             <div class="title">平均涨幅</div>
+                             <div class="height rose">10.00%</div>
+                             <div class="mixed">涨: <span class="num">5家</span>跌: <span>0家</span></div>
+                        </div>
+                    </div>
+                    <div class="stuffContent" style="display:none">
+                         <div class="material">
+                                <span class="msg">相关题材</span>
+                                <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index height">790.56</span><span class="rose height">10.00%</span></div>
+                                <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose down">-10.00%</span></div>
+                         </div>
+                         <!-- 下半部内容 -->
+                         <div class="bottomContent">
+                            <div class="msg">相关个股</div>
+                                 <ul>
+                                      <li class="li1">
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。NDL-1智能通信网络数据处理器专用于量子</p>
+                                      </li>
+                                      <li class="li2">
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数</p>
+                                      </li>
+                                      <li class="li3">
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                      </li>
+                                      <li class="li4">
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                      </li>
+                                      <li class="li5">
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                      </li>
+                                      <li class="li6">
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                      </li>
+                                 </ul>
+                          </div>
+                    </div>
+               </div>
+            </div>
+            <div class="billboards pittedCt" content_id="cc_sq">
+               <div class="corner"><img src="img/icon_hot04.png" alt=""><span>4</span></div>
+               <div class="containerbg">
+                    <!-- 上半部内容 -->
+                    <div class="topContent">
+                        <div class="topleft">
+                            <div class="event">
+                                <span class="msg">上榜事件</span>
+                                <a class="title" href="" target="_blank">我国量子计算获突破性进展 成功研发半导体量子芯片</a>
+                                <span class="dates">2016-08-22</span>
+                            </div>
+                            <div class="value">
+                                <span class="msg">价值趋向</span>
+                                <div class="summary">中科院量子信息重点实验室研究员周宗权表示，下一步发展方向，要把这个量子</div>
+                            </div>
+                            <div class="gains">
+                                <span class="msg">个股收益</span>
+                                <span class="rise">当日涨幅</span>
+                                <span class="rise">5日涨幅</span>
+                                <span class="rise">10日涨幅</span>
+                                <span class="rise">20日涨幅</span>
+                            </div>
+                            <div class="means">
+                                  <span class="msg">均&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;值</span>
+                                  <span class="rise height">8.26%</span>
+                                  <span class="rise low">-13.71%</span>
+                                  <span class="rise middle">--</span>
+                                  <span class="rise low">-13.71%</span>
+                                  <span class="control pitted">详情</span>
+                            </div>
+                        </div>
+                        <div class="topright">
+                             <div class="title">平均涨幅</div>
+                             <div class="height rose">10.00%</div>
+                             <div class="mixed">涨: <span class="num">5家</span>跌: <span>0家</span></div>
+                        </div>
+                    </div>
+                    <div class="stuffContent" style="display:none">
+                         <div class="material">
+                                <span class="msg">相关题材</span>
+                                <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index height">790.56</span><span class="rose height">10.00%</span></div>
+                                <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose down">-10.00%</span></div>
+                         </div>
+                         <!-- 下半部内容 -->
+                         <div class="bottomContent">
+                            <div class="msg">相关个股</div>
+                                 <ul>
+                                      <li>
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。NDL-1智能通信网络数据处理器专用于量子</p>
+                                      </li>
+                                      <li>
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数</p>
+                                      </li>
+                                      <li>
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                      </li>
+                                      <li>
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                      </li>
+                                      <li>
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                      </li>
+                                      <li>
+                                           <div class="stock"><a class="name" href="" target="_blank">量子通讯</a><span class="index low">790.56</span><span class="rose low">-10.00%</span></div>
+                                           <p>NDL-1智能通信网络数据处理器专用于量子通信，互动平台目前订单饱满。</p>
+                                      </li>
+                                 </ul>
+                          </div>
+                    </div>
+               </div>
+            </div>
+          </div>
+          <!-- 事件跟踪结束 -->
+	</div>
+</div>     
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/laydate.js"></script>
+<script type="text/javascript">
+    window.onscroll=function(){ 
+        var menu=document.getElementById("menu");
+        menu.style.top=document.body.scrollTop +'px';
+    } 
+    //日历时间控件
+    var start = {
+        elem: '#start',
+        format: 'YYYY/MM/DD hh:mm:ss',
+        min: '2016-01-01 00:00:00',
+        max: laydate.now(-1),
+        istime: false,
+        istoday: false,
+        choose: function(datas){
+            end.min = datas; //开始日选好后，重置结束日的最小日期
+            end.start = datas; //将结束日的初始值设定为开始日
+        }
+    };
+    var end = {
+        elem: '#end',
+        format: 'YYYY/MM/DD hh:mm:ss',
+        min: '2016-01-01 00:00:00',
+        max: laydate.now(-1),
+        istime: false,
+        istoday: false,
+        choose: function(datas){
+            start.max = datas; //结束日选好后，重置开始日的最大日期
+        }
+    };
+    laydate(start);
+    laydate(end);
+     // 菜单展开
+     $(".list_tow").click(function(){
+          $(this).toggleClass("open");
+          $(this).parent().find(".list_box").slideToggle();
+     });
+
+</script>
+</body>
+</html>

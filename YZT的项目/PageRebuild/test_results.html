@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>测评结果</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+     <div class="menu">
+          <div class="top">
+               <h1>优智投</h1>
+               <p class="status">状态：<span>365天到期</span></p>
+               <p class="type">类型：<a href="javascript:viod(0)">去测评 ></a></p>
+          </div>
+          <div class="index active">
+               <a href="javascript:viod(0);">首页</a>
+          </div>
+          <div class="list">
+               <h3>大数据视点</h3>
+               <div class="lists">
+                    <div class="list_tow">市场关注</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">新闻龙虎榜</a>
+                         <a href="javascript:viod(0);">事件跟踪</a>
+                    </div>
+               </div>
+               <div class="lists">
+                    <div class="list_tow">机会热点</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">题材风口</a>
+                         <a href="javascript:viod(0);">行业热图</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">资金流向</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">龙虎榜单</a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">舆情牛股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+          </div>
+          <div class="list list2">
+               <h3>智能化决策</h3>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能诊股</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能选股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能操盘<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能Ｋ线<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能监控</a>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <!--  右侧测评结果 -->
+	<div class="content_result">
+		<div class="result_header">
+               <p>稳健型投资者<a href="javascript:viod(0);">重新测试</a></p>
+          </div>
+          <div class="result">
+               <p>风险承受力<span>较低</span></p>
+               <p>期待资产<span>平稳增值</span></p>
+               <p>愿意承受<span>较小的净值波动</span></p>
+               <p>投资配置比例建议：</p>
+               <div class="result_chart">
+                    <div class="result_fig middle"></div>
+                    <div class="legend">
+                         <div class="list list1">
+                              <span class="legend_color"></span>
+                              <span class="l_risk">低风险</span>
+                              <span class="ratio">10%</span>
+                         </div>
+                         <div class="list list2">
+                              <span class="legend_color"></span>
+                              <span class="l_risk">中风险</span>
+                              <span class="ratio">10%</span>
+                         </div>
+                         <div class="list list3">
+                              <span class="legend_color"></span>
+                              <span class="l_risk">高风险</span>
+                              <span class="ratio">10%</span>
+                         </div>
+                    </div>
+               </div>
+          </div>
+	</div>
+</div>     
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript">
+      //自适应
+     adaptive();
+     $(window).resize(function(){
+         adaptive();
+     });
+     function adaptive(){
+          $("body").height($(window).height());
+          var p_top = ($(window).height()- 464) / 2 ;
+          $(".result").css("padding-top",p_top);
+     }
+    
+     // 菜单展开
+     $(".list_tow").click(function(){
+          $(this).toggleClass("open");
+          $(this).parent().find(".list_box").slideToggle();
+     });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,203 @@
+<script type="x-template" id="sample-tpl">
+  <div class="match_tabs">
+    <div class="tabs_header">
+      <!-- 导航tab切换 -->
+      <ul>
+        <li class="js_tab"><a href="javascript:void(0);" :class="{active:tabIndex==0}" @click="changeTab(0)">匹配样本</a></li>
+        <li class="js_tab"><a href="javascript:void(0);" :class="{active:tabIndex==1}" @click="changeTab(1)">详细列表</a></li>
+        <li class="js_tab"><a href="javascript:void(0);" :class="{active:tabIndex==2}" @click="changeTab(2)">收益分布</a></li>
+      </ul>
+    </div>
+    <div class="tabs_content">
+      <!-- 匹配样本 -->
+      <div class="tabs_item" v-show="tabIndex==0">
+        <ul class="shars_float_list">
+          <li v-for="item in samplesOfCurrentPage">
+            <div class="item_head">
+              <h4><span>{{item.code}}</span><a href="javascript:;" :data-stock-market="item.market" :data-stock-code="item.code" class="open_stock">{{item.name}}</a></h4>
+              <p>相似度<span>{{item.semBlance|percentLocal}}</span>收益率<span :class="item.profit|calColor">{{item.profit|percent}}</span></p>
+            </div>
+            <div class="match_k_graph"></div>
+          </li>
+        </ul>
+        <pager
+          v-if="sampleList.length > rowsPerPage"
+          :totalLength="sampleList.length"
+          :currentPage="currentPage"
+          :rowsPerPage="rowsPerPage"
+          @change="handlePageChange"></pager>
+      </div>
+      <!-- 详细列表 -->
+      <div class="tabs_item" v-show="tabIndex==1">
+        <div class="table_shares">
+          <div class="table_header">
+            <span>代码</span>
+            <span>股票名称</span>
+            <span>开始日期</span>
+            <span>结束日期</span>
+            <span :class="semBlanceArrow" @click="sortBy('semBlance')">相似度</span>
+            <span :class="profitArrow" @click="sortBy('profit')">收益率</span>
+          </div>
+          <div class="table_ctn scroll-pane">
+            <ul class="matched_stop_list">
+              <li v-for="item in sampleListSec">
+                <span>{{item.code}}</span>
+                <span><a :data-stock-market="item.market" :data-stock-code="item.code" class="open_stock" href="javascript:;">{{item.name}}</a></span>
+                <span>{{item.iStartTime}}</span>
+                <span>{{item.iEndTime}}</span>
+                <span>{{item.semBlance|percentLocal}}</span>
+                <span :class="item.profit|calColor">{{item.profit|percent}}</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!-- 收益分布 -->
+      <div class="tabs_item" v-show="tabIndex==2">
+        <div class="profit_precent_header">
+          <p>统计方式：<span @click="changeStatisticalType(0)" :class="{active: StatisticalType == 0}">收益</span><span @click="changeStatisticalType(1)" :class="{active: StatisticalType == 1}">时间</span></p>
+        </div>
+        <p class="income">收益率</p>
+        <div class="profit_graph_wrap"></div>
+      </div>
+      <!-- 收益分布 -->
+    </div>
+  </div>
+</script>
+<script type="x-template" id="match-result-tpl">
+  <div class="match_result">
+    <div class="left_table">
+      <table>
+        <thead>
+        <tr>
+          <th><span></span></th>
+          <th><span>样本数</span></th>
+          <th><span>平均收益率</span></th>
+          <th><span>收益中位数</span></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td><span>总样本</span></td>
+          <td><span>{{sample.sampleNum}}</span></td>
+          <td :class="sample.avgProfit|calColor"><span>{{sample.avgProfit|except|percent}}</span></td>
+          <td :class="sample.middleProfit|calColor"><span>{{sample.middleProfit|except|percent}}</span></td>
+        </tr>
+        <tr>
+          <td><span>正收益样本</span></td>
+          <td><span>{{sample.positiveSample}}</span></td>
+          <td :class="sample.positiveAvgProfit|calColor"><span>{{sample.positiveAvgProfit|except|percent}}</span></td>
+          <td :class="sample.positiveMiddleProfit|calColor"><span>{{sample.positiveMiddleProfit|except|percent}}</span></td>
+        </tr>
+        <tr>
+          <td><span>负收益样本</span></td>
+          <td><span>{{sample.negativeSample}}</span></td>
+          <td :class="sample.negativeAvgProfit|calColor"><span>{{sample.negativeAvgProfit|except|percent}}</span></td>
+          <td :class="sample.negativeMiddleProfit|calColor"><span>{{sample.negativeMiddleProfit|except|percent}}</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="right_table">
+      <table>
+        <tbody>
+        <tr>
+          <td><span>预测收益率</span></td>
+          <td :class="sample.upProb|calColor"><span>{{sample.middleProfit|except|percent}}</span></td>
+        </tr>
+        <tr>
+          <td><span>预测上限</span></td>
+          <td :class="sample.ceil|calColor"><span>{{sample.ceil|except|percent}}</span></td>
+        </tr>
+        <tr>
+          <td><span>预测下限</span></td>
+          <td :class="sample.flor|calColor"><span>{{sample.flor|except|percent}}</span></td>
+        </tr>
+        <tr>
+          <td><span>收益风险比</span></td>
+          <td :class="sample.ratio|calColor"><span>{{(sample.ratio/1e4).toFixed(2)}}X</span></td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</script>
+<script type="x-template" id="match-form">
+  <form action="/kline/custom">
+  <div class="match_pattern">
+    <div class="form_col">
+      <div class="match_mode">
+        <label>匹配模式：</label>
+        <span class="beau_ck">
+              <input type="checkbox" id="price" name="price" value="1" checked>
+              <label for="price" id="checkbox_price" class="selecting disable">价格</label>
+        </span>
+        <span class="beau_ck" @click="toggleVolumeCheck">
+              <input type="checkbox" id="order_volume" name="volume" value="2" :checked="volumeChecked">
+              <label id="checkbox_volume" :class="{selecting: volumeChecked}">成交量</label>
+        </span>
+        <span class="beau_ck" @click="toggleAverageCheck">
+              <input type="checkbox" id="average_line" name="average" value="4" :checked="averageChecked">
+              <label id="checkbox_average" :class="{selecting: averageChecked}">均线</label>
+        </span>
+      </div>
+      <div class="forecast_cycle">
+        <label>预测周期：</label>
+        <span :class="{active: cycle == 1}" @click="changeCycle(1, 0)">1天</span>
+        <span :class="{active: cycle == 5}" @click="changeCycle(5, 1)">5天</span>
+        <span :class="{active: cycle == 10}" @click="changeCycle(10, 2)">10天</span>
+        <span :class="{active: cycle == 20}" @click="changeCycle(20, 3)">20天</span>
+      </div>
+      <input type="hidden" v-model="cycle" name="cycle">
+      <input type="hidden" v-model="market" name="market">
+      <input type="hidden" v-model="code" name="code">
+      <input type="hidden" name="locked" :value="locked"/>
+      <button type="submit" class="go_match_btn">开始匹配</button>
+    </div>
+    <div class="match_more_condition" v-show="moreVisible">
+      <div class="match_more_main">
+        <div class="choice_cycle_wrapper">
+          <p class="choice_cycle">匹配周期：
+            <input :disabled="locked"
+                   v-model="matchstartdate"
+                   type="text" name="matchstartdate" id="matchstartdate" readonly="readonly" autocomplete="off" class="date">
+            <input :disabled="locked"
+                   v-model="matchenddate"
+                   type="text" name="matchenddate" id="matchenddate" readonly="readonly" autocomplete="off" class="date">
+            <button type="button" class="lock_btn" :class="locked ? 'lock' : 'unlock'" @click="lockMatch"></button>
+            <span class="match_condition">匹配条件：
+              <span>
+                <label class="sim_label">相似度≥</label>
+                <input id="semblance" name="semblance" type="text" v-model="semblance">%
+              </span>
+           </span>
+          </p>
+        </div>
+        <div class="choice_cycle_wrapper">
+          <p class="choice_cycle">搜索周期：
+            <input type="text" name="querystartdate" id="querystartdate" v-model="querystartdate" readonly="readonly" autocomplete="off" class="date">
+            <input type="text" name="queryenddate" id="queryenddate" v-model="queryenddate" readonly="readonly" autocomplete="off" class="date">
+            <span class="match_industry">匹配行业：
+                <select class="industry" name="industry" v-model="industry">
+                    <option v-for="item in industryList" :value="item.code">{{item.name}}</option>
+                </select>
+            </span>
+          </p>
+        </div>
+      </div>
+      <button type="button" class="back_default_btn" @click="restoreDefaultParams">恢复默认</button>
+    </div>
+    <div class="more_select_wrap more_select_wrap_more" :class="{more_select_wrap_open: moreVisible}" @click="showMore">{{moreVisible ? '收起筛选' : '更多筛选'}}</div>
+  </div>
+  </form>
+</script>
+<script type="x-template" id="pager">
+  <div class="turn_page">
+    <div class="btn_prev" :class="{btn_disabled: currentPage == 0}" @click="prevPage">上一页</div>
+    <template v-for="n in pages">
+      <div class="pageindex" :class="{active: n - 1 == currentPage}" @click="gotoPage(n - 1)" v-if="n != '...'">{{n}}</div>
+      <div class="pageindex" v-else>{{n}}</div>
+    </template>
+    <div class="btn_next" :class="{btn_disabled: currentPage == pages.length - 1}" @click="nextPage">下一页</div>
+  </div>
+</script>

@@ -1,0 +1,124 @@
+<script type="x-template" id="searchBox">
+  <div class="searchBox" id="searchBoxTop">
+    <input type="text" placeholder="请输入代码/简称/简拼" v-model="keyword" @keyup="handleKeyUp" onfocus="this.placeholder=''" onblur="this.placeholder='请输入代码/简称/简拼'">
+    <button @click="clickSearch">{{searchBtnText}}</button>
+    <ul class="searchUl"
+        v-show="resultVisable">
+      <template v-if="result.length > 0">
+        <li v-for="(item, index) in result" @click="clickResultItem(item)" @mouseover="setActive(index)" :class="{active: index == activeIndex}">
+          <div class="searchLi"><span class="searchCode">{{item.stkCode}}</span>{{item.stkShortName}}</div>
+        </li>
+      </template>
+      <template v-else>
+        <li>
+          <div class="searchLi">您输入的股票不存在</div>
+        </li>
+      </template>
+    </ul>
+  </div>
+</script>
+<script>
+  Vue.component('search-bar', {
+    template: '#searchBox',
+    props: {
+      searchBtnText: {
+        default: '搜索'
+      }
+    },
+    data: function() {
+      return {
+        activeIndex: -1,
+        result: [],
+        resultVisable: false,
+        keyword: ''
+      }
+    },
+    mounted: function() {
+      var element = this.$el
+      var vm = this
+
+      document.body.addEventListener('click', function(e) {
+        if (e.target == element || element.contains(e.target)) {
+          return
+        }
+
+        vm.resultVisable = false
+      })
+    },
+    watch: {
+      keyword: function(newValue) {
+        var self = this
+
+        if (newValue.trim() === '') {
+          self.result = []
+          return
+        }
+
+        var success = function(response) {
+          self.activeIndex = -1
+          self.resultVisable = true
+          self.result = response
+        }
+
+        var fail = function() {
+          alert('服务器错误')
+        }
+
+        $.ajax({
+          url: '/search',
+          dataType: 'json',
+          data: {
+            code: encodeURIComponent(newValue)
+          }
+        }).done(success).fail(fail)
+      }
+    },
+    methods: {
+      clickResultItem: function(item) {
+        this.$emit('select', item)
+      },
+      clickSearch: function() {
+        if (this.result.length === 0) {
+          return
+        }
+
+        this.$emit('select', this.result[0])
+      },
+      setActive: function(index) {
+        this.activeIndex = index
+      },
+      handleKeyUp: function(e) {
+        var input = e.target
+
+        if (this.result.length < 1) return
+
+        switch (e.keyCode) {
+          case 40: //下
+            this.activeIndex++
+            break
+          case 38: //上
+            this.activeIndex--
+            break
+          case 13: //回车
+            if (this.result[this.activeIndex]) {
+              this.$emit('select', this.result[this.activeIndex])
+            }
+            break
+        }
+
+        if (this.activeIndex < -1) {
+          this.activeIndex = -1
+        }        
+
+        if (this.activeIndex > this.result.length - 1) {
+          this.activeIndex = this.result.length - 1
+        }
+
+        // 重置光标位置
+        this.$nextTick(function() {
+          input.selectionStart = input.selectionEnd = input.value.length
+        })
+      }
+    }
+  })
+</script>

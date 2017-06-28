@@ -1,0 +1,399 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>行业热图</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+     <div class="menu" id="menu">
+          <div class="top">
+               <h1>优智投</h1>
+               <p class="status">状态：<span>365天到期</span></p>
+               <p class="type">类型：<a href="javascript:viod(0)">去测评 ></a></p>
+          </div>
+          <div class="index">
+               <a href="javascript:viod(0);">首页</a>
+          </div>
+          <div class="list">
+               <h3>大数据视点</h3>
+               <div class="lists">
+                    <div class="list_tow">市场关注</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">新闻龙虎榜</a>
+                         <a href="javascript:viod(0);">事件跟踪</a>
+                    </div>
+               </div>
+               <div class="lists">
+                    <div class="list_tow">机会热点</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);"  class="active">题材风口</a>
+                         <a href="javascript:viod(0);">行业热图</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">资金流向</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">龙虎榜单</a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">舆情牛股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+          </div>
+          <div class="list list2">
+               <h3>智能化决策</h3>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能诊股</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能选股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能操盘<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能Ｋ线<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能监控</a>
+                    </div>
+               </div>
+          </div>
+     </div>
+    <!--  右侧主内容区 -->
+	   <div class="container indu_container">
+          <!-- 行业热图 -->
+          <div class="popular">
+              <div class="popular_top">
+                  <h3 class="popular_tit">沪深市场热门行业<span>按成交额从大到小排列</span></h3>
+                  <div class="legend">
+                      <span class="legend_tit">涨跌幅</span>
+                      <span class="list">0.8%以上</span>
+                      <span class="list">0.4%-0.8%</span>
+                      <span class="list">0.4%-0%</span>
+                      <span class="list">0%</span>
+                      <span class="list">0.4%-0%</span>
+                      <span class="list">0.4%-0.8%</span>
+                      <span class="list">0.8%以上</span>
+                  </div>
+              </div>
+              <div class="popular_chart" id="popular_chart"></div>
+              <!-- 暂无数据 -->
+              <div class="no_data">
+                  <img src="img/pic_not_find.png" alt="">
+                  <p>-暂无数据-</p>
+              </div>
+          </div>
+          <!-- 底部排行榜 -->
+          <div class="industry_list">
+              <!-- 涨跌排行榜 -->
+              <div class="list_main increa_list">
+                  <div class="title">
+                    <p>行业个股涨跌幅排行</p>
+                  </div>
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>代码</th>
+                              <th>名称</th>
+                              <th class="txt_r"><span>最新</span></th>
+                              <th class="txt_r"><span>涨跌幅</span></th>
+                              <th class="txt_r"><span>涨速</span></th>
+                          </tr>
+                      </thead>
+                      <!-- 暂无数据 -->
+                      <tbody class="tab_noData">
+                          <tr>
+                            <td colspan="5">-暂无数据-</td>
+                          </tr>
+                      </tbody>
+                      <tbody>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r low"><span>3.89%</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r low"><span>3.89%</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r low"><span>3.89%</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r low"><span>3.89%</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r low"><span>3.89%</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r low"><span>48.66</span></td>
+                              <td class="txt_r low"><span>3.89%</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r low"><span>48.66</span></td>
+                              <td class="txt_r low"><span>3.89%</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r low"><span>3.89%</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r low"><span>3.89%</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r low"><span>3.89%</span></td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+              <!-- 个股排行榜 -->
+              <div class="list_main deal_list">
+                  <div class="title">
+                    <p>行业个股成交额排行</p>
+                  </div>
+                  <table>
+                      <thead>
+                          <tr>
+                              <th>代码</th>
+                              <th>名称</th>
+                              <th class="txt_r"><span>最新</span></th>
+                              <th class="txt_r"><span>涨跌幅</span></th>
+                              <th class="txt_r"><span>成交额</span></th>
+                          </tr>
+                      </thead>
+                      <!-- 暂无数据 -->
+                      <tbody class="tab_noData">
+                          <tr>
+                            <td colspan="5">-暂无数据-</td>
+                          </tr>
+                      </tbody>
+                      <tbody>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r"><span>8.77亿</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r"><span>8.77亿</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r"><span>8.77亿</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r"><span>8.77亿</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r"><span>8.77亿</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r low"><span>48.66</span></td>
+                              <td class="txt_r low"><span>3.89%</span></td>
+                              <td class="txt_r"><span>8.77亿</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r low"><span>48.66</span></td>
+                              <td class="txt_r low"><span>3.89%</span></td>
+                              <td class="txt_r"><span>8.77亿</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r"><span>8.77亿</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r"><span>8.77亿</span></td>
+                          </tr>
+                          <tr>
+                              <td><span>600125</span></td>
+                              <td><a href="javascript:viod(0);" target="_blank">广信材料</a></td>
+                              <td class="txt_r height"><span>48.66</span></td>
+                              <td class="txt_r height"><span>3.89%</span></td>
+                              <td class="txt_r"><span>8.77亿</span></td>
+                          </tr>
+                      </tbody>
+                  </table>
+              </div>
+             
+              
+          </div>
+
+	</div>
+</div>     
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="http://cdn.upchinapro.com/assert/echarts/3.3.2/echarts.min.js"></script>
+<script type="text/javascript">
+    window.onscroll=function(){ 
+        var menu=document.getElementById("menu");
+        menu.style.top=document.body.scrollTop +'px';
+    }
+     // 菜单展开
+     $(".list_tow").click(function(){
+          $(this).toggleClass("open");
+          $(this).parent().find(".list_box").slideToggle();
+     });
+
+    // 行业矩阵树图
+    var myChart = echarts.init(document.getElementById("popular_chart"));
+    
+    var option = {
+        tooltip : {
+            trigger: 'item',
+            padding:0,
+            formatter: '<div class="prompt_box"><div class="top"><p class="name">{b}</p><p class="num low">{c}%</p></div><div class="company"><p>公司数量</p><span class="low">135</span><div class="increa"><p>涨跌家数</p><span class="rise">涨<span>7</span></span><span class="fall">跌<span>7</span></span><span class="flat">平<span>7</span></span></div><div class="total_num"><p>总成交额(元)</p><span>1284.36万</span></div><div class="total_deal"><p>总成交额(元)</p><span>1284.36万</span></div></div>'
+        },
+        color:['#c6c6c6','#ff5b5b', '#3aaf65'],
+        series : [
+            {
+                name:'矩形图',
+                type:'treemap',
+                width:'100%',
+                height:'100%',
+                leafDepth:1,
+                roam:false,
+                nodeClick:false,
+                breadcrumb:false,
+                label:{
+                    normal: {
+                        textStyle:{
+                          fontSize:14,
+                        }
+                    }
+                },
+                itemStyle: {
+                    normal: {
+                        gapWidth:1,
+                        borderColor:'#1f1f1f',
+                    },
+                },
+                data:[
+                    {name: '轻工制造1',value: 20,itemStyle:{normal:{color:'#c6c6c6'},emphasis:{color:'#b4b4b4'}}},
+                    {name: '轻工制造2',value: 4,itemStyle:{normal:{color:'#ff5b5b'},emphasis:{color:'#e23d3d'}}},
+                    {name: '轻工制造3',value: 4,itemStyle:{normal:{color:'#3aaf65'},emphasis:{color:'#2f9354'}}},
+                    {name: '轻工制造4',value: 2,itemStyle:{normal:{color:'#c6c6c6'},emphasis:{color:'#b4b4b4'}}},
+                    {name: '轻工制造5',value: 2,itemStyle:{normal:{color:'#c6c6c6'},emphasis:{color:'#b4b4b4'}}},
+                    {name: '轻工制造6',value: 5,itemStyle:{normal:{color:'#ff5b5b'},emphasis:{color:'#e23d3d'}}},
+                    {name: '轻工制造7',value: 5,itemStyle:{normal:{color:'#ff5b5b'},emphasis:{color:'#e23d3d'}}},
+                    {name: '轻工制造8',value: 5,itemStyle:{normal:{color:'#3aaf65'},emphasis:{color:'#3aaf65'}}},
+                    {name: '轻工制造9',value: 6,itemStyle:{normal:{color:'#c6c6c6'},emphasis:{color:'#2f9354'}}},
+                    {name: '轻工制造10',value: 4,itemStyle:{normal:{color:'#ff5b5b'},emphasis:{color:'#2f9354'}}},
+                    {name: '轻工制造11',value: 4,itemStyle:{normal:{color:'#3aaf65'},emphasis:{color:'#3aaf65'}}},
+                    {name: '轻工制造12',value: 7,itemStyle:{normal:{color:'#c6c6c6'},emphasis:{color:'#b4b4b4 '}}},
+                    {name: '轻工制造13',value: 7,itemStyle:{normal:{color:'#c6c6c6'},emphasis:{color:'#b4b4b4 '}}},
+                    {name: '轻工制造14',value: 5,itemStyle:{normal:{color:'#ff5b5b'},emphasis:{color:'#2f9354'}}},
+                    {name: '轻工制造15',value: 5,itemStyle:{normal:{color:'#ff5b5b'},emphasis:{color:'#2f9354'}}},
+                    {name: '轻工制造16',value: 5,itemStyle:{normal:{color:'#3aaf65'},emphasis:{color:'#3aaf65'}}},
+                    {name: '轻工制造17',value: 6,itemStyle:{normal:{color:'#c6c6c6'},emphasis:{color:'#c6c6c6'}}},
+                    {name: '轻工制造18',value: 4,itemStyle:{normal:{color:'#ff5b5b'},emphasis:{color:'#2f9354'}}},
+                    {name: '轻工制造19',value: 4,itemStyle:{normal:{color:'#3aaf65'},emphasis:{color:'#3aaf65'}}},
+                    {name: '轻工制造20',value: 7,itemStyle:{normal:{color:'#c6c6c6'},emphasis:{color:'#c6c6c6'}}},
+                    {name: '轻工制造21',value: 7,itemStyle:{normal:{color:'#c6c6c6'},emphasis:{color:'#c6c6c6'}}},
+                    {name: '轻工制造22',value: 5,itemStyle:{normal:{color:'#ff5b5b'},emphasis:{color:'#2f9354'}}},
+                    {name: '轻工制造23',value: 5,itemStyle:{normal:{color:'#ff5b5b'},emphasis:{color:'#2f9354'}}},
+                    {name: '轻工制造24',value: 5,itemStyle:{normal:{color:'#3aaf65'},emphasis:{color:'#3aaf65'}}},
+                    {name: '轻工制造25',value: 6,itemStyle:{normal:{color:'#c6c6c6'},emphasis:{color:'#c6c6c6'}}},
+                    {name: '轻工制造26',value: 4,itemStyle:{normal:{color:'#ff5b5b'},emphasis:{color:'#2f9354'}}},
+                    {name: '轻工制造27',value: 4,itemStyle:{normal:{color:'#3aaf65'},emphasis:{color:'#3aaf65'}}},
+                    {name: '轻工制造28',value: 7,itemStyle:{normal:{color:'#c6c6c6'},emphasis:{color:'#c6c6c6'}}},
+                    {name: '轻工制造29',value: 7,itemStyle:{normal:{color:'#c6c6c6'},emphasis:{color:'#c6c6c6'}}},
+                    {name: '轻工制造30',value: 5,itemStyle:{normal:{color:'#ff5b5b'},emphasis:{color:'#2f9354'}}},
+                    {name: '轻工制造31',value: 5,itemStyle:{normal:{color:'#ff5b5b'},emphasis:{color:'#2f9354'}}},
+                    {name: '轻工制造32',value: 5,itemStyle:{normal:{color:'#3aaf65'},emphasis:{color:'#3aaf65'}}},
+                    {name: '轻工制造33',value: 4,itemStyle:{normal:{color:'#ff5b5b'},emphasis:{color:'#2f9354'}}},
+                    {name: '轻工制造34',value: 4,itemStyle:{normal:{color:'#3aaf65'},emphasis:{color:'#3aaf65'}}},
+                    {name: '轻工制造35',value: 7,itemStyle:{normal:{color:'#c6c6c6'},emphasis:{color:'#c6c6c6'}}},
+                    {name: '轻工制造36',value: 7,itemStyle:{normal:{color:'#c6c6c6'},emphasis:{color:'#c6c6c6'}}},
+                    {name: '轻工制造37',value: 5,itemStyle:{normal:{color:'#ff5b5b'},emphasis:{color:'#2f9354'}}},
+                    {name: '轻工制造38',value: 4,itemStyle:{normal:{color:'#ff5b5b'},emphasis:{color:'#2f9354'}}}
+                ]
+            }
+        ]
+    };
+        
+    myChart.setOption(option);
+
+
+</script>
+</body>
+</html>

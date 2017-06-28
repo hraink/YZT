@@ -1,0 +1,653 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>K线趋势</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css">
+  <link rel="stylesheet" type="text/css" href="css/swiper-3.4.0.min.css">
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+     <div class="menu" id="menu">
+          <div class="top">
+               <h1>优智投</h1>
+               <p class="status">状态：<span>365天到期</span></p>
+               <p class="type">类型：<a href="javascript:viod(0)">去测评 ></a></p>
+          </div>
+          <div class="index">
+               <a href="javascript:viod(0);">首页</a>
+          </div>
+          <div class="list">
+               <h3>大数据视点</h3>
+               <div class="lists">
+                    <div class="list_tow">市场关注</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">新闻龙虎榜</a>
+                         <a href="javascript:viod(0);">事件跟踪</a>
+                    </div>
+               </div>
+               <div class="lists">
+                    <div class="list_tow">机会热点</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">题材风口</a>
+                         <a href="javascript:viod(0);">行业热图</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box active">
+                         <a href="javascript:viod(0);">资金流向</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">龙虎榜单</a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">舆情牛股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+          </div>
+          <div class="list list2">
+               <h3>智能化决策</h3>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能诊股</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能选股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能操盘<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能Ｋ线<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能监控</a>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <!--  右侧主内容区 -->
+	<div class="container">
+        <div class="switch switch_st">
+             <a href="javascript:viod(0)" class="on">K线趋势</a>
+             <a href="javascript:viod(0)">K线模式匹配</a>
+        </div>
+        <div class="line_cont">
+            <div class="line_top clearfix">
+                <div class="searchBox">
+                    <input type="text" placeholder="请输入代码/简称/简拼">
+                    <button>搜索</button>
+                    <ul class="searchUl"> <!-- 无数据时添加.search_none -->
+                        <!-- 无数据li -->
+                        <!--  <li>
+                          <div class="searchLi">您输入的股票不存在</div>
+                        </li> -->
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                      </ul>
+                </div>
+                <div class="forecast_cycle">
+                    <label>预测周期：</label>
+                    <a href="javascript:void(0)">1天</a>
+                    <a href="javascript:void(0)" class="active">5天</a>
+                    <a href="javascript:void(0)">10天</a>
+                    <a href="javascript:void(0)">20天</a>
+                    <a href="javascript:void(0)"></a>
+                </div>
+            </div>
+            <!-- 大盘预测开始 -->
+            <div class="forecast_wrap">
+                <div class="box_header">
+                    <h3>大盘预测</h3>
+                </div>
+                <ul class="forecast_list">
+                    <li>
+                        <h4><a href="javascript:void(0)">上证指数</a></h4>
+                        <div class="condition_wrap">
+                            <p>
+                                <span class="condition_num height">5.1%</span>
+                                <span class="condition_item">预测下限</span>
+                            </p>
+                            <p>
+                                <span class="condition_num low">5.1%</span>
+                                <span class="condition_item">预测上限</span>
+                            </p>
+                            <p>
+                                <span class="condition_num middle">3.1%</span>
+                                <span class="condition_item">预测收益率</span>
+                            </p>
+                        </div>
+                       <a href="javascript:void(0)" class="forecast_graph_wrap"></a>
+                    </li>
+                    <li>
+                        <h4><a href="">上证指数</a></h4>
+                        <div class="condition_wrap">
+                            <p>
+                                <span class="condition_num middle">3.1%</span>
+                                <span class="condition_item">预测收益率</span>
+                            </p>
+                            <p>
+                                <span class="condition_num low">5.1%</span>
+                                <span class="condition_item">预测上限</span>
+                            </p>
+                            <p>
+                                <span class="condition_num height">5.1%</span>
+                                <span class="condition_item">预测下限</span>
+                            </p>
+                        </div>
+                       <a href="javascript:void(0)" class="forecast_graph_wrap"></a>
+                    </li>
+                    <li>
+                        <h4><a href="">上证指数</a></h4>
+                        <div class="condition_wrap">
+                            <p>
+                                <span class="condition_num height">5.1%</span>
+                                <span class="condition_item">预测下限</span>
+                            </p>
+                            <p>
+                                <span class="condition_num low">5.1%</span>
+                                <span class="condition_item">预测上限</span>
+                            </p>
+                            <p>
+                                <span class="condition_num middle">3.1%</span>
+                                <span class="condition_item">预测收益率</span>
+                            </p>
+                        </div>
+                         <a href="javascript:void(0)" class="forecast_graph_wrap"></a>
+                    </li>
+                    <li>
+                        <h4><a href="">上证指数</a></h4>
+                        <div class="condition_wrap">
+                            <p>
+                                <span class="condition_num height">5.1%</span>
+                                <span class="condition_item">预测下限</span>
+                            </p>
+                            <p>
+                                <span class="condition_num low">5.1%</span>
+                                <span class="condition_item">预测上限</span>
+                            </p>
+                            <p>
+                                <span class="condition_num middle">3.1%</span>
+                                <span class="condition_item">预测收益率</span>
+                            </p>
+                        </div>
+                         <a href="javascript:void(0)" class="forecast_graph_wrap"></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- 大盘预测结束 -->
+            <div class="hot_wrapper">
+                <div class="sliderbox">
+                    <!-- 股市热点 -->
+                    <div class="hot_shares hot_box">
+                        <h3 class="box_header">热点股票<span class="icon_tip"><span class="tip_wrap">回顾市场过去三天涨幅最大的一组股票,并在其中找出预测收益最大的标的。</span></span></h3>
+                        <div class="shares_wrap" id="slider_tit1">
+                            <h2 class="shares_name">
+                                <span class="stock_code">600478</span>
+                                 <a href="javascript:void(0)" class="stock_name">力生制药</a>
+                            </h2>
+                            <div class="condition_wrap">
+                                <p>
+                                  <span class="condition_num low">3.1%</span>
+                                  <span class="condition_item">预测收益率</span>
+                                </p>
+                                <p>
+                                  <span class="condition_num height">3.1%</span>
+                                  <span class="condition_item">预测上限</span>
+                                </p>
+                                <p>
+                                  <span class="condition_num middle">3.1%</span>
+                                  <span class="condition_item">预测下限</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!--轮播图 -->
+                        <div class="shares_chart">
+                            <div class="swiper-container" id="swiper1">
+                                <div class="swiper-wrapper">
+                                    <a href="javascript:void(0)" class="swiper-slide slide1"></a>
+                                    <a href="javascript:void(0)" class="swiper-slide slide2"></a>
+                                    <a href="javascript:void(0)" class="swiper-slide slide3"></a>
+                                </div> 
+                            </div>
+                            <div class="swiper-button-next" id="prev1"></div>
+                            <div class="swiper-button-prev" id="next1"></div>
+                            <div class="swiper-pagination" id="pagination1"></div>
+                        </div>
+                    </div>    
+                    <!-- 指数热点 -->
+                    <div class="hot_index hot_box">
+                        <h3 class="box_header">热点股票<span class="icon_tip"><span class="tip_wrap">回顾市场过去三天涨幅最大的一组股票,并在其中找出预测收益最大的标的。</span></span></h3>
+                        <div class="shares_wrap" id="slider_tit2">
+                            <h2 class="shares_name">
+                                <span class="stock_code">600478</span>
+                                 <a href="javascript:void(0)" class="stock_name">力生制药</a>
+                            </h2>
+                            <div class="condition_wrap">
+                                <p>
+                                  <span class="condition_num low">3.1%</span>
+                                  <span class="condition_item">预测收益率</span>
+                                </p>
+                                <p>
+                                  <span class="condition_num height">3.1%</span>
+                                  <span class="condition_item">预测上限</span>
+                                </p>
+                                <p>
+                                  <span class="condition_num middle">3.1%</span>
+                                  <span class="condition_item">预测下限</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!--轮播图 -->
+                        <div class="shares_chart hot_box">
+                            <div class="swiper-container" id="swiper2">
+                                <div class="swiper-wrapper">
+                                    <a href="javascript:void(0)" class="swiper-slide slide1"></a>
+                                    <a href="javascript:void(0)" class="swiper-slide slide2"></a>
+                                    <a href="javascript:void(0)" class="swiper-slide slide3"></a>
+                                </div> 
+                            </div>
+                            <div class="swiper-button-next" id="prev2"></div>
+                            <div class="swiper-button-prev" id="next2"></div>
+                            <div class="swiper-pagination" id="pagination2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="k_list clear">
+                <div class="k_list_main list_left">
+                    <div class="box_header">
+                        <h3 class="float_left">K线机会榜<span class="icon_tip"><span class="tip_wrap">根据最新的价格趋势，找出预测收益最大和最小的10只股票。</span></span></h3>
+                    </div>
+                    <div class="t_head">
+                        <span class="code_col">代码</span>
+                        <span class="name_col">名称</span>
+                        <span class="profit_col">预测收益率</span>
+                        <span class="online_col">预测上限</span>
+                        <span class="lower_limit_col">预测下限</span>
+                    </div>
+                    <ul class="t_body">
+                        <li>
+                            <div class="shares_row_info">
+                                <span class="row_num ranking1">1</span>
+                                <span class="code_col">600503</span>
+                                <a href="javascript:void(0)" class="name_col">华丽家族</a>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="shares_row_info">
+                                <span class="row_num ranking2">2</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                            <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="shares_row_info">
+                                <span class="row_num ranking3">3</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="shares_row_info">
+                                <span class="row_num ranking4">4</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="shares_row_info">
+                                <span class="row_num ranking4">5</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                          <div class="shares_row_info">
+                                <span class="row_num ranking4">6</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                          <div class="shares_row_info">
+                                <span class="row_num ranking4">7</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                          <div class="shares_row_info">
+                                <span class="row_num ranking4">8</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                          <div class="shares_row_info">
+                                <span class="row_num ranking4">9</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                          <div class="shares_row_info">
+                                <span class="row_num ranking4">10</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                            <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="k_list_main list_right">
+                    <div class="box_header">
+                        <h3 class="float_left">K线风险榜<span class="icon_tip"><span class="tip_wrap">根据最新的价格趋势，找出预测收益最大和最小的10只股票。</span></span></h3>
+                    </div>
+                    <div class="t_head">
+                        <span class="code_col">代码</span>
+                        <span class="name_col">名称</span>
+                        <span class="profit_col">预测收益率</span>
+                        <span class="online_col">预测上限</span>
+                        <span class="lower_limit_col">预测下限</span>
+                    </div>
+                    <ul class="t_body">
+                        <li>
+                            <div class="shares_row_info">
+                                <span class="row_num ranking1">1</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="shares_row_info">
+                                <span class="row_num ranking2">2</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="shares_row_info">
+                                <span class="row_num ranking3">3</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="shares_row_info">
+                                <span class="row_num ranking4">4</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="shares_row_info">
+                                <span class="row_num ranking4">5</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                          <div class="shares_row_info">
+                                <span class="row_num ranking4">6</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                          <div class="shares_row_info">
+                                <span class="row_num ranking4">7</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                          <div class="shares_row_info">
+                                <span class="row_num ranking4">8</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                          <div class="shares_row_info">
+                                <span class="row_num ranking4">9</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                             <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                        <li>
+                          <div class="shares_row_info">
+                                <span class="row_num ranking4">10</span>
+                                <span class="code_col">600503</span>
+                                <span class="name_col">华丽家族</span>
+                                <span class="profit_col height">8.0%</span>
+                                <span class="online_col low">14.2%</span>
+                                <span class="lower_limit_col middle">2.7%</span>
+                                <span class="icon_toggle"></span>
+                            </div>
+                            <a href="javascript:void(0)">
+                                <div class="shares_graph_info"></div>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            
+        </div>
+
+	</div>
+</div>     
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="http://cdn.upchinapro.com/assert/swiper/3.4.0/swiper.jquery.min.js"></script>
+<script type="text/javascript">
+    window.onscroll=function(){ 
+        var menu=document.getElementById("menu");
+        menu.style.top=document.body.scrollTop +'px';
+    } 
+    //轮播图
+    var swiper = new Swiper('#swiper1', {
+        pagination: '#pagination1',
+        paginationClickable: '#pagination1',
+        nextButton: '#next1',
+        prevButton: '#prev1',
+        autoplayDisableOnInteraction: false,
+        autoplay:3000,
+        loop: true,
+        speed:300,
+    });
+
+    var swiper2 = new Swiper('#swiper2', {
+        pagination: '#pagination2',
+        paginationClickable: '#pagination2',
+        nextButton: '#next2',
+        prevButton: '#prev2',
+        autoplayDisableOnInteraction: false,
+        autoplay:3000,
+        loop: true,
+        speed:300,
+    });
+    
+     // 菜单展开
+     $(".list_tow").click(function(){
+          $(this).toggleClass("open");
+          $(this).parent().find(".list_box").slideToggle();
+     });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<%if(weekHistoryList && weekHistoryList.length > 0){%>
+<%for(var i in weekHistoryList.slice(0,20)){var obj = weekHistoryList[i];var weekProfit = obj.weekProfit * 100;var hsProfit = obj.hsProfit * 100;%>
+<div class="week_list">
+    <div class="pointer">
+        <span></span>
+    </div>
+    <div class="week">
+        <div class="left">
+            <p class="time"><%=obj.date%></p>
+            <p class="week_income <%if(weekProfit>0){%>height<%}else if(weekProfit<0){%>low<%}else{%>middle<%}%>">周收益：<span><%=parseFloat(weekProfit).toFixed(2)%>%</span></p>
+            <p class="income <%if(hsProfit>0){%>height<%}else if(hsProfit<0){%>low<%}else{%>middle<%}%>">沪深300收益：<span><%=parseFloat(hsProfit).toFixed(2)%>%</span></p>
+        </div>
+        <div class="right">
+            <%if(obj.stockList.value && obj.stockList.value.length > 0){%>
+            <p>入选股票：
+                <%for(var i in obj.stockList.value.slice(0,6)){var stock = obj.stockList.value[i];%>
+                <a href="javascript:void(0)" class="open_stock" data-stock-market="<%=stock.market%>" data-stock-code="<%=stock.code%>"><%=stock.name%></a>
+                <%}%>
+            </p>
+            <%}else {%>
+            <p>市场风险较高，建议持币观望。</p>
+            <%}%>
+        </div>
+    </div>
+</div>
+<%}%>
+<%}%>

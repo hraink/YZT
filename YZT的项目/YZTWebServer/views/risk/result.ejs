@@ -1,0 +1,55 @@
+<% include ../common/header %>
+<title><%=title%></title>
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+    <% include ../common/leftMenu %>
+    <!--  右侧测评结果 -->
+    <div class="content_result">
+        <div class="result_header">
+            <p><%=riskInfo.userType%><a href="/risk/index.html?retest=1">重新测试</a></p>
+        </div>
+        <div class="result">
+            <p>风险承受力<span><%=riskInfo.riskEndure%></span></p>
+            <p><span><%=riskInfo.winHope%></span></p>
+            <p><span><%=riskInfo.riskPrepare%></span></p>
+            <p>投资配置比例建议：</p>
+            <div class="result_chart">
+                <div class="result_fig <%=riskInfo.riskLever%>"></div>
+                <div class="legend">
+                    <div class="list list1">
+                        <span class="legend_color"></span>
+                        <span class="l_risk">低风险</span>
+                        <span class="ratio"><%=riskInfo.low%>%</span>
+                    </div>
+                    <div class="list list2">
+                        <span class="legend_color"></span>
+                        <span class="l_risk">中风险</span>
+                        <span class="ratio"><%=riskInfo.middle%>%</span>
+                    </div>
+                    <div class="list list3">
+                        <span class="legend_color"></span>
+                        <span class="l_risk">高风险</span>
+                        <span class="ratio"><%=riskInfo.high%>%</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>
+    ;(function () {
+        //自适应
+        adaptive();
+        $(window).resize(function(){
+            adaptive();
+        });
+        function adaptive(){
+            $("body").height($(window).height());
+            var p_top = ($(window).height()- 464) / 2 ;
+            $(".result").css("padding-top",p_top);
+        }
+    })();
+</script>
+<% include ../common/footer %>

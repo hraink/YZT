@@ -1,0 +1,98 @@
+<% include ../common/header %>
+<title><%=title%></title>
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+    <% include ../common/leftMenu %>
+    <!--  右侧主内容区 -->
+    <div class="container">
+        <div class="switch switch_st">
+            <a href="/hot/theme/panorama.html">题材全景图</a>
+            <a href="/hot/theme/hot/ranking.html" class="on">题材排行榜</a>
+            <div class="switch_right">
+                <a href="/hot/theme/hot/ranking.html" class="hottest <% if(active == 'hot'){%>active<%}%>">最热</a>
+                <a href="/hot/theme/excep/ranking.html" class="change <%if(active == 'excep'){%>active<%}%>">异动</a>
+                <a href="/hot/theme/news/ranking.html" class="newest <%if(active == 'news'){%>active<%}%>">最新</a>
+            </div>
+        </div>
+        <!-- 题材-->
+        <!-- 详细内容 -->
+        <%if(subJectList && subJectList.length > 0){%>
+        <div class="content_ld content_tc">
+            <%for(var i in subJectList){var obj = subJectList[i];%>
+                <div class="billboards billboards_tc" content_id="cc_sq">
+                    <div class="corner">
+                        <%if(Number(i) < 3){%>
+                            <img src="/img/icon_hot03.png" alt="">
+                        <%}else {%>
+                            <img src="/img/icon_hot04.png" alt="">
+                        <%}%>
+                        <span><%=Number(i)+1%></span>
+                    </div>
+                    <div class="containerbg">
+                        <!-- 左半部内容 -->
+                        <div class="pittedContent">
+                            <div class="name">
+                                <a href="javascript:void(0)" class="open_stock" data-stock-market="<%=obj.code%>" data-stock-code="<%=obj.code%>"><%=obj.name%></a>
+                            </div>
+                            <div class="topleft">
+                                <div class="event">
+                                    <span class="msg">上榜时间</span>
+                                    <span class="time"><%=obj.rankDate%></span>
+                                </div>
+                                <div class="value">
+                                    <span class="msg">驱动事件</span>
+                                    <div class="summary"><%=obj.title%></div>
+                                </div>
+
+                                <%if(obj.chgRatio>0){%>
+                                <div class="hot height">
+                                <%}else if(obj.chgRatio<0){%>
+                                <div class="hot low">
+                                <%}else{%>
+                                <div class="hot middle">
+                                <%}%>
+                                    <span class="msg">题材热度</span>
+                                    <span class="img_<%if(obj.hot<1000){%>04<%}
+                                    else if(obj.hot>=1000 && obj.hot<3000){%>03<%}
+                                    else if(obj.hot>=3000 && obj.hot<5000){%>02<%}
+                                    else{%>01<%}%>"></span>
+                                    <span class="count"><%=parseFloat(obj.hot).toFixed(2)%></span>
+                                    <span><%=parseFloat(obj.chgRatio).toFixed(2)%>%</span>
+                                </div>
+                            </div>
+                            <!--右半部内容 -->
+                            <div class="topright">
+                                <div class="realtimeZhishu">
+                                    <p class="sub_title">最热股票</p>
+                                    <%if(obj.stockList.value && obj.stockList.value.length > 0){%>
+                                        <%for(var s in obj.stockList.value){var stockObj = obj.stockList.value[s];%>
+                                            <a class="Shares stock-id-<%=stockObj.stockCode%> open_stock" href="javascript:void(0);" target="_blank" data-stock-market="<%=stockObj.market%>" data-stock-code="<%=stockObj.stockCode%>">
+                                                <span class="Shares_name"><%=stockObj.stockName%></span>
+                                                <div class="<%if(stockObj.zdf>0){%>height<%}else if(stockObj.zdf<0){%>low<%}else{%>middle<%}%>">
+                                                    <span id="xj"><%=parseFloat(stockObj.price).toFixed(2)%></span>
+                                                    <span id="zdf"><%=parseFloat(stockObj.zdf).toFixed(2)%>%</span>
+                                                </div>
+                                            </a>
+                                        <%}%>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <%}%>
+        </div>
+        <%}else {%>
+        <!-- 暂无数据 -->
+        <div class="no_data" style="display: block;">
+            <img src="/img/pic_not_find.png" alt="">
+            <p>-暂无数据-</p>
+        </div>
+        <%}%>
+        <!-- 题材结束-->
+    </div>
+</div>
+<%-script('/js/theme-ranking.js')%>
+<% include ../common/footer %>

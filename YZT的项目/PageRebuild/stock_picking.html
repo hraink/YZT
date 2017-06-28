@@ -1,0 +1,446 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>智能选股</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css">
+  <link href="js/need/laydate.css" rel="stylesheet" type="text/css">
+  <!-- <link href="js/skins/default/laydate.css" rel="stylesheet" type="text/css"> -->
+
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+     <div class="menu" id="menu">
+          <div class="top">
+               <h1>优智投</h1>
+               <p class="status">状态：<span>365天到期</span></p>
+               <p class="type">类型：<a href="javascript:viod(0)">去测评 ></a></p>
+          </div>
+          <div class="index">
+               <a href="javascript:viod(0);">首页</a>
+          </div>
+          <div class="list">
+               <h3>大数据视点</h3>
+               <div class="lists">
+                    <div class="list_tow">市场关注</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">新闻龙虎榜</a>
+                         <a href="javascript:viod(0);">事件跟踪</a>
+                    </div>
+               </div>
+               <div class="lists">
+                    <div class="list_tow">机会热点</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">题材风口</a>
+                         <a href="javascript:viod(0);">行业热图</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box active">
+                         <a href="javascript:viod(0);">资金流向</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">龙虎榜单</a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">舆情牛股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+          </div>
+          <div class="list list2">
+               <h3>智能化决策</h3>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能诊股</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能选股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能操盘<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能Ｋ线<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能监控</a>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <!--  右侧主内容区 -->
+	<div class="container_auto">
+          <!-- 智能选股开始 -->
+          <div class="choose_stock">
+              <div class="switch switch_st">
+                   <a href="javascript:viod(0)">推荐策略</a>
+                   <a href="javascript:viod(0)" class="on">涨停宝</a>
+                   <a href="javascript:viod(0)">龙头战法</a>
+              </div>
+              <!-- 涨停榜 -->
+              <div class="daily_limit">
+                  <div class="list">
+                      <div class="list_main">
+                          <h3>涨停追击</h3>
+                          <p>适合行情：<span>弱势</span><span>长线</span></p>
+                          <p>操作风格：<span>稳健</span><span>短线趋势</span></p>
+                      </div>  
+                  </div>
+                  <div class="list">
+                      <div class="list_main">
+                          <h3>反弹涨停</h3>
+                          <p>适合行情：<span>弱势</span><span>长线</span></p>
+                          <p>操作风格：<span>稳健</span><span>短线趋势</span></p>
+                      </div>  
+                  </div>
+                  <div class="list active">
+                       <div class="list_main">
+                          <h3>突破涨停</h3>
+                          <p>适合行情：<span>弱势</span><span>长线</span></p>
+                          <p>操作风格：<span>稳健</span><span>短线趋势</span></p>
+                      </div>  
+                  </div>
+                  <div class="list">
+                       <div class="list_main">
+                          <h3>涨停王者</h3>
+                          <p>适合行情：<span>弱势</span><span>长线</span></p>
+                          <p>操作风格：<span>稳健</span><span>短线趋势</span></p>
+                      </div>  
+                  </div>
+              </div>
+              <!-- 右侧表格 -->
+              <div class="record">
+                  <!-- 最近战绩 -->
+                   <div class="recent">
+                        <div class="recent_left">
+                            <div class="tit">
+                                <p>近期战绩<p>
+                            </div>
+                            <div class="tit_info">
+                                <p>抓连拉暴涨的个股    强者恒强连续涨停！</p>
+                            </div>
+                            <div class="introdu_box">
+                                <div class="left_info height">
+                                    <div class="max_box box">
+                                        <div>
+                                            <p>最大胜率</p>
+                                            <p>72.43%</p>
+                                        </div>
+                                    </div>
+                                    <div class="avg_box box">
+                                        <div>
+                                            <p>最大胜率</p>
+                                            <p>72.43%</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="right_chart"></div>
+                            </div>
+                        </div>
+                        <div class="recent_right">
+                            <div class="tit">
+                                <p>近期战绩<p>
+                            </div>
+                            <div class="tab_cont tab_cont_top">
+                                  <div class="tab_header tab_header1">
+                                      <span>代码</span>
+                                      <span>名称</span>
+                                      <span>入选日期</span>
+                                      <span class="riseting">最高涨幅</span>
+                                      <span class="sorting">次日涨幅</span>
+                                  </div>
+                                  <div class="tab_noData" style="display:none">
+                                      <p>暂无任何选股结果</p>
+                                  </div>
+                                  <div class="tab_main tab_main1" >
+                                      <ul>
+                                          <li>
+                                              <span>000000</span>
+                                              <span>广信材料</span>
+                                              <span>2016-11-29</span>
+                                              <span class="height">123.89%</span>
+                                              <span class="low">123.89%</span>
+                                          </li>
+                                          <li>
+                                              <span>000000</span>
+                                              <span>广信材料</span>
+                                              <span>2016-11-29</span>
+                                              <span class="height">123.89%</span>
+                                              <span class="low">123.89%</span>
+                                          </li>
+                                          <li>
+                                              <span>000000</span>
+                                              <span>广信材料</span>
+                                              <span>2016-11-29</span>
+                                              <span class="height">123.89%</span>
+                                              <span class="low">123.89%</span>
+                                          </li>
+                                          <li>
+                                              <span>000000</span>
+                                              <span>广信材料</span>
+                                              <span>2016-11-29</span>
+                                              <span class="height">123.89%</span>
+                                              <span class="low">123.89%</span>
+                                          </li>
+                                          <li>
+                                              <span>000000</span>
+                                              <span>广信材料</span>
+                                              <span>2016-11-29</span>
+                                              <span class="height">123.89%</span>
+                                              <span class="low">123.89%</span>
+                                          </li>
+                                          <li>
+                                              <span>000000</span>
+                                              <span>广信材料</span>
+                                              <span>2016-11-29</span>
+                                              <span class="height">123.89%</span>
+                                              <span class="low">123.89%</span>
+                                          </li>
+                                          <li>
+                                              <span>000000</span>
+                                              <span>广信材料</span>
+                                              <span>2016-11-29</span>
+                                              <span class="height">123.89%</span>
+                                              <span class="low">123.89%</span>
+                                          </li>
+                                          <li>
+                                              <span>000000</span>
+                                              <span>广信材料</span>
+                                              <span>2016-11-29</span>
+                                              <span class="height">123.89%</span>
+                                              <span class="low">123.89%</span>
+                                          </li>
+                                          <li>
+                                              <span>000000</span>
+                                              <span>广信材料</span>
+                                              <span>2016-11-29</span>
+                                              <span class="height">123.89%</span>
+                                              <span class="low">123.89%</span>
+                                          </li>
+                                          <li>
+                                              <span>000000</span>
+                                              <span>广信材料</span>
+                                              <span>2016-11-29</span>
+                                              <span class="height">123.89%</span>
+                                              <span class="low">123.89%</span>
+                                          </li>
+                                          <li>
+                                              <span>000000</span>
+                                              <span>广信材料</span>
+                                              <span>2016-11-29</span>
+                                              <span class="height">123.89%</span>
+                                              <span class="low">123.89%</span>
+                                          </li>
+                                          <li>
+                                              <span>000000</span>
+                                              <span>广信材料</span>
+                                              <span>2016-11-29</span>
+                                              <span class="height">123.89%</span>
+                                              <span class="low">123.89%</span>
+                                          </li>
+                                          <li>
+                                              <span>000000</span>
+                                              <span>广信材料1</span>
+                                              <span>2016-11-29</span>
+                                              <span class="height">123.89%</span>
+                                              <span class="low">123.89%</span>
+                                          </li>
+                                      </ul>
+                                  </div>
+                            </div>
+                        </div>
+                        
+                   </div>
+                   <!-- 每日周战绩 -->
+                   <div class="daily">
+                        <div class="tit">
+                           <p>每日选股<p>
+                           <p class="time">更新时间：2017-01-03<span>15:13</span></p>
+                           <input type="text" placeholder="2016-07-26" onclick="laydate()">
+                        </div>
+                        <div class="tab_cont">
+                            <div class="tab_header tab_header2">
+                                <span>代码</span>
+                                <span>名称</span>
+                                <span class="riseting">最高涨幅</span>
+                                <span class="sorting">现价</span>
+                                <span>入选价格</span>
+                                <span>所属行业</span>
+                            </div>
+                            <div class="tab_noData" style="display:none">
+                                <p>暂无任何选股结果</p>
+                            </div>
+                            <div class="tab_main tab_main2">
+                                <ul>
+                                    <li>
+                                        <span>000000</span>
+                                        <span>广信材料</span>
+                                        <span class="height">123.89%</span>
+                                        <span class="low">123.89%</span>
+                                        <span>123.89%</span>
+                                        <span>汽车</span>
+                                    </li>
+                                    <li>
+                                        <span>000000</span>
+                                        <span>广信材料</span>
+                                        <span class="height">23.89%</span>
+                                        <span class="height">123.89%</span>
+                                        <span>123.89%</span>
+                                        <span>汽车</span>
+                                    </li>
+                                    <li>
+                                        <span>000000</span>
+                                        <span>广信材料</span>
+                                        <span class="low">23.89%</span>
+                                        <span class="low">123.89%</span>
+                                        <span>123.89%</span>
+                                        <span>汽车</span>
+                                    </li>
+                                    <li>
+                                        <span>000000</span>
+                                        <span>广信材料3</span>
+                                        <span class="height">123.89%</span>
+                                        <span class="low">123.89%</span>
+                                        <span>123.89%</span>
+                                        <span>汽车</span>
+                                    </li>
+                                    <li>
+                                        <span>000000</span>
+                                        <span>广信材料</span>
+                                        <span class="height">123.89%</span>
+                                        <span class="low">123.89%</span>
+                                        <span>123.89%</span>
+                                        <span>汽车</span>
+                                    </li>
+                                    <li>
+                                        <span>000000</span>
+                                        <span>广信材料</span>
+                                        <span class="height">123.89%</span>
+                                        <span class="low">123.89%</span>
+                                        <span>123.89%</span>
+                                        <span>汽车</span>
+                                    </li>
+                                    <li>
+                                        <span>000000</span>
+                                        <span>广信材料5</span>
+                                        <span class="height">123.89%</span>
+                                        <span class="low">123.89%</span>
+                                        <span>123.89%</span>
+                                        <span>汽车</span>
+                                    </li>
+                                    <li>
+                                        <span>000000</span>
+                                        <span>广信材料</span>
+                                        <span class="height">123.89%</span>
+                                        <span class="low">123.89%</span>
+                                        <span>123.89%</span>
+                                        <span>汽车</span>
+                                    </li>
+                                    <li>
+                                        <span>000000</span>
+                                        <span>广信材料</span>
+                                        <span class="height">123.89%</span>
+                                        <span class="low">123.89%</span>
+                                        <span>123.89%</span>
+                                        <span>汽车</span>
+                                    </li>
+                                    <li>
+                                        <span>000000</span>
+                                        <span>广信材料</span>
+                                        <span class="height">123.89%</span>
+                                        <span class="low">123.89%</span>
+                                        <span>123.89%</span>
+                                        <span>汽车</span>
+                                    </li>
+                                    <li>
+                                        <span>000000</span>
+                                        <span>广信材料</span>
+                                        <span class="height">123.89%</span>
+                                        <span class="low">123.89%</span>
+                                        <span>123.89%</span>
+                                        <span>汽车</span>
+                                    </li>
+                                    <li>
+                                        <span>000000</span>
+                                        <span>广信材料</span>
+                                        <span class="height">123.89%</span>
+                                        <span class="low">123.89%</span>
+                                        <span>123.89%</span>
+                                        <span>汽车</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                   </div>
+              </div>
+          </div>
+          <!-- 智能选股结束 -->
+	</div>
+</div>     
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="js/laydate.js"></script>
+<script type="text/javascript">
+    window.onscroll=function(){ 
+        var menu=document.getElementById("menu");
+        menu.style.top=document.body.scrollTop +'px';
+    } 
+     //滚动条
+    
+     // $('.tab_main').jScrollPane();
+     // var ul_heigh = $('.tab_main1 ul').css("height");
+     // var div_heigh = $('.tab_main1').css("height");
+     // if(ul_heigh > div_heigh){
+     //      $(".tab_header1").addClass("hidden");
+     //      $(".tab_header1").width($(".tab_main1 ul").width() + 4);
+     // }
+     // var ul_heigh2 = $('.tab_main2 ul').css("height");
+     // var div_heigh2 = $('.tab_main2').css("height");
+     // if(ul_heigh2 > div_heigh2){
+     //      $(".tab_header2").addClass("hidden");
+     //      $(".tab_header2").width($(".tab_main2 ul").width() + 4);
+     // }
+     //  $(window).resize(function(){
+     //      $('.tab_main').jScrollPane();
+     //      var width = $(".tab_main2 ul").width();
+     //      $(".tab_header2").width(width);
+     // });
+     //日历时间控件
+    var start = {
+        elem: '#start',
+        format: 'YYYY/MM/DD hh:mm:ss',
+        min: '2016-01-01 00:00:00',
+        max: laydate.now(-1),
+        istime: false,
+        istoday: false,
+        choose: function(datas){
+            end.min = datas; //开始日选好后，重置结束日的最小日期
+            end.start = datas; //将结束日的初始值设定为开始日
+          }
+    }
+
+     // 菜单展开
+     $(".list_tow").click(function(){
+          $(this).toggleClass("open");
+          $(this).parent().find(".list_box").slideToggle();
+     });
+
+</script>
+</body>
+</html>

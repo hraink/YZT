@@ -1,0 +1,195 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>K线趋势</title>
+	<link rel="stylesheet" type="text/css" href="css/index.css">
+  <link rel="stylesheet" type="text/css" href="css/jquery.jscrollpane.css">
+  <link rel="stylesheet" type="text/css" href="css/swiper-3.4.0.min.css">
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+     <div class="menu" id="menu">
+          <div class="top">
+               <h1>优智投</h1>
+               <p class="status">状态：<span>365天到期</span></p>
+               <p class="type">类型：<a href="javascript:viod(0)">去测评 ></a></p>
+          </div>
+          <div class="index">
+               <a href="javascript:viod(0);">首页</a>
+          </div>
+          <div class="list">
+               <h3>大数据视点</h3>
+               <div class="lists">
+                    <div class="list_tow">市场关注</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">新闻龙虎榜</a>
+                         <a href="javascript:viod(0);">事件跟踪</a>
+                    </div>
+               </div>
+               <div class="lists">
+                    <div class="list_tow">机会热点</div>
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">题材风口</a>
+                         <a href="javascript:viod(0);">行业热图</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box active">
+                         <a href="javascript:viod(0);">资金流向</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">龙虎榜单</a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">舆情牛股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+          </div>
+          <div class="list list2">
+               <h3>智能化决策</h3>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能诊股</a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能选股<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能操盘<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能Ｋ线<img src="img/icon_v.png"></a>
+                    </div>
+               </div>
+               <div class="lists lists_one speech">
+                    <div class="list_box">
+                         <a href="javascript:viod(0);">智能监控</a>
+                    </div>
+               </div>
+          </div>
+     </div>
+     <!--  右侧主内容区 -->
+	<div class="container">
+        <div class="switch switch_st">
+             <a href="javascript:viod(0)" class="on">K线趋势</a>
+             <a href="javascript:viod(0)">K线模式匹配</a>
+        </div>
+        <div class="line_cont">
+            <div class="line_top clearfix">
+                <div class="searchBox">
+                    <input type="text" placeholder="请输入代码/简称/简拼">
+                    <button>搜索</button>
+                    <ul class="searchUl"> <!-- 无数据时添加.search_none -->
+                        <!-- 无数据li -->
+                        <!--  <li>
+                          <div class="searchLi">您输入的股票不存在</div>
+                        </li> -->
+                        <li class="active">
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                        <li>
+                          <div class="searchLi"><span class="searchLi_keyWords">00</span><span class="searchCode">0000</span>平安银行</div>
+                        </li>
+                      </ul>
+                </div>
+                <div class="forecast_cycle">
+                    <label>预测周期：</label>
+                    <a href="javascript:void(0)">1天</a>
+                    <a href="javascript:void(0)" class="active">5天</a>
+                    <a href="javascript:void(0)">10天</a>
+                    <a href="javascript:void(0)">20天</a>
+                    <a href="javascript:void(0)"></a>
+                </div>
+            </div>
+            <div class="no_data">
+                <img src="img/pic_not_find.png" alt="">
+                <p>该股票历史数据不足，暂无匹配结果</p>
+            </div>
+            
+           
+            
+            
+        </div>
+
+	</div>
+</div>     
+
+<script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
+<script type="text/javascript" src="js/jquery.jscrollpane.min.js"></script>
+<script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="http://cdn.upchinapro.com/assert/swiper/3.4.0/swiper.jquery.min.js"></script>
+<script type="text/javascript">
+    window.onscroll=function(){ 
+        var menu=document.getElementById("menu");
+        menu.style.top=document.body.scrollTop +'px';
+    } 
+    //轮播图
+    var swiper = new Swiper('#swiper1', {
+        pagination: '#pagination1',
+        paginationClickable: '#pagination1',
+        nextButton: '#next1',
+        prevButton: '#prev1',
+        autoplayDisableOnInteraction: false,
+        autoplay:3000,
+        loop: true,
+        speed:500,
+    });
+
+    var swiper2 = new Swiper('#swiper2', {
+        pagination: '#pagination2',
+        paginationClickable: '#pagination2',
+        nextButton: '#next2',
+        prevButton: '#prev2',
+        autoplayDisableOnInteraction: false,
+        autoplay:3000,
+        loop: true,
+        speed:500,
+    });
+    //提示框
+    $(".icon_tip").hover(function(){
+        $(this).find(".tip_wrap").show();
+    },function(){
+         $(this).find(".tip_wrap").hide();
+    });
+     // 菜单展开
+     $(".list_tow").click(function(){
+          $(this).toggleClass("open");
+          $(this).parent().find(".list_box").slideToggle();
+     });
+
+</script>
+</body>
+</html>

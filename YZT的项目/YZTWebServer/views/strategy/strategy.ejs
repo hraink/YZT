@@ -1,0 +1,153 @@
+<% include ../common/header.ejs %>
+  <link href="/js/need/laydate.css" rel="stylesheet" type="text/css">
+  <link href="/js/skins/default/laydate.css" rel="stylesheet" type="text/css">
+  <title>优智投</title>
+</head>
+<body>
+<div class="main">
+  <!-- 左侧菜单 -->
+  <% include ../common/leftMenu.ejs %>
+  <!--  右侧主内容区 -->
+  <div class="container_auto">
+    <!-- 智能选股开始 -->
+    <div class="choose_stock">
+      <div class="switch switch_st">
+        <a href="/strategy/strategy.html" class="<%=type == 1 && 'on'%>">推荐策略</a>
+        <a href="/strategy/strategy.html?type=2" class="<%=type == 2 && 'on'%>">涨停宝</a>
+        <a href="/strategy/strategy.html?type=3" class="<%=type == 3 && 'on'%>">龙头战法</a>
+      </div>
+      <!-- 涨停榜 -->
+      <div class="daily_limit">
+        <%stgyInfoList.forEach(function(item){
+          var url = '/strategy/strategy.html?type=' + type + '&stgyCode=' + encodeURI(item.stgyCode);
+        %>
+        <a style="display:block"
+           class="list <%=currStgy.stgyCode == item.stgyCode ? 'active' : ''%>"
+           href="<%=currStgy.stgyCode == item.stgyCode ? 'javascript:;' : url%>">
+          <div class="list_main">
+            <h3><%=item.stgyName%></h3>
+            <p>适合行情：<span><%=item.stgyStyle.slice(0, 2).join(' ')%></span></p>
+            <p>操作风格：<span><%=item.stgyStyle.slice(2).join(' ')%></span></p>
+          </div>
+        </a>
+        <%})%>
+      </div>
+      <!-- 右侧表格 -->
+      <record :stgy="currStgy" id="app"></record>
+    </div>
+    <!-- 智能选股结束 -->
+  </div>
+</div>
+<script>
+var type = <%=type%>
+var stgyInfoList = <%-JSON.stringify(stgyInfoList)%>
+var currStgy = <%-JSON.stringify(currStgy)%>
+</script>
+<script type="x-template" id="top-stock">
+<div class="tab_cont tab_cont_top">
+  <div class="tab_header tab_header1">
+    <span>代码</span>
+    <span>名称</span>
+    <span>入选日期</span>
+    <span :class="arrow1" @click="sortBy('maxRise')">最高涨幅</span>
+    <span :class="arrow2" @click="sortBy('nextDayRise')">次日涨幅</span>
+  </div>
+  <div class="tab_noData" v-show="stocks.length == 0">
+    <p>暂无任何选股结果</p>
+  </div>
+  <div class="tab_main tab_main1 scroll-pane" v-show="stocks.length > 0">
+    <ul>
+      <li v-for="item in stocks">
+        <span>{{item.stockCode}}</span>
+        <span class="open_stock" :data-stock-market="item.market" :data-stock-code="item.stockCode">{{item.stockName}}</span>
+        <span>{{item.chooseDate}}</span>
+        <span :class="item.maxRise|calColor">{{item.maxRise|percent}}</span>
+        <span :class="item.nextDayRise|calColor">{{item.nextDayRise|percent}}</span>
+      </li>
+    </ul>
+  </div>
+</div>
+</script>
+<script type="x-template" id="choose-stock">
+  <div class="tab_cont">
+    <div class="tab_header tab_header2">
+      <span>代码</span>
+      <span>名称</span>
+      <!--<span :class="arrow1" @click="sortBy('zdf')">涨跌幅</span>-->
+      <!--<span :class="arrow2" @click="sortBy('nowPrice')">现价</span>-->
+      <span>涨跌幅</span>
+      <span>现价</span>
+      <span>入选价格</span>
+      <span>所属行业</span>
+    </div>
+    <div class="tab_noData" v-show="stocks.length == 0">
+      <p>暂无任何选股结果</p>
+    </div>
+    <div class="tab_main tab_main2 scroll-pane" v-show="stocks.length > 0">
+      <ul>
+        <li v-for="item in stocks">
+          <span>{{item.stockCode}}</span>
+          <span class="open_stock" :data-stock-market="item.market" :data-stock-code="item.stockCode">{{item.stockName}}</span>
+          <span :class="item.zdf|calColor">{{item.zdf|percent}}</span>
+          <span :class="item.zdf|calColor">{{item.nowPrice|fix}}</span>
+          <span :class="item.price|calColor">{{item.price|fix}}</span>
+          <span>{{item.industry}}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</script>
+<script type="x-template" id="record">
+  <div class="record">
+    <!-- 最近战绩 -->
+    <div class="recent">
+      <div class="recent_left">
+        <div class="tit">
+          <p>策略介绍<p>
+        </div>
+        <div class="tit_info">
+          <p>{{stgy.instruction_new}}</p>
+        </div>
+        <div class="introdu_box">
+          <div class="left_info height">
+            <div class="max_box box">
+              <div>
+                <p>平均涨幅</p>
+                <p>{{stgy.maxRise|percent}}</p>
+              </div>
+            </div>
+            <div class="avg_box box">
+              <div>
+                <p>最高胜率</p>
+                <p>{{stgy.winRate|percent}}</p>
+              </div>
+            </div>
+          </div>
+          <div class="right_chart" style="display:flex;flex-direction: column;justify-content: center"><img :src="stgy.pic" alt=""></div>
+        </div>
+      </div>
+      <div class="recent_right">
+        <div class="tit">
+          <p>近期战绩<p>
+        </div>
+        <top-stock :stocks="stgy.topStock"></top-stock>
+      </div>
+    </div>
+    <!-- 每日周战绩 -->
+    <div class="daily">
+      <div class="tit">
+        <p>每日选股<p>
+        <p class="time">更新时间：{{stgy.newChooseDateFormated}}<span></span></p>
+        <input type="text" class="date" id="datepicker" v-model="chooseDate">
+      </div>
+      <choose-stock :stocks="stgy.chooseStock"></choose-stock>
+    </div>
+  </div>
+</script>
+<%-script('/js/vue.js')%>
+<%-script('/js/jquery.jscrollpane.min.js')%>
+<%-script('/js/jquery.mousewheel.js')%>
+<%-script('/js/utils.js')%>
+<script src="/js/laydate.js"></script>
+<script src="/js/strategy.js"></script>
+<% include ../common/footer.ejs %>

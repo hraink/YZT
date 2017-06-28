@@ -1,0 +1,7 @@
+<div id="searchWrap">
+  <search-bar @select="handleSelect"></search-bar>
+  <form action="/kline/custom" method="get">
+    <input type="hidden" name="code" :value="code">
+    <input type="hidden" name="market" :value="market">
+  </form>
+</div>

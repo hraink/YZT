@@ -1,0 +1,178 @@
+<% include ../common/header %>
+<title><%=title%></title>
+<script src="/js/d3.3.5.js"></script>
+</head>
+<body>
+<div class="main">
+    <!-- 左侧菜单 -->
+    <% include ../common/leftMenu %>
+    <!--  右侧主内容区 -->
+    <div class="container pano_container">
+        <div class="switch switch_st">
+            <a href="/hot/theme/panorama.html" class="on">题材全景图</a>
+            <a href="/hot/theme/hot/ranking.html">题材排行榜</a>
+        </div>
+        <!-- 花瓣图 -->
+        <div class="pano_chart" id="pano_chart"></div>
+        <!-- 榜单 -->
+        <div class="bottom_list">
+            <!--题材榜单 -->
+            <div class="list_main theme_list">
+                <div class="title">
+                    <p>题材涨幅榜</p>
+                </div>
+                <%if(subjectObj && subjectObj.bkData && subjectObj.bkData.length > 0){%>
+                <div class="content">
+                    <%for(var i in subjectObj.bkData){var obj = subjectObj.bkData[i];var zdf = 0;%>
+                        <div class="list">
+                            <a href="javascript:void(0)" target="_blank" class="list_left open_stock" data-stock-market="<%=obj.shtSetcode%>" data-stock-code="<%=obj.sCode%>">
+                                <%if(Number(i) < 3){%>
+                                <span class="ranking<%=Number(i)+1%>"><%=Number(i)+1%></span>
+                                <%}else {%>
+                                <span class="ranking4"><%=Number(i)+1%></span>
+                                <%}%>
+                                <p data-sCode="<%=obj.sCode%>"><%=obj.sName%></p>
+                            </a>
+                            <div class="list_right">
+                                <div class="info">
+                                    <span>涨幅：</span>
+                                    <span class="info_data <%if(obj.stSimHq.fChgRatio>0){%>height<%}else if(obj.stSimHq.fChgRatio<0){%>low<%}else{%>middle<%}%>"><%=parseFloat(obj.stSimHq.fChgRatio).toFixed(2)%>%</span>
+                                </div>
+                                <div class="about_info stock-id-<%=obj.stExHq.sHeadCode%>">
+                                    <%if (obj.stExHq && obj.stExHq.sHeadName && obj.stExHq.sHeadName != ''){%>
+                                    <span class="about">相关个股：</span>
+                                        <a href="javascript:void(0)" class="open_stock" data-stock-market="<%=obj.stExHq.sHeadMarket%>" data-stock-code="<%=obj.stExHq.sHeadCode%>"><%=obj.stExHq.sHeadName%></a>
+                                        <%if (obj.stExHq.fHeadClose !== 0){zdf=(obj.stExHq.fHeadNow - obj.stExHq.fHeadClose)/obj.stExHq.fHeadClose*100;}%>
+                                        <!-- 现价-昨收/昨收 -->
+                                        <%if(zdf > 0){%>
+                                        <span class="price height" id="xj"><%=parseFloat(obj.stExHq.fHeadNow).toFixed(2)%></span>
+                                        <span class="rate height" id="zdf"><%=parseFloat(zdf).toFixed(2)%>%</span>
+                                        <%}else if (zdf < 0){%>
+                                        <span class="price low" id="xj"><%=parseFloat(obj.stExHq.fHeadNow).toFixed(2)%></span>
+                                        <span class="rate low" id="zdf"><%=parseFloat(zdf).toFixed(2)%>%</span>
+                                        <%}else {%>
+                                        <span class="price" id="xj"><%=parseFloat(obj.stExHq.fHeadNow).toFixed(2)%></span>
+                                        <span class="rate" id="zdf"><%=parseFloat(zdf).toFixed(2)%>%</span>
+                                        <%}%>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </div>
+                    <%}%>
+                </div>
+                <%}else {%>
+                <!-- 暂无数据 -->
+                <div class="no_data" style="display: block;">
+                    <img src="/img/pic_not_find.png" alt="">
+                    <p>-暂无数据-</p>
+                </div>
+                <%}%>
+            </div>
+            <!--题材榜单完 -->
+            <!--最新题材榜 -->
+            <div class="list_main new_list">
+                <div class="title">
+                    <p>最新题材榜</p>
+                </div>
+                <%if(subjectObj && subjectObj.newsData && subjectObj.newsData.length > 0){%>
+                <div class="content">
+                    <%for(var i in subjectObj.newsData){var obj = subjectObj.newsData[i];%>
+                        <div class="list">
+                            <a href="javascript:void(0)" target="_blank" class="list_left open_stock" data-stock-market="<%=obj.code%>" data-stock-code="<%=obj.code%>">
+                                <%if(Number(i) < 3){%>
+                                <span class="ranking<%=Number(i)+1%>"><%=Number(i)+1%></span>
+                                <%}else {%>
+                                <span class="ranking4"><%=Number(i)+1%></span>
+                                <%}%>
+                                <p><%=obj.name%></p>
+                            </a>
+                            <div class="list_right">
+                                <div class="info">
+                                    <span>上榜时间：</span>
+                                    <span class="info_data middle"><%=obj.rankDate%></span>
+                                </div>
+                                <div class="about_info  stock-id-<%=obj.stockList.value[0].stockCode%>">
+                                    <span class="about">相关个股：</span>
+                                    <%if(obj.stockList && obj.stockList.length > 0){var stockObj = obj.stockList.value[0];%>
+                                        <a href="javascript:void(0)" class="open_stock" data-stock-market="<%=stockObj.market%>" data-stock-code="<%=stockObj.stockCode%>"><%=stockObj.stockName%></a>
+                                        <%if(stockObj.zdf > 0){%>
+                                        <span class="price height" id="xj"><%=parseFloat(stockObj.price).toFixed(2)%></span>
+                                        <span class="rate height" id="zdf"><%=parseFloat(stockObj.zdf).toFixed(2)%>%</span>
+                                        <%}else if (stockObj.zdf < 0){%>
+                                        <span class="price low" id="xj"><%=parseFloat(stockObj.price).toFixed(2)%></span>
+                                        <span class="rate low" id="zdf"><%=parseFloat(stockObj.zdf).toFixed(2)%>%</span>
+                                        <%}else {%>
+                                        <span class="price" id="xj"><%=parseFloat(stockObj.price).toFixed(2)%></span>
+                                        <span class="rate" id="zdf"><%=parseFloat(stockObj.zdf).toFixed(2)%>%</span>
+                                        <%}%>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </div>
+                    <%}%>
+                </div>
+                <%}else {%>
+                <!-- 暂无数据 -->
+                <div class="no_data" style="display: block;">
+                    <img src="/img/pic_not_find.png" alt="">
+                    <p>-暂无数据-</p>
+                </div>
+                <%}%>
+            </div>
+            <!--最新题材榜完 -->
+            <div class="list_main move_list">
+                <div class="title">
+                    <p>异动题材榜</p>
+                </div>
+                <%if(subjectObj && subjectObj.excepData && subjectObj.excepData.length > 0){%>
+                <div class="content">
+                    <%for(var i in subjectObj.excepData){var obj = subjectObj.excepData[i];%>
+                        <div class="list">
+                            <a href="javascript:void(0)" target="_blank" class="list_left open_stock" data-stock-market="<%=obj.code%>" data-stock-code="<%=obj.code%>">
+                                <%if(Number(i) < 3){%>
+                                <span class="ranking<%=Number(i)+1%>"><%=Number(i)+1%></span>
+                                <%}else {%>
+                                <span class="ranking4"><%=Number(i)+1%></span>
+                                <%}%>
+                                <p><%=obj.name%></p>
+                            </a>
+                            <div class="list_right">
+                                <div class="info">
+                                    <span>异动系数：</span>
+                                    <span class="info_data middle"><%=obj.chgRatio%>%</span>
+                                </div>
+                                <div class="about_info stock-id-<%=obj.stockList.value[0].stockCode%>">
+                                    <span class="about" >相关个股：</span>
+                                    <%if(obj.stockList && obj.stockList.length > 0){var stockObj = obj.stockList.value[0];%>
+                                        <a href="javascript:void(0)" class="open_stock" data-stock-market="<%=stockObj.market%>" data-stock-code="<%=stockObj.stockCode%>"><%=stockObj.stockName%></a>
+                                        <%if(stockObj.zdf > 0){%>
+                                        <span class="price height" id="xj"><%=parseFloat(stockObj.price).toFixed(2)%></span>
+                                        <span class="rate height" id="zdf"><%=parseFloat(stockObj.zdf).toFixed(2)%>%</span>
+                                        <%}else if (stockObj.zdf < 0){%>
+                                        <span class="price low" id="xj"><%=parseFloat(stockObj.price).toFixed(2)%></span>
+                                        <span class="rate low" id="zdf"><%=parseFloat(stockObj.zdf).toFixed(2)%>%</span>
+                                        <%}else {%>
+                                        <span class="price" id="xj"><%=parseFloat(stockObj.price).toFixed(2)%></span>
+                                        <span class="rate" id="zdf"><%=parseFloat(stockObj.zdf).toFixed(2)%>%</span>
+                                        <%}%>
+                                    <%}%>
+                                </div>
+                            </div>
+                        </div>
+                    <%}%>
+                </div>
+                <%}else {%>
+                <!-- 暂无数据 -->
+                <div class="no_data" style="display: block;">
+                    <img src="/img/pic_not_find.png" alt="">
+                    <p>-暂无数据-</p>
+                </div>
+                <%}%>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="http://cdn.upchinapro.com/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/js/jqueryToolPlugins.js"></script>
+<script type="text/javascript" src="/js/theme-panorama.js"></script>
+<% include ../common/footer %>

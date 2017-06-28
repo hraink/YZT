@@ -1,0 +1,19 @@
+<script>
+  ;(function () {
+    // 菜单展开
+    $(".list_tow").click(function(){
+      $(this).toggleClass("open");
+        $(this).parent().siblings().find(".list_tow").next().css("display","none");
+        $(this).parent().find(".list_box").slideToggle();
+    });
+    window.onscroll=function(){
+      var menu=document.getElementById("menu");
+      menu.style.top=document.body.scrollTop +'px';
+    }
+    $('#loginCMD').click(function () {
+        window.open( "iwin://cmd=cmd_popup_regist_window",'_self');
+    });
+  })();
+</script>
+</body>
+</html>
